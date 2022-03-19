@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import img from "../img/bg.png";
 
 export const Header = styled.header`
   background-color: #282c34;
@@ -19,6 +20,17 @@ export const Body = styled.div`
   font-size: calc(10px + 2vmin);
   justify-content: center;
   min-height: calc(100vh - 70px);
+
+  /* The image used */
+  background-image: url(${img});
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const Image = styled.img`
