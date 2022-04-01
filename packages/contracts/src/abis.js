@@ -1,9 +1,9 @@
+import bscCoinFlip from "./abis/bsccoinflip.json";
 import erc20Abi from "./abis/erc20.json";
-import ownableAbi from "./abis/ownable.json";
 
 const abis = {
+  bscCoinFlip: bscCoinFlip,
   erc20: erc20Abi,
-  ownable: ownableAbi,
 };
 
 export default abis;
