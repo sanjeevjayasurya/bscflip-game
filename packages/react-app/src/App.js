@@ -1,36 +1,53 @@
 import React from "react";
-import { Provider } from "wagmi";
+import { Provider, chain, defaultChains } from 'wagmi'
+import { InjectedConnector } from 'wagmi/connectors/injected'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { WalletLinkConnector } from 'wagmi/connectors/walletLink'
 
-import { Body, Header, Image } from "./components/Styles";
-import { WalletButton } from "./components/WalletButton";
+import { Body, Image } from "./components/Styles";
+import { TopHeader } from "./components/TopHeader";
 import { FlipGame } from "./components/FlipGame";
 import logo from "./bscfLogo.png";
 
-import useWeb3Modal from "./hooks/useWeb3Modal";
-
 function App() {
-  const [connection, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
+// API key for Ethereum node
+// Two popular services are Infura (infura.io) and Alchemy (alchemy.com)
+const infuraId = process.env.INFURA_ID
 
-/*  
-  import { useQuery } from "@apollo/react-hooks";
-  import GET_TRANSFERS from "./graphql/subgraph";
+// Chains for connectors to support
+const chains = defaultChains
 
-  const { loading, error, data } = useQuery(GET_TRANSFERS);
-
-  useEffect(() => {
-    if (!loading && !error && data && data.transfers) {
-      console.log({ transfers: data.transfers });
-    }
-  }, [loading, error, data]);*/
+// Set up connectors
+const connectors = ({ chainId }) => {
+  const rpcUrl =
+    chains.find((x) => x.id === chainId)?.rpcUrls?.[0] ??
+    chain.mainnet.rpcUrls[0]
+  return [
+    new InjectedConnector({
+      chains,
+      options: { shimDisconnect: true },
+    }),
+    new WalletConnectConnector({
+      options: {
+        infuraId,
+        qrcode: true,
+      },
+    }),
+    new WalletLinkConnector({
+      options: {
+        appName: 'BSCFlip',
+        jsonRpcUrl: `${rpcUrl}/${infuraId}`,
+      },
+    }),
+    ]
+  }
 
   return (
-    <Provider>
-      <Header>
-        <WalletButton connection={connection} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
-      </Header>
+    <Provider autoConnect connectors={connectors}>
+      <TopHeader />
       <Body>
         <Image src={logo} alt="bscflip-logo" />
-        <FlipGame connection={connection} />
+        <FlipGame />
       </Body>
     </Provider>
   );

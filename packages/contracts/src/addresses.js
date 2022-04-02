@@ -7,6 +7,7 @@ const addresses =
     bscF: "0x800CABe215158854d874f6A63e48cAB98c5Cd1Fb",
   }, 
   56: {
+    // TODO mainnet IDs
     bscCoinFlip: "0xA52b920917f16212B2261A186BA7FCCcDD209c06",
     bscF: "0x800CABe215158854d874f6A63e48cAB98c5Cd1Fb",
   }};
