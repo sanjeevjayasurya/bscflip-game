@@ -1,10 +1,8 @@
 import { Web3Provider } from "@ethersproject/providers";
-import React, { useState, useEffect } from "react";
-import { HeaderButton } from "./Styles";
+import { useState, useEffect } from "react";
 
-export const WalletButton = (({ connection, loadWeb3Modal, logoutOfWeb3Modal }) => {
+export const useWalletData = ({ connection }) => {
     const [account, setAccount] = useState("");
-    const [buttonText, setButtonText] = useState("");
     const [chainId, setChainId] = useState("");
 
     useEffect(() => {
@@ -20,9 +18,6 @@ export const WalletButton = (({ connection, loadWeb3Modal, logoutOfWeb3Modal }) 
                 if(accounts.length > 0) {
                     const account = accounts[0];
                     setAccount(account);
-                    if (buttonText !== "WRONG CHAIN") {
-                        setButtonText(account);
-                    }
                 }
                 if (network) {
                     setChainId(network.chainId);
@@ -36,14 +31,8 @@ export const WalletButton = (({ connection, loadWeb3Modal, logoutOfWeb3Modal }) 
     }, [connection, account, setAccount]);
 
     useEffect(() => {
-        if (chainId) {
-            if (chainId !== 56 && chainId !== 97) {
-                console.log("WRONG CHAIN!!", chainId);
-                setButtonText("WRONG CHAIN");
-                return;
-            } else {
-                setButtonText(account);
-            }
+        if (chainId && chainId !== 56 && chainId !== 97) {
+            console.log("WRONG CHAIN!!", chainId);
         }
     }, [chainId]);
 
@@ -54,7 +43,6 @@ export const WalletButton = (({ connection, loadWeb3Modal, logoutOfWeb3Modal }) 
                 if (accounts.length > 0) {
                     setAccount(accounts[0]);
                 } else {
-                    logoutOfWeb3Modal();
                     setAccount("");
                 }
             };
@@ -85,18 +73,5 @@ export const WalletButton = (({ connection, loadWeb3Modal, logoutOfWeb3Modal }) 
         }
     }, [connection]);
 
-    return (
-        <HeaderButton onClick={() => {
-            if (!connection || account === "") {
-                loadWeb3Modal();
-            } else {
-                logoutOfWeb3Modal();
-            }
-        }}
-        >
-            {buttonText === "" && "CONNECT WALLET"}
-            {buttonText === "WRONG CHAIN" && "WRONG CHAIN"}
-            {(buttonText !== "" && buttonText !== "WRONG CHAIN") && account.substring(0, 6) + '...' + account.substring(38) }
-        </HeaderButton>
-    );
-});
+    return [account, chainId];
+};

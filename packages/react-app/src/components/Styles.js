@@ -28,7 +28,7 @@ export const Body = styled.div`
   height: 100%;
 
   /* Center and scale the image nicely */
-  background-position: -25% 150%;
+  background-position: -25% 200%;
   background-repeat: no-repeat;
   background-size: 50%;
 `;
