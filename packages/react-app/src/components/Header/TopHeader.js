@@ -1,4 +1,4 @@
-import { Header } from "./Styles";
+import { Header } from "./HeaderStyles";
 import { WalletButton } from "./WalletButton";
 
 export const TopHeader = () => {

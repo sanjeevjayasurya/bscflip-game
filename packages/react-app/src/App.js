@@ -5,8 +5,8 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink'
 
 import { Body, Image } from "./components/Styles";
-import { TopHeader } from "./components/TopHeader";
-import { FlipGame } from "./components/FlipGame";
+import { TopHeader } from "./components/Header/TopHeader";
+import { FlipGame } from "./components/Game/FlipGame";
 import logo from "./bscfLogo.png";
 
 function App() {

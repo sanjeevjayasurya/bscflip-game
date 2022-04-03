@@ -1,6 +1,6 @@
 import { useAccount, useConnect } from 'wagmi';
 
-import { HeaderButton } from "./Styles";
+import { HeaderButton } from "./HeaderStyles";
 
 export const WalletButton = () => {
   const [{ data: connectData, error: connectError }, connect] = useConnect();
