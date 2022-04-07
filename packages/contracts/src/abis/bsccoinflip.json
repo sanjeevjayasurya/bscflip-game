@@ -1,14 +1,6 @@
 [
   { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
   {
-    "inputs": [
-      { "internalType": "address", "name": "have", "type": "address" },
-      { "internalType": "address", "name": "want", "type": "address" }
-    ],
-    "name": "OnlyCoordinatorCanFulfill",
-    "type": "error"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -19,15 +11,27 @@
       },
       {
         "indexed": false,
-        "internalType": "uint32",
-        "name": "id",
-        "type": "uint32"
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
       },
       {
         "indexed": false,
         "internalType": "bool",
         "name": "winner",
         "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "wager",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "id",
+        "type": "uint32"
       }
     ],
     "name": "GameFinished",
@@ -41,6 +45,24 @@
         "internalType": "address",
         "name": "better",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "wager",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "predictedOutcome",
+        "type": "uint8"
       },
       {
         "indexed": false,
@@ -97,85 +119,11 @@
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "requestId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "numbersRequested",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint32",
-        "name": "queueStart",
-        "type": "uint32"
-      }
-    ],
-    "name": "RNGRequested",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "requestId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "numFlips",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint56",
-        "name": "flips",
-        "type": "uint56"
-      }
-    ],
-    "name": "RNGReturned",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "better",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint32",
-        "name": "gameId",
-        "type": "uint32"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "gameToken",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "wager",
-        "type": "uint256"
-      }
-    ],
-    "name": "RefundedGame",
-    "type": "event"
+    "inputs": [],
+    "name": "_blockWaitTime",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "inputs": [],
@@ -201,7 +149,8 @@
       { "internalType": "uint8", "name": "predictedOutcome", "type": "uint8" },
       { "internalType": "bool", "name": "finished", "type": "bool" },
       { "internalType": "bool", "name": "winner", "type": "bool" },
-      { "internalType": "uint256", "name": "wager", "type": "uint256" }
+      { "internalType": "uint256", "name": "wager", "type": "uint256" },
+      { "internalType": "uint256", "name": "startBlock", "type": "uint256" }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -229,13 +178,6 @@
   },
   {
     "inputs": [],
-    "name": "_lastUpdateTime",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "_queueResetSize",
     "outputs": [{ "internalType": "uint32", "name": "", "type": "uint32" }],
     "stateMutability": "view",
@@ -252,48 +194,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "_queuedResponses",
-    "outputs": [
-      { "internalType": "uint32", "name": "start", "type": "uint32" },
-      { "internalType": "uint32", "name": "end", "type": "uint32" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "_responseQueueSize",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "_responses",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "_updateInterval",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "_vrfResponses",
-    "outputs": [
-      { "internalType": "uint8", "name": "numFlips", "type": "uint8" },
-      { "internalType": "uint56", "name": "flips", "type": "uint56" },
-      { "internalType": "uint32", "name": "queueStart", "type": "uint32" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       { "internalType": "address", "name": "", "type": "address" },
       { "internalType": "address", "name": "", "type": "address" }
@@ -301,13 +201,6 @@
     "name": "_winnings",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "callChainlinkVrf",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -327,14 +220,7 @@
     ],
     "name": "enterGame",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "finishGames",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -345,31 +231,15 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "requestId", "type": "uint256" },
-      {
-        "internalType": "uint256[]",
-        "name": "randomWords",
-        "type": "uint256[]"
-      }
-    ],
-    "name": "rawFulfillRandomWords",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "inputs": [],
+    "name": "rand",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "uint32", "name": "gameId", "type": "uint32" }
-    ],
-    "name": "requestRefund",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -458,15 +328,6 @@
   },
   {
     "inputs": [
-      { "internalType": "uint32", "name": "numSeconds", "type": "uint32" }
-    ],
-    "name": "setUpdateInterval",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
       { "internalType": "address", "name": "newOwner", "type": "address" }
     ],
     "name": "transferOwnership",
@@ -475,8 +336,10 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "updateGames",
+    "inputs": [
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "withdrawBNB",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -494,5 +357,6 @@
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-  }
+  },
+  { "stateMutability": "payable", "type": "receive" }
 ]

@@ -7,8 +7,14 @@ export const GameContainer = styled.div`
   justify-content: center;
 `;
 
+export const FlipContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
 export const GameButton = styled.button`
-  background-color: #282B2E;
+  background-color: ${props => props.isActive ? "#F1B913" : "#282B2E"};
   border: none;
   border-radius: 8px;
   color: white;
@@ -16,16 +22,17 @@ export const GameButton = styled.button`
   font-size: 16px;
   text-align: center;
   text-decoration: none;
-  margin: 0px 40px;
+  margin: 0px 5px;
   padding: 12px 24px;
+  opacity: ${props => !props.isDisabled ? 1 : 0.5};
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;
     outline: none;
   }
 
-  &:hover {
-    background-color: #2F3236;
+  ${props => !props.isDisabled && ":hover" } {
+    background-color: ${props => props.isActive ? "#F1B213" : "#2F3236"};
     opacity: 0.8;
   }
 `;
