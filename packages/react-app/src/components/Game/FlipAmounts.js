@@ -21,3 +21,8 @@ export const flipAmounts = [
   { token: addresses[56].bscF, values: bscfFlipAmounts },
   { token: addresses[56].bnb, values: bnbFlipAmounts }
 ];
+
+export const headsOrTails = [
+  { id: 0, name: "HEADS", value: 0 },
+  { id: 1, name: "TAILS", value: 1 },
+];

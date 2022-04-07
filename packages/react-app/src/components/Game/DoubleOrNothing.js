@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-import { flipAmounts } from "./FlipAmounts";
+import { flipAmounts, headsOrTails } from "./FlipAmounts";
 import { Centered } from "../Styles";
 import { FlipContainer, GameButton } from "./GameStyles";
 
@@ -14,11 +14,6 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
   const [gameFinished, setGameFinished] = useState(false);
   const [winner, setWinner] = useState(false);
   const [gameId, setGameId] = useState(-1);
-
-  const headsOrTails = [
-    { id: 0, name: "HEADS", value: 0 },
-    { id: 1, name: "TAILS", value: 1},
-  ];
   
   const handleAmountButtonClick = event => {
     setActiveAmountButton(Number(event.target.value));
