@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAccount, useContract, useNetwork, useProvider, useSigner } from 'wagmi';
+import { useAccount, useContract, useNetwork, useSigner } from 'wagmi';
 import { formatUnits, parseUnits } from "@ethersproject/units";
 
 import { addresses, abis } from "@project/contracts";
@@ -9,7 +9,6 @@ import { GameContainer } from "./GameStyles";
 import { DoubleOrNothing } from "./DoubleOrNothing";
 
 export const FlipGame = (() => {
-  const provider = useProvider();
   const [{ data: signer, error: signerError, loading: loadingSigner }, getSigner] = useSigner();
   const [{ data: network, error: networkError, loading: loadingNetwork }, switchNetwork] = useNetwork();
   const [{ data: account }, disconnect] = useAccount({ fetchEns: false, });
@@ -97,7 +96,7 @@ export const FlipGame = (() => {
         <ApprovalButton bscF={bscF} game={game} />
       }
       {renderPage && approved && connected &&
-        <DoubleOrNothing provider={provider} gameToken={bscF} game={game} />
+        <DoubleOrNothing gameToken={bscF} game={game} />
       }
       {!renderPage && wrongChain && connected &&
         <Centered>WRONG CHAIN! PLEASE CONNECT TO BSC</Centered>

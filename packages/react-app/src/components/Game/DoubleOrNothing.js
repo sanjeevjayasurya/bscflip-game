@@ -5,9 +5,8 @@ import { formatEther, formatUnits, parseUnits } from "@ethersproject/units";
 import { addresses, abis } from "@project/contracts";
 import { Centered } from "../Styles";
 import { FlipContainer, GameButton } from "./GameStyles";
-import { parse } from "@ethersproject/transactions";
 
-export const DoubleOrNothing = (({ provider, gameToken, game }) => {
+export const DoubleOrNothing = (({ gameToken, game }) => {
   const [activeAmountButton, setActiveAmountButton] = useState(null);
   const [activeChoiceButton, setActiveChoiceButton] = useState(null);
   const [gameError, setGameError] = useState(null);
@@ -78,7 +77,8 @@ export const DoubleOrNothing = (({ provider, gameToken, game }) => {
   // so increase the limit by 20% to ensure there are fewer
   // failures on transactions
   async function getGasPrice(flipAmount, side, address) {
-    return await game.estimateGas.enterGame(flipAmount, side, address) * 1.2;
+    const estimate = await game.estimateGas.enterGame(flipAmount, side, address);
+    return estimate.mul(12).div(10);
   }
 
   const startGame = async () => {
