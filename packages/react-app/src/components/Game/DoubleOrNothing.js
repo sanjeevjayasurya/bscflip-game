@@ -1,30 +1,23 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { BigNumber } from "ethers";
-import { formatEther, formatUnits, parseUnits } from "@ethersproject/units";
+import { useState, useEffect, useCallback } from "react";
 
-import { addresses, abis } from "@project/contracts";
+import { flipAmounts } from "./FlipAmounts";
 import { Centered } from "../Styles";
 import { FlipContainer, GameButton } from "./GameStyles";
 
 export const DoubleOrNothing = (({ gameToken, game }) => {
-  const [activeAmountButton, setActiveAmountButton] = useState(null);
-  const [activeChoiceButton, setActiveChoiceButton] = useState(null);
+  const [activeAmountButton, setActiveAmountButton] = useState(-1);
+  const [activeChoiceButton, setActiveChoiceButton] = useState(-1);
+  const [gameFlipAmounts, setGameFlipAmounts] = useState(null);
+  const [gameReady, setGameReady] = useState(false);
   const [gameError, setGameError] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
   const [winner, setWinner] = useState(false);
   const [gameId, setGameId] = useState(-1);
 
-  const flipAmounts = [ 
-    { id: 1, name: "100 BSCF", value: parseUnits("1", 20) },
-    { id: 2, name: "500 BSCF", value: parseUnits("5", 20) },
-    { id: 3, name: "1000 BSCF", value: parseUnits("1", 21) },
-    { id: 4, name: "5000 BSCF", value: parseUnits("5", 21) },
-  ];
-
   const headsOrTails = [
-    { id: 1, name: "HEADS", value: 0 },
-    { id: 2, name: "TAILS", value: 1},
+    { id: 0, name: "HEADS", value: 0 },
+    { id: 1, name: "TAILS", value: 1},
   ];
   
   const handleAmountButtonClick = event => {
@@ -35,45 +28,39 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
     setActiveChoiceButton(Number(event.target.value));
   };
 
-  const gameStartedListener = useCallback((address, token, wager, outcome, id) => {
-    console.log("Current address: ", game.signer._address);
-    console.log("Game started: ", address, token, wager, outcome, id);
-    console.log("Current gameID: ", gameId);
-    // TODO: This is some crappy resiliency against having multiple tabs open
-    // it could use some better logic but I suck at React
-    if (game.signer._address === address && gameId === -1 && gameStarted) {
-      console.log("Setting game ID", id);
-      setGameId(id);
-      setGameFinished(false);
-    }
-  }, [gameId, gameStarted]);
-
-  const gameFinishedListener = useCallback((address, token, winner, wager, id) => {
-    console.log("Game finished: ", address, token, winner, wager, id);
-    console.log("signer address: ", game.signer._address);
-    console.log(gameId);
-    if (game.signer._address === address && id === gameId && gameStarted) {
-      winner ? console.log("hell yeah you won") : console.log("You suk lol");
+  const gameFinishedListener = useCallback((better, token, winner, wager, id) => {
+    console.log("Game finished: ", better, token, winner, wager, id);
+    if (game.signer._address === better && id === gameId) {
       setGameFinished(true);
       setWinner(winner);
     }
-  }, [gameId, gameStarted]);
+  }, [gameId]);
+
+  useEffect(() => {
+    const amounts = flipAmounts.find(game => (game.token === gameToken));
+    console.log(amounts.token);
+    setGameFlipAmounts(amounts.values);
+  }, [gameToken]);
 
   useEffect(() => {
     if (game && game.signer) {
-      console.log("Adding listeners");
-      game.on("GameStarted", gameStartedListener);
       game.on("GameFinished", gameFinishedListener);
     }
 
     return () => {
-      console.log("Removing listeners");
-      game.off("GameStarted", gameStartedListener);
       game.off("GameFinished", gameFinishedListener);
     }
-  }, [gameStartedListener, gameFinishedListener]);
+  }, [gameFinishedListener]);
 
-  // Ethers has been doing a poor job of estimating gas
+  useEffect(() => {
+    if (activeAmountButton >= 0 && activeChoiceButton >= 0) {
+      setGameReady(true);
+    } else {
+      setGameReady(false);
+    }
+  }, [activeAmountButton, activeChoiceButton])
+
+  // Ethers has been doing a poor job of estimating gas,
   // so increase the limit by 20% to ensure there are fewer
   // failures on transactions
   async function getGasPrice(flipAmount, side, address) {
@@ -84,13 +71,18 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
   const startGame = async () => {
     setGameStarted(true);
     try {
-      var flipAmount = flipAmounts[activeAmountButton-1].value;
-      var side = headsOrTails[activeChoiceButton-1].value;
+      var flipAmount = gameFlipAmounts[activeAmountButton].value;
+      var side = headsOrTails[activeChoiceButton].value;
       var address = gameToken.address;
  
       var options = { gasLimit: await getGasPrice(flipAmount, side, address) };
       const transaction = await game.enterGame(flipAmount, side, address, options);
-      await transaction.wait()
+      const receipt = await transaction.wait();
+      const gameStartedEvent = receipt?.events.find(event => 
+        (event.event === "GameStarted")
+      );
+      setGameId(gameStartedEvent.args[4]);
+      setGameFinished(false);
     } catch (err) {
       setGameError(err);
       console.log(err);
@@ -98,21 +90,24 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
   };
 
   const startOver = () => {
-    setGameStarted(false);
     setGameId(-1);
     setGameFinished(false);
     setWinner(false);
     setGameError(null);
+    setActiveAmountButton(-1);
+    setActiveChoiceButton(-1);
+    setGameStarted(false);
   };
 
   return (
     <div>
-      { !gameStarted && 
+      { !gameStarted && gameFlipAmounts &&
         <div>
           <Centered>I LIKE</Centered>
           <FlipContainer>
             { headsOrTails.map(btn => 
               <GameButton
+                key={btn.name}
                 isActive={btn.id === activeChoiceButton}
                 value={btn.id}
                 onClick={handleChoiceButtonClick}>
@@ -122,8 +117,9 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
           </FlipContainer>
           <Centered>FOR</Centered>
           <FlipContainer>
-            { flipAmounts.map(btn => 
+            { gameFlipAmounts.map(btn => 
                 <GameButton
+                  key={btn.name}
                   isActive={btn.id === activeAmountButton}
                   value={btn.id}
                   onClick={handleAmountButtonClick}>
@@ -134,10 +130,10 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
           <br />
           <FlipContainer>
             <GameButton 
-              isDisabled={!activeAmountButton || !activeChoiceButton}
-              onClick={activeAmountButton && activeChoiceButton && startGame}>
-              {(!activeAmountButton || !activeChoiceButton) && "CHOOSE YOUR OPTIONS"}
-              {(activeAmountButton && activeChoiceButton) && "DOUBLE OR NOTHING"}
+              isDisabled={!gameReady}
+              onClick={gameReady ? startGame : null}>
+              {!gameReady && "CHOOSE YOUR OPTIONS"}
+              {gameReady && "DOUBLE OR NOTHING"}
             </GameButton>
           </FlipContainer> 
         </div>

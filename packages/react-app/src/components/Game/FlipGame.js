@@ -32,12 +32,10 @@ export const FlipGame = (() => {
       signerOrProvider: signer,
   });
 
-  const approvedListener = (owner, spender, value) => {
-    console.log("Approved: ", owner);
-    // TODO: This won't work in production when a lot of people are approving the token
-    // fix it.
-    if (owner = bscF.signer) {
-      setApproved(true);
+  const approvedListener = async (owner, spender, value) => {
+    if (owner === bscF.signer) {
+      const allowance = await bscF.allowance(account.address, game.address);
+      setApproved(allowance._hex > requiredAllowance._hex);
     }
   };
 
@@ -96,7 +94,7 @@ export const FlipGame = (() => {
         <ApprovalButton bscF={bscF} game={game} />
       }
       {renderPage && approved && connected &&
-        <DoubleOrNothing gameToken={bscF} game={game} />
+        <DoubleOrNothing gameToken={bscF.address} game={game} />
       }
       {!renderPage && wrongChain && connected &&
         <Centered>WRONG CHAIN! PLEASE CONNECT TO BSC</Centered>
