@@ -5,6 +5,7 @@ import { Centered } from "../Styles";
 import { FlipContainer, GameButton } from "./GameStyles";
 
 export const DoubleOrNothing = (({ gameToken, game }) => {
+  const bnb = "0x0000000000000000000000000000000000000000";
   const [activeAmountButton, setActiveAmountButton] = useState(-1);
   const [activeChoiceButton, setActiveChoiceButton] = useState(-1);
   const [gameFlipAmounts, setGameFlipAmounts] = useState(null);
@@ -33,7 +34,6 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
 
   useEffect(() => {
     const amounts = flipAmounts.find(game => (game.token === gameToken));
-    console.log(amounts.token);
     setGameFlipAmounts(amounts.values);
   }, [gameToken]);
 
@@ -58,8 +58,11 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
   // Ethers has been doing a poor job of estimating gas,
   // so increase the limit by 20% to ensure there are fewer
   // failures on transactions
-  async function getGasPrice(flipAmount, side, address) {
-    const estimate = await game.estimateGas.enterGame(flipAmount, side, address);
+  async function getGasPrice(flipAmount, side, address, value) {
+    var options = {
+      value: value
+    }
+    const estimate = await game.estimateGas.enterGame(flipAmount, side, address, options);
     return estimate.mul(12).div(10);
   }
 
@@ -68,10 +71,12 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
     try {
       var flipAmount = gameFlipAmounts[activeAmountButton].value;
       var side = headsOrTails[activeChoiceButton].value;
-      var address = gameToken.address;
- 
-      var options = { gasLimit: await getGasPrice(flipAmount, side, address) };
-      const transaction = await game.enterGame(flipAmount, side, address, options);
+      var value = (gameToken === bnb) ? flipAmount : 0;
+      var options = { 
+        gasLimit: await getGasPrice(flipAmount, side, gameToken, value),
+        value: value
+      };
+      const transaction = await game.enterGame(flipAmount, side, gameToken, options);
       const receipt = await transaction.wait();
       const gameStartedEvent = receipt?.events.find(event => 
         (event.event === "GameStarted")

@@ -7,8 +7,14 @@ import { ApprovalButton } from "./ApprovalButton";
 import { Centered } from "../Styles";
 import { GameContainer } from "./GameStyles";
 import { DoubleOrNothing } from "./DoubleOrNothing";
+import { DropDown } from "../DropDown/DropDown";
 
 export const FlipGame = (() => {
+  const tokens = ["BSCF", "BNB"];
+  const requiredAllowance = parseUnits("5", 23);
+
+  const toggling = () => setIsOpen(!isOpen);
+
   const [{ data: signer, error: signerError, loading: loadingSigner }, getSigner] = useSigner();
   const [{ data: network, error: networkError, loading: loadingNetwork }, switchNetwork] = useNetwork();
   const [{ data: account }, disconnect] = useAccount({ fetchEns: false, });
@@ -19,7 +25,9 @@ export const FlipGame = (() => {
   const [wrongChain, setWrongChain] = useState(false);
   const [connected, setConnected] = useState(false);
   const [tokenBalance, setTokenBalance] = useState(0);
-  const requiredAllowance = parseUnits("5", 23);
+  const [selectedToken, setSelectedToken] = useState(tokens[0]);
+  const [selectedTokenAddress, setSelectedTokenAddress] = useState(addresses[chainId].bscF);
+  const [isOpen, setIsOpen] = useState(false);
 
   const bscF = useContract({
     addressOrName: addresses[chainId].bscF,
@@ -31,6 +39,11 @@ export const FlipGame = (() => {
       contractInterface: abis.bscCoinFlip,
       signerOrProvider: signer,
   });
+
+  const onOptionClicked = value => () => {
+    setSelectedToken(value);
+    setIsOpen(false);
+  };
 
   const approvedListener = async (owner, spender, value) => {
     if (owner === bscF.signer) {
@@ -50,6 +63,14 @@ export const FlipGame = (() => {
       }
     }
   }, [bscF]);
+
+  useEffect(() => {
+    if (selectedToken === "BNB") {
+      setSelectedTokenAddress(addresses[chainId].bnb);
+    } else if (selectedToken === "BSCF") {
+      setSelectedTokenAddress(addresses[chainId].bscF);
+    }
+  }, [selectedToken, chainId]);
 
   useEffect(() => {
     const showAllowances = async () => {
@@ -72,8 +93,12 @@ export const FlipGame = (() => {
           setConnected(true);
           const tokenBalance = await bscF.balanceOf(account.address);
           setTokenBalance(formatUnits(tokenBalance.toString()));
-          const allowance = await bscF.allowance(account.address, game.address);
-          setApproved(allowance._hex > requiredAllowance._hex);
+          if (selectedToken !== "BNB") {
+            const allowance = await bscF.allowance(account.address, game.address);
+            setApproved(allowance._hex > requiredAllowance._hex);
+          } else {
+            setApproved(true);
+          }
           setRenderPage(true);
         } catch (error) {
           console.log(error);
@@ -94,7 +119,15 @@ export const FlipGame = (() => {
         <ApprovalButton bscF={bscF} game={game} />
       }
       {renderPage && approved && connected &&
-        <DoubleOrNothing gameToken={bscF.address} game={game} />
+        <div>
+          <DropDown 
+            options={tokens}
+            onOptionClicked={onOptionClicked}
+            selectedOption={selectedToken} 
+            isOpen={isOpen}
+            toggling={toggling} />
+          <DoubleOrNothing gameToken={selectedTokenAddress} game={game} />
+        </div>
       }
       {!renderPage && wrongChain && connected &&
         <Centered>WRONG CHAIN! PLEASE CONNECT TO BSC</Centered>
