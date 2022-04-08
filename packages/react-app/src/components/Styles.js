@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import img from "../img/bg.png";
 
+
+
 export const Header = styled.header`
   background-color: #2A2D32;
   min-height: 70px;
@@ -12,25 +14,9 @@ export const Header = styled.header`
 `;
 
 export const Body = styled.div`
-  align-items: center;
   background-color: #2A2D32;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: calc(100vh - 70px);
-
-  /* The image used */
-  background-image: url(${img});
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: -25% 200%;
-  background-repeat: no-repeat;
-  background-size: 50%;
+  height: 100vh;
+  // overflow: hidden;
 `;
 
 export const Image = styled.img`

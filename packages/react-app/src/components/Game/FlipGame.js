@@ -8,6 +8,7 @@ import { Centered } from "../Styles";
 import { GameContainer } from "./GameStyles";
 import { DoubleOrNothing } from "./DoubleOrNothing";
 
+import "./FlipGame.css";
 export const FlipGame = (() => {
   const [{ data: signer, error: signerError, loading: loadingSigner }, getSigner] = useSigner();
   const [{ data: network, error: networkError, loading: loadingNetwork }, switchNetwork] = useNetwork();
@@ -86,12 +87,15 @@ export const FlipGame = (() => {
     showAllowances();
   }, [network, setTokenBalance]);
 
+
   return (
     <GameContainer>
       {!connected ?
-      <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered> :
+      <Centered></Centered> :
+
       <Centered>YOUR $BSCF TOKEN BALANCE: {tokenBalance}</Centered>
       }
+      
       {renderPage && !approved && connected &&
         <ApprovalButton bscF={bscF} game={game} />
       }
