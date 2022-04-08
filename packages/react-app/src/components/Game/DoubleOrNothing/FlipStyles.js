@@ -1,22 +1,13 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
-  background-color: #2A2D32;
-  min-height: 70px;
+export const FlipContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  color: white;
+  justify-content: center;
 `;
 
-export const LeftHeader = styled.div`
-  margin-left: 12px;
-  margin-right: auto;
-`;
-
-export const HeaderButton = styled.button`
-  background-color: #282B2E;
+export const GameButton = styled.button`
+  background-color: ${props => props.isActive ? "#F1B913" : "#282B2E"};
   border: none;
   border-radius: 8px;
   color: white;
@@ -26,14 +17,15 @@ export const HeaderButton = styled.button`
   text-decoration: none;
   margin: 0px 5px;
   padding: 12px 24px;
+  opacity: ${props => !props.isDisabled ? 1 : 0.5};
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;
     outline: none;
   }
 
-  &:hover {
-    background-color: #2F3236;
+  ${props => !props.isDisabled && ":hover" } {
+    background-color: ${props => props.isActive ? "#F1B213" : "#2F3236"};
     opacity: 0.8;
   }
 `;

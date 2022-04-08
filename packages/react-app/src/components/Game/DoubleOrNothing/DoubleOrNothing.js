@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 
 import { flipAmounts, headsOrTails } from "./FlipAmounts";
-import { Centered } from "../Styles";
-import { FlipContainer, GameButton } from "./GameStyles";
+import { Centered } from "../../Styles";
+import { FlipContainer, GameButton } from "./FlipStyles";
 
 export const DoubleOrNothing = (({ gameToken, game }) => {
   const bnb = "0x0000000000000000000000000000000000000000";

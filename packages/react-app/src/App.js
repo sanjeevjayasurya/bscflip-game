@@ -1,13 +1,9 @@
-import React from "react";
 import { Provider, chain, defaultChains } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink'
 
-import { Body, Image } from "./components/Styles";
-import { TopHeader } from "./components/Header/TopHeader";
-import { FlipGame } from "./components/Game/FlipGame";
-import logo from "./bscfLogo.png";
+import { HomePage } from './HomePage';
 
 function App() {
 // API key for Ethereum node
@@ -44,11 +40,7 @@ const connectors = ({ chainId }) => {
 
   return (
     <Provider autoConnect connectors={connectors}>
-      <TopHeader />
-      <Body>
-        <Image src={logo} alt="bscflip-logo" />
-        <FlipGame />
-      </Body>
+      <HomePage />
     </Provider>
   );
 }

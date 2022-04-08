@@ -1,6 +1,6 @@
 import React from "react";
 import { parseUnits } from "@ethersproject/units";
-import { GameButton } from "./GameStyles";
+import { GameButton } from "../GameStyles";
 
 export const ApprovalButton = (({ bscF, game }) => {
   const requiredAllowance = parseUnits("1", 24);
