@@ -1,4 +1,4 @@
-## @project/contracts
+## @bscflip-game/contracts
 
 A minimalist, opinionated structure for managing smart contract ABIs and addresses.
 

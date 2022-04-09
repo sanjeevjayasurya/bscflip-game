@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useAccount } from 'wagmi';
 import { formatUnits } from "@ethersproject/units";
 
-import { addresses } from "@project/contracts";
+import { addresses } from "@bscflip-game/contracts";
 import { WinningsListContainer, WinningsList, WinningsListItem } from "./WinningsStyles";
 
 export const Winnings = (({ game, chainId }) => {

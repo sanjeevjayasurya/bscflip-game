@@ -1,5 +1,5 @@
 import { parseUnits } from "@ethersproject/units";
-import { addresses } from "@project/contracts";
+import { addresses } from "@bscflip-game/contracts";
 
 const bscfFlipAmounts = [
   { id: 0, name: "100 BSCF", value: parseUnits("1", 20) },

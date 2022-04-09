@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useContract, useNetwork, useSigner } from 'wagmi'
 
-import { addresses, abis } from "@project/contracts"
+import { addresses, abis } from "@bscflip-game/contracts"
 
 import { Body, Image } from "./components/Styles";
 import { TopHeader } from "./components/Header/TopHeader";

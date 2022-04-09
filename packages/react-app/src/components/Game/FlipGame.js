@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAccount } from 'wagmi';
 import { parseUnits } from "@ethersproject/units";
 
-import { addresses } from "@project/contracts";
+import { addresses } from "@bscflip-game/contracts";
 import { ApprovalButton } from "./ApprovalButton";
 import { Centered } from "../Styles";
 import { GameContainer, GlobalContainer, SideContainer } from "./GameStyles";
@@ -95,10 +95,7 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
         {!connected &&
           <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered>
         }
-        {renderPage && !approved && connected &&
-          <ApprovalButton bscF={bscF} game={game} />
-        }
-        {renderPage && approved && connected &&
+        {renderPage && connected &&
           <div>
             <DropDown 
               options={tokens}
@@ -106,7 +103,13 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
               selectedOption={selectedToken} 
               isOpen={isOpen}
               toggling={toggling} />
-            <DoubleOrNothing gameToken={selectedTokenAddress} game={game} />
+              { (((selectedTokenAddress === addresses[chainId].bscF) && approved) ||
+                (selectedTokenAddress !== addresses[chainId].bscF)) &&
+                <DoubleOrNothing gameToken={selectedTokenAddress} game={game} />
+              }
+              { (selectedTokenAddress === addresses[chainId].bscF) && !approved && 
+                <ApprovalButton bscF={bscF} game={game} />
+              }
           </div>
         }
         {!renderPage && wrongChain && connected &&
