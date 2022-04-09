@@ -72,7 +72,7 @@ const connectors = ({ chainId }) => {
           style={{width: "600px", 
           height: "600px", 
           position: "absolute", 
-          top: "45%", 
+          top: "35%", 
           left:"-10%" ,
           margin:"0px",
           opacity: 0.5,
