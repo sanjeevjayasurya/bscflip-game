@@ -38,10 +38,6 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
           if (gameToken !== bnb) {
             const allowance = await bscF.allowance(account.address, game.address);
             setApproved(parseInt(allowance._hex, 16) > parseInt(requiredAllowance._hex, 16));
-            console.log(allowance._hex > requiredAllowance._hex);
-            console.log(parseInt(allowance._hex, 16));
-            console.log(parseInt(requiredAllowance._hex, 16));
-            console.log(approved);
           } else {
             setApproved(true);
           }
@@ -116,7 +112,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
       value: value
     }
     const estimate = await game.estimateGas.enterGame(flipAmount, side, address, options);
-    return estimate.mul(12).div(10);
+    return estimate.mul(13).div(10);
   }
 
   const startGame = async () => {
