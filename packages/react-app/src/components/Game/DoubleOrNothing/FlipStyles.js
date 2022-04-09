@@ -31,3 +31,19 @@ export const GameButton = styled.button`
     opacity: 0.8;
   }
 `;
+
+export const DoubleOrNothingBtn = styled.button`
+  height: 50px;
+  width: 150px;
+  color: rgba(255, 255, 255, 1);
+  background: #1E2124;
+  border-radius: 20% / 50%;
+  border: .5px solid #545659;
+  cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
+
+  ${props => !props.isDisabled && ":hover" } {
+    color: rgba(255, 255, 255, 1);
+    background: #F0B912;
+    box-shadow: 0 5px 30px rgba(240, 185, 18, .8);
+  }
+`;

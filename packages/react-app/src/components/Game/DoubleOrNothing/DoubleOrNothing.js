@@ -5,7 +5,7 @@ import { parseUnits } from "@ethersproject/units";
 import { ApprovalButton } from "./ApprovalButton";
 import { flipAmounts, headsOrTails } from "./FlipAmounts";
 import { Centered } from "../../Styles";
-import { FlipContainer, GameButton } from "./FlipStyles";
+import { DoubleOrNothingBtn, FlipContainer, GameButton } from "./FlipStyles";
 
 export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   const bnb = "0x0000000000000000000000000000000000000000";
@@ -180,13 +180,13 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
           </FlipContainer>
           <br />
           <FlipContainer>
-            <GameButton 
+            <DoubleOrNothingBtn 
               wide={true}
               isDisabled={!gameReady}
               onClick={gameReady ? startGame : null}>
               {!gameReady && "CHOOSE YOUR OPTIONS"}
               {gameReady && "DOUBLE OR NOTHING"}
-            </GameButton>
+            </DoubleOrNothingBtn>
           </FlipContainer> 
         </div>
       }
