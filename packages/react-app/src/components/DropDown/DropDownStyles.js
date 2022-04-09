@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DropDownContainer = styled("div")`
-  width: 200px;
+  width: 225px;
   margin: 0 auto;
 `;
 

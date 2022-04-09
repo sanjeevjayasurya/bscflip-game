@@ -4,11 +4,14 @@ export const GlobalContainer = styled.div`
   display: flex;
   flex-direction: row;
   font-size: calc(1px + 2vmin);
-  justify-content: space-around;
+  align-items: center;
 `;
 
 export const GameContainer = styled.div`
-  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SideContainer = styled.div`

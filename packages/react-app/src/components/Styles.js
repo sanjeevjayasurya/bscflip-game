@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import img from "../img/bg.png";
+import img from "../img/bscflogo.png";
 
 export const Page = styled.div`
   position: relative;

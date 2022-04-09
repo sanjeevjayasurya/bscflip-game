@@ -4,7 +4,7 @@ export const WinningsListContainer = styled("div")``;
 
 export const WinningsList = styled("ul")`
   min-width: 150px;
-  margin: 0;
+  margin-top: 10px;
   padding: 10px;
   background: #27292D;
   border: 1px solid #545659;

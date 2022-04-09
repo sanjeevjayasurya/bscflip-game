@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAccount } from 'wagmi';
 
 import { addresses } from "@bscflip-game/contracts";
-import { Centered } from "../Styles";
+import { Centered, Image } from "../Styles";
 import { GameContainer, GlobalContainer, SideContainer } from "./GameStyles";
 import { DoubleOrNothing } from "./DoubleOrNothing/DoubleOrNothing";
 import { DropDown } from "../DropDown/DropDown";
@@ -51,25 +51,25 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
           <Winnings game={game} chainId={chainId} />
         }
       </SideContainer>
-      <GameContainer>
+      <div>
         {!connected &&
           <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered>
         }
         {connected && !wrongChain &&
-          <div>
-            <DropDown 
-              options={tokens}
-              onOptionClicked={onOptionClicked}
-              selectedOption={selectedToken} 
-              isOpen={isOpen}
-              toggling={toggling} />
-            <DoubleOrNothing gameToken={selectedTokenAddress} bscF={bscF} game={game} />
-          </div>
+        <GameContainer>
+          <DropDown 
+            options={tokens}
+            onOptionClicked={onOptionClicked}
+            selectedOption={selectedToken} 
+            isOpen={isOpen}
+            toggling={toggling} />
+          <DoubleOrNothing gameToken={selectedTokenAddress} bscF={bscF} game={game} />
+        </GameContainer>
         }
         {wrongChain && connected &&
           <Centered>WRONG CHAIN! PLEASE CONNECT TO BSC</Centered>
         }
-      </GameContainer>
+      </div>
       <SideContainer />
     </GlobalContainer>
   );

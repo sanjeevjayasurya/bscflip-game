@@ -6,7 +6,6 @@ import { addresses, abis } from "@bscflip-game/contracts"
 import { BackgroundImg, Page, Body, Image } from "./components/Styles";
 import { TopHeader } from "./components/Header/TopHeader";
 import { FlipGame } from "./components/Game/FlipGame";
-import logo from "./bscfLogo.png";
 
 export const HomePage = (() => {
   const [{ data: network, error: networkError, loading: loadingNetwork }, switchNetwork] = useNetwork();
@@ -50,7 +49,6 @@ export const HomePage = (() => {
         wrongChain={wrongChain}
       />
       <Body>
-        <Image src={logo} alt="bscflip-logo" />
         <FlipGame 
           chainId={chainId} 
           wrongChain={wrongChain}
