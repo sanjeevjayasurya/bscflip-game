@@ -75,7 +75,7 @@ const connectors = ({ chainId }) => {
             <Like>I LIKE</Like>
           </Choice>
             <Heads>
-                <Button onClick={sayHello}>Heads<ButtonHoverEffect></ButtonHoverEffect></Button>
+                <Button onClick={sayHello}>Heads</Button>
             </Heads>
             <Tails>
               <Button onClick={sayHello}>Tails</Button>
@@ -90,9 +90,7 @@ const connectors = ({ chainId }) => {
                 </AmountBTNDiv>
             </Amount>
             <Span1></Span1>
-            <DoubleOrNothingDiv>
                 <DoubleOrNothingBtn>Double Or Nothing</DoubleOrNothingBtn>
-            </DoubleOrNothingDiv>
             <Span2></Span2>
           <FlipGame />
         <LightEffect/>

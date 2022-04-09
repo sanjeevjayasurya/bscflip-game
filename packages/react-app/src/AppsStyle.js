@@ -55,8 +55,8 @@ export const Logo = styled.div`
 `;
 
   export const Button = styled.button`
-    height: 70px;
-    width: 150px;
+    height: 50px;
+    width: 125px;
     background: #27292D;
     border-radius: 20% / 50%;
     border: 1px solid #545659;
@@ -107,15 +107,15 @@ export const Logo = styled.div`
     margin: 0;
     position: absolute;
     display: flex;
-    bottom: -100%;
+    bottom: -50%;
     overflow: hidden; /* for clearfix */
     transform: translate(-50%, -50%);
     // align-items: center;
   `;
 
   export const BNB_Button = styled.button`
-    height: 70px;
-    width: 150px;
+    height: 50px;
+    width: 125px;
     background: #27292D;
     border-radius: 20% / 50%;
     color: white;
@@ -130,29 +130,26 @@ export const Logo = styled.div`
     }
   `;
 
-  export const DoubleOrNothingDiv = styled.div`
-    margin: 0;
-    padding: 0;
-  `;
-
   export const Span1 = styled.div`
     height: 4px;
-    position: relative;
+    position: absolute;
     background-image: linear-gradient(#484848,#666666);
-    left: 28%;
-    width: 44%; 
-    top: 75%;
+    left: 50%;
+    width: 625px; 
+    top: 85%;
+    transform: translate(-50%, -50%);
     // border: 1px solid #fff;
     border-radius: 1% / 50%;
   `;
 
   export const Span2 = styled.div`
     height: 4px;
-    position: relative;
+    position: absolute;
     background-image: linear-gradient(#484848,#666666);
-    left: 28%;
-    width: 44%; 
-    top: 90%;
+    left: 50%;
+    width: 625px;  
+    top: 88%;
+    transform: translate(-50%, -50%);
     // border: 1px solid #fff;
     border-radius: 1% / 50%;
   `;
@@ -164,7 +161,7 @@ export const Logo = styled.div`
     border-radius: 20% / 50%;
     border: 1px solid #545659;
     position: absolute;
-    top: 92.5%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
   `;

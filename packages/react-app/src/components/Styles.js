@@ -16,7 +16,8 @@ export const Header = styled.header`
 export const Body = styled.div`
   background-color: #2A2D32;
   height: 100vh;
-  // overflow: hidden;
+  margin:0; 
+  overflow: hidden;
 `;
 
 export const Image = styled.img`
