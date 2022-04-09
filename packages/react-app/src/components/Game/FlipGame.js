@@ -70,6 +70,7 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
           <Centered>WRONG CHAIN! PLEASE CONNECT TO BSC</Centered>
         }
       </GameContainer>
+      <SideContainer />
     </GlobalContainer>
   );
 });

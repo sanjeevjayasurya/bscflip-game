@@ -4,7 +4,7 @@ export const GlobalContainer = styled.div`
   display: flex;
   flex-direction: row;
   font-size: calc(1px + 2vmin);
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 export const GameContainer = styled.div`
@@ -13,4 +13,5 @@ export const GameContainer = styled.div`
 
 export const SideContainer = styled.div`
   margin: 0px 24px;
+  width: 200px;
 `;
