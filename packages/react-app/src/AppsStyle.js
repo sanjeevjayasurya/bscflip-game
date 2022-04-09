@@ -72,13 +72,17 @@ export const Logo = styled.div`
   `;
 
   export const ButtonHoverEffect = styled.div`
-    // background: linear-gradient(to top,rgba(240,185,18,.5),rgba(255,255,255,0))
     background: #ff0000;
-    height: 70px;
-    width: 145px;
+    height: 100%;
+    width: 100%;
     position: absolute;
+    overflow: hidden;
+    z-index: 2;
     top: -50%;
-    left: -50%;
+    left: 1%;
+    ${props => !props.isDisabled && ":hover" } {
+      
+    }
   `;
 
   export const Amount = styled.div`

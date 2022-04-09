@@ -82,11 +82,11 @@ const connectors = ({ chainId }) => {
             </Choice>
             <buttonHoveredEffect></buttonHoveredEffect>
             <Heads>
-                { buttonHovered &&
+                {/* { buttonHovered &&
                   <buttonHoveredEffect></buttonHoveredEffect>
-                }
-                <Button onClick={sayHello} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut} >Heads</Button>
+                } */}
                 <buttonHoveredEffect></buttonHoveredEffect>
+                <Button onClick={sayHello} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut} >Heads</Button>
             </Heads>
             <Tails>
               <Button onClick={sayHello}>Tails</Button>
