@@ -1,13 +1,20 @@
 import { useState, useEffect, useCallback } from "react";
+import { useAccount } from "wagmi";
+import { parseUnits } from "@ethersproject/units";
 
+import { ApprovalButton } from "./ApprovalButton";
 import { flipAmounts, headsOrTails } from "./FlipAmounts";
 import { Centered } from "../../Styles";
 import { FlipContainer, GameButton } from "./FlipStyles";
 
-export const DoubleOrNothing = (({ gameToken, game }) => {
+export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   const bnb = "0x0000000000000000000000000000000000000000";
+  const requiredAllowance = parseUnits("5", 23);
+
+  const [{ data: account }] = useAccount({ fetchEns: false, });
   const [activeAmountButton, setActiveAmountButton] = useState(-1);
   const [activeChoiceButton, setActiveChoiceButton] = useState(-1);
+  const [approved, setApproved] = useState(false);
   const [gameFlipAmounts, setGameFlipAmounts] = useState(null);
   const [gameReady, setGameReady] = useState(false);
   const [gameError, setGameError] = useState(null);
@@ -23,6 +30,52 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
   const handleChoiceButtonClick = event => {
     setActiveChoiceButton(Number(event.target.value));
   };
+
+  useEffect(() => {
+    const showAllowances = async () => {
+      if (game && bscF && account && bscF.signer) {
+        try {
+          if (gameToken !== bnb) {
+            const allowance = await bscF.allowance(account.address, game.address);
+            setApproved(parseInt(allowance._hex, 16) > parseInt(requiredAllowance._hex, 16));
+            console.log(allowance._hex > requiredAllowance._hex);
+            console.log(parseInt(allowance._hex, 16));
+            console.log(parseInt(requiredAllowance._hex, 16));
+            console.log(approved);
+          } else {
+            setApproved(true);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    showAllowances();
+  }, [account, game, bscF]);
+
+  const approvedListener = async (owner, spender, value) => {
+    try {
+      if (owner === bscF.signer) {
+        const allowance = await bscF.allowance(account.address, game.address);
+        setApproved(allowance._hex > requiredAllowance._hex);
+        console.log("YO");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    if (bscF && bscF.signer) {
+      bscF.on("Approval", approvedListener);
+    }
+
+    return () => {
+      if (bscF && bscF.signer) {
+        bscF.off("Approval", approvedListener);
+      }
+    }
+  }, [bscF]);
 
   const gameFinishedListener = useCallback((better, token, winner, wager, id) => {
     console.log("Game finished: ", better, token, winner, wager, id);
@@ -101,7 +154,10 @@ export const DoubleOrNothing = (({ gameToken, game }) => {
 
   return (
     <div>
-      { !gameStarted && gameFlipAmounts &&
+      { !approved &&
+        <ApprovalButton bscF={bscF} game={game} />
+      }
+      { approved && !gameStarted && gameFlipAmounts &&
         <div>
           <Centered>I LIKE</Centered>
           <FlipContainer>

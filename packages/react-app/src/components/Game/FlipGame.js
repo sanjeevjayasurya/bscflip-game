@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAccount } from 'wagmi';
-import { parseUnits } from "@ethersproject/units";
 
 import { addresses } from "@bscflip-game/contracts";
-import { ApprovalButton } from "./ApprovalButton";
 import { Centered } from "../Styles";
 import { GameContainer, GlobalContainer, SideContainer } from "./GameStyles";
 import { DoubleOrNothing } from "./DoubleOrNothing/DoubleOrNothing";
@@ -12,71 +10,29 @@ import { Winnings } from "./Winnings/Winnings";
 
 export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
   const tokens = ["BSCF", "BNB"];
-  const requiredAllowance = parseUnits("5", 23);
 
   const toggling = () => setIsOpen(!isOpen);
 
   const [{ data: account }] = useAccount({ fetchEns: false, });
 
-  const [approved, setApproved] = useState(false);
   const [connected, setConnected] = useState(false);
-  const [renderPage, setRenderPage] = useState(false);
   const [selectedToken, setSelectedToken] = useState(tokens[0]);
   const [selectedTokenAddress, setSelectedTokenAddress] = useState(addresses[chainId].bscF);
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const showAllowances = async () => {
-      if(!account) {
-        setConnected(false);
-      }
-
-      if (game && bscF && account && bscF.signer) {
-        try {
-          setConnected(true);
-          if (selectedToken !== "BNB") {
-            const allowance = await bscF.allowance(account.address, game.address);
-            setApproved(allowance._hex > requiredAllowance._hex);
-          } else {
-            setApproved(true);
-          }
-          setRenderPage(true);
-        } catch (error) {
-          console.log(error);
-          setRenderPage(false);
-        }
-      }
-    };
-    showAllowances();
-  }, [account, game, bscF]);
 
   const onOptionClicked = value => () => {
     setSelectedToken(value);
     setIsOpen(false);
   };
 
-  const approvedListener = async (owner, spender, value) => {
-    try {
-      if (owner === bscF.signer) {
-        const allowance = await bscF.allowance(account.address, game.address);
-        setApproved(allowance._hex > requiredAllowance._hex);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    if (bscF && bscF.signer) {
-      bscF.on("Approval", approvedListener);
-    }
-
-    return () => {
-      if (bscF && bscF.signer) {
-        bscF.off("Approval", approvedListener);
+    const showAllowances = async () => {
+      if (game && bscF && account && bscF.signer) {
+        setConnected(true);
       }
-    }
-  }, [bscF]);
+    };
+    showAllowances();
+  }, [account, game, bscF]);
 
   useEffect(() => {
     if (selectedToken === "BNB") {
@@ -95,7 +51,7 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
         {!connected &&
           <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered>
         }
-        {renderPage && connected &&
+        {connected &&
           <div>
             <DropDown 
               options={tokens}
@@ -103,20 +59,11 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
               selectedOption={selectedToken} 
               isOpen={isOpen}
               toggling={toggling} />
-              { (((selectedTokenAddress === addresses[chainId].bscF) && approved) ||
-                (selectedTokenAddress !== addresses[chainId].bscF)) &&
-                <DoubleOrNothing gameToken={selectedTokenAddress} game={game} />
-              }
-              { (selectedTokenAddress === addresses[chainId].bscF) && !approved && 
-                <ApprovalButton bscF={bscF} game={game} />
-              }
+            <DoubleOrNothing gameToken={selectedTokenAddress} bscF={bscF} game={game} />
           </div>
         }
-        {!renderPage && wrongChain && connected &&
+        {wrongChain && connected &&
           <Centered>WRONG CHAIN! PLEASE CONNECT TO BSC</Centered>
-        }
-        {!renderPage && !wrongChain && connected &&
-          <Centered>ERROR LOADING GAME</Centered>
         }
       </GameContainer>
     </GlobalContainer>
