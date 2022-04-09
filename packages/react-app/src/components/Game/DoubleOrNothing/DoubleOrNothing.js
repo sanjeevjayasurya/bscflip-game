@@ -181,6 +181,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
           <br />
           <FlipContainer>
             <GameButton 
+              wide={true}
               isDisabled={!gameReady}
               onClick={gameReady ? startGame : null}>
               {!gameReady && "CHOOSE YOUR OPTIONS"}

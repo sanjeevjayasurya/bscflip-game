@@ -7,17 +7,19 @@ export const FlipContainer = styled.div`
 `;
 
 export const GameButton = styled.button`
-  background-color: ${props => props.isActive ? "#F1B913" : "#282B2E"};
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  margin: 0px 5px;
-  padding: 12px 24px;
-  opacity: ${props => !props.isDisabled ? 1 : 0.5};
+    height: 50px;
+    width: ${props => !props.wide ? "125px" : "250px"};
+    background-color: ${props => props.isActive ? "#F1B913" : "#27292D"};
+    border: 1px solid #545659;
+    border-radius: ${props => !props.wide ? "20% / 50%" : "10% / 50%"};
+    color: white;
+    cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
+    font-size: 1vw;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 5px;
+    padding: 12px 24px;
+    opacity: ${props => !props.isDisabled ? 1 : 0.5};
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;

@@ -10,12 +10,12 @@ export const WalletButton = ({ wrongChain }) => {
     return (
       <div>
         { !wrongChain && 
-          <HeaderButton onClick={disconnect}>
+          <HeaderButton wide={true} onClick={disconnect}>
             {account.address.substring(0, 6)}...{account.address.substring(38)}
           </HeaderButton>
         }
         { wrongChain &&
-          <HeaderButton>
+          <HeaderButton wide={true}>
             WRONG CHAIN
           </HeaderButton>
         }
@@ -27,6 +27,7 @@ export const WalletButton = ({ wrongChain }) => {
     <div>
       {connectData.connectors.map((connector) => (
         <HeaderButton
+          wide={true}
           disabled={!connector.ready}
           key={connector.id}
           onClick={() => connect(connector)}
