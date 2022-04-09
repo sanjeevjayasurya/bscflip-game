@@ -33,7 +33,8 @@ export const BackgroundImg = styled.div`
 `
 
 export const Image = styled.img`
-  height: 40vmin;
+  height: 225px;
+  width: 225px;
   margin-bottom: 16px;
   pointer-events: none;
 `;
