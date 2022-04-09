@@ -35,6 +35,9 @@ export const Logo = styled.div`
   `;
 
   export const Like = styled.h1`
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 500;
+    letter-spacing: 10px;
     color: #ffffff;
     font-size: 30px;
     left: 50%;
@@ -72,17 +75,13 @@ export const Logo = styled.div`
   `;
 
   export const ButtonHoverEffect = styled.div`
-    background: #ff0000;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    overflow: hidden;
-    z-index: 2;
-    top: -50%;
-    left: 1%;
-    ${props => !props.isDisabled && ":hover" } {
-      
-    }
+    width: 123px;
+    height: 50px;
+    position absolute;
+    top: -25px;
+    left: 0%;
+    // transform: translate(-50%, -50%);
+    background-image: linear-gradient(to top,rgba(240, 185, 18, .5), rgba(240,185,18,0));
   `;
 
   export const Amount = styled.div`
@@ -92,12 +91,15 @@ export const Logo = styled.div`
     justify-content: space-between;
     max-width: 200px;
     padding: 10px 0;
-    top: 60%;
+    top: 57%;
     left: 50%;
   `;
 
 
   export const For = styled.h1`
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 500;
+    letter-spacing: 10px;
     color: #ffffff;
     font-size: 30px;
     transform: translate(-50%, -50%);
@@ -130,37 +132,37 @@ export const Logo = styled.div`
   `;
 
   export const Span1 = styled.div`
-    height: 4px;
+    height: 6px;
     position: absolute;
     background-image: linear-gradient(#484848,#666666);
     left: 50%;
-    width: 625px; 
-    top: 85%;
+    width: 525px; 
+    top: 77.5%;
     transform: translate(-50%, -50%);
     // border: 1px solid #fff;
     border-radius: 1% / 50%;
   `;
 
   export const Span2 = styled.div`
-    height: 4px;
+    height: 6px;
     position: absolute;
     background-image: linear-gradient(#484848,#666666);
     left: 50%;
-    width: 620px;  
-    top: 88%;
+    width: 525px;  
+    top: 87.5%;
     transform: translate(-50%, -50%);
     // border: 1px solid #fff;
     border-radius: 1% / 50%;
   `;
 
   export const DoubleOrNothingBtn = styled.button`
-    height: 70px;
+    height: 50px;
     width: 150px;
     background: #F0B912;
     border-radius: 20% / 50%;
     border: 1px solid #545659;
     position: absolute;
-    top: 90%;
+    top: 82.5%;
     left: 50%;
     transform: translate(-50%, -50%);
   `;

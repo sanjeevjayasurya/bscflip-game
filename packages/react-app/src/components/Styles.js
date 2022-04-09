@@ -15,6 +15,9 @@ export const Header = styled.header`
 
 export const Body = styled.div`
   background-color: #2A2D32;
+  position: relative; 
+  overflow-y: scroll;
+  top: 0; right: 0; bottom: 0; left: 0; }
   height: 100vh;
   margin:0; 
   overflow: hidden;

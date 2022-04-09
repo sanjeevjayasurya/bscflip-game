@@ -44,26 +44,31 @@ const connectors = ({ chainId }) => {
     ]
   }
  
-  function sayHello() {
-    alert('You clicked me!');
-  }
-  const [buttonHovered, setButtonHovered] = useState(false)
+  const [ButtonHoveredHeads, setButtonHoveredHeads] = useState(false)
+  const [ButtonHoveredTails, setButtonHoveredTails] = useState(false)
 
-  const handleMouseIn = () => {
-   setButtonHovered(true);
+  const handleMouseInHeads = () => {
+   setButtonHoveredHeads(true);
   }
   
-  const handleMouseOut = () => {
-   setButtonHovered(false);
+  const handleMouseOutHeads = () => {
+   setButtonHoveredHeads(false);
+  }
+
+  const handleMouseInTails = () => {
+    setButtonHoveredTails(true);
   }
  
+  const handleMouseOutTails = () => {
+    setButtonHoveredTails(false);
+  }
   return (
     <Provider autoConnect connectors={connectors}>
       <Link rel="stylesheet" href=""></Link>
       {/* <Link rel="stylesheet" href="App.css"></Link> */}
       <TopHeader />
       <Body>
-          {/* <Image src={logo} 
+          <Image src={logo} 
           style={{width: "600px", 
           height: "600px", 
           position: "absolute", 
@@ -73,31 +78,33 @@ const connectors = ({ chainId }) => {
           opacity: 0.5,
           overflow: "hidden"
           }}
-          alt="bscflip-logo"/> */}
+          alt="bscflip-logo"/>
           <Logo>  
             <Image src={logo} alt="bscflip-logo" />
           </Logo>
             <Choice>
             <Like>I LIKE</Like>
             </Choice>
-            <buttonHoveredEffect></buttonHoveredEffect>
             <Heads>
-                {/* { buttonHovered &&
-                  <buttonHoveredEffect></buttonHoveredEffect>
-                } */}
-                <buttonHoveredEffect></buttonHoveredEffect>
-                <Button onClick={sayHello} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut} >Heads</Button>
+                {/* <ButtonHoverEffect></ButtonHoverEffect> */}
+                { ButtonHoveredHeads &&
+                  <ButtonHoverEffect/>
+                }
+                <Button onMouseOver={handleMouseInHeads} onMouseOut={handleMouseOutHeads}>HEADS</Button>
             </Heads>
             <Tails>
-              <Button onClick={sayHello}>Tails</Button>
+                { ButtonHoveredTails &&
+                  <ButtonHoverEffect/>
+                }
+              <Button onMouseOver={handleMouseInTails} onMouseOut={handleMouseOutTails}>TAILS</Button>
             </Tails>
             <Amount>
               <For>FOR</For>
                 <AmountBTNDiv>
-                  <BNB_Button onClick={sayHello}>0.05 bnb</BNB_Button>
-                  <BNB_Button onClick={sayHello}>0.1 bnb</BNB_Button>
-                  <BNB_Button onClick={sayHello}>0.25 bnb</BNB_Button>
-                  <BNB_Button onClick={sayHello}>0.5 bnb</BNB_Button>
+                  <BNB_Button>0.05 bnb</BNB_Button>
+                  <BNB_Button>0.1 bnb</BNB_Button>
+                  <BNB_Button>0.25 bnb</BNB_Button>
+                  <BNB_Button>0.5 bnb</BNB_Button>
                 </AmountBTNDiv>
             </Amount>
             <Span1></Span1>
