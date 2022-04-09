@@ -20,7 +20,7 @@ export const backgroundLogo = styled.header`
 export const Logo = styled.div`
     margin 0;
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
   `
@@ -28,7 +28,7 @@ export const Logo = styled.div`
   export const Choice = styled.div`
     margin 0;
     position: absolute;
-    top: 45%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
   
@@ -39,30 +39,32 @@ export const Logo = styled.div`
     font-weight: 500;
     letter-spacing: 10px;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 20px;
     left: 50%;
   `;
 
   export const Heads = styled.div`
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: -webkit-calc(50% - 155px)
   `;
 
   export const Tails = styled.div`
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: -webkit-calc(50% + 5px)
 `;
 
   export const Button = styled.button`
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    // letter-spacing: 3px;
     height: 50px;
     width: 125px;
-    background: #27292D;
+    background: #1E2124;
     border-radius: 20% / 50%;
-    border: 1px solid #545659;
+    border: .5px solid #545659;
     position: absolute;
     color: white;
     z-index: 1;
@@ -70,7 +72,7 @@ export const Logo = styled.div`
 
     ${props => !props.isDisabled && ":hover" } {
       background-color: ${props => props.isActive ? "#F0B912" : "#2A2D32"};
-      border: 1px solid #F0B912;
+      border: .5px solid #F0B912;
     }
   `;
 
@@ -91,7 +93,7 @@ export const Logo = styled.div`
     justify-content: space-between;
     max-width: 200px;
     padding: 10px 0;
-    top: 57%;
+    top: 55%;
     left: 50%;
   `;
 
@@ -101,7 +103,7 @@ export const Logo = styled.div`
     font-weight: 500;
     letter-spacing: 10px;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 20px;
     transform: translate(-50%, -50%);
   `;
 
@@ -109,19 +111,20 @@ export const Logo = styled.div`
     margin: 0;
     position: absolute;
     display: flex;
-    bottom: -50%;
+    bottom: -95%;
     overflow: hidden; /* for clearfix */
     transform: translate(-50%, -50%);
     // align-items: center;
   `;
 
   export const BNB_Button = styled.button`
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     height: 50px;
     width: 125px;
-    background: #27292D;
+    background: #1E2124;
     border-radius: 20% / 50%;
     color: white;
-    border: 1px solid #545659;
+    border: .5px solid #545659;
     justify-content: space-between;
     margin:5px;
     position: realtive;
@@ -132,19 +135,21 @@ export const Logo = styled.div`
   `;
 
   export const Span1 = styled.div`
-    height: 6px;
+    height: 4px;
     position: absolute;
     background-image: linear-gradient(#484848,#666666);
     left: 50%;
     width: 525px; 
-    top: 77.5%;
+    opacity: .5;
+    top: 75%;
     transform: translate(-50%, -50%);
     // border: 1px solid #fff;
     border-radius: 1% / 50%;
   `;
 
   export const Span2 = styled.div`
-    height: 6px;
+    height: 4px;
+    opacity: .5;
     position: absolute;
     background-image: linear-gradient(#484848,#666666);
     left: 50%;
@@ -156,13 +161,20 @@ export const Logo = styled.div`
   `;
 
   export const DoubleOrNothingBtn = styled.button`
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     height: 50px;
     width: 150px;
-    background: #F0B912;
+    color: rgba(255, 255, 255, 1);
+    background: #1E2124;
     border-radius: 20% / 50%;
-    border: 1px solid #545659;
+    border: .5px solid #545659;
     position: absolute;
-    top: 82.5%;
+    top: 81.5%;
     left: 50%;
     transform: translate(-50%, -50%);
+    ${props => !props.isDisabled && ":hover" } {
+      color: rgba(255, 255, 255, 1);
+      background: #F0B912;
+      box-shadow: 0 5px 30px rgba(240, 185, 18, .8);
+    }
   `;

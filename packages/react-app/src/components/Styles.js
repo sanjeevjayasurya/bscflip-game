@@ -4,7 +4,7 @@ import img from "../img/bg.png";
 
 
 export const Header = styled.header`
-  background-color: #2A2D32;
+  background-color: #131416;
   min-height: 70px;
   display: flex;
   flex-direction: row;
@@ -14,7 +14,7 @@ export const Header = styled.header`
 `;
 
 export const Body = styled.div`
-  background-color: #2A2D32;
+  background-image: linear-gradient(to top,rgba(19, 20, 22, 1), rgba(50,50,50,1)); 
   position: relative; 
   overflow-y: scroll;
   top: 0; right: 0; bottom: 0; left: 0; }

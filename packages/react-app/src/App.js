@@ -75,12 +75,14 @@ const connectors = ({ chainId }) => {
           top: "35%", 
           left:"-10%" ,
           margin:"0px",
-          opacity: 0.5,
+          opacity: 0.25,
           overflow: "hidden"
           }}
           alt="bscflip-logo"/>
           <Logo>  
-            <Image src={logo} alt="bscflip-logo" />
+            <Image src={logo} 
+            style={{width: "225px", height: "225px"}}
+            alt="bscflip-logo" />
           </Logo>
             <Choice>
             <Like>I LIKE</Like>
@@ -101,10 +103,10 @@ const connectors = ({ chainId }) => {
             <Amount>
               <For>FOR</For>
                 <AmountBTNDiv>
-                  <BNB_Button>0.05 bnb</BNB_Button>
-                  <BNB_Button>0.1 bnb</BNB_Button>
-                  <BNB_Button>0.25 bnb</BNB_Button>
-                  <BNB_Button>0.5 bnb</BNB_Button>
+                  <BNB_Button>0.05 BNB</BNB_Button>
+                  <BNB_Button>0.1 BNB</BNB_Button>
+                  <BNB_Button>0.25 BNB</BNB_Button>
+                  <BNB_Button>0.5 BNB</BNB_Button>
                 </AmountBTNDiv>
             </Amount>
             <Span1></Span1>
