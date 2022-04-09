@@ -3,7 +3,7 @@ import { useContract, useNetwork, useSigner } from 'wagmi'
 
 import { addresses, abis } from "@bscflip-game/contracts"
 
-import { Body, Image } from "./components/Styles";
+import { BackgroundImg, Page, Body, Image } from "./components/Styles";
 import { TopHeader } from "./components/Header/TopHeader";
 import { FlipGame } from "./components/Game/FlipGame";
 import logo from "./bscfLogo.png";
@@ -42,7 +42,7 @@ export const HomePage = (() => {
   }, [network]);
 
   return (
-    <div>
+    <Page>
       <TopHeader 
         game={game}
         bscF={bscF}
@@ -58,6 +58,7 @@ export const HomePage = (() => {
           game={game}
         />
       </Body>
-    </div>
+      <BackgroundImg />
+    </Page>
   );
 });
