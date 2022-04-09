@@ -3,7 +3,8 @@ import { useAccount } from 'wagmi';
 import { formatUnits } from "@ethersproject/units";
 
 import { addresses } from "@bscflip-game/contracts";
-import { WinningsListContainer, WinningsList, WinningsListItem } from "./WinningsStyles";
+import { WinningsListContainer, WinningsList, WinningsListItem, SmallText } from "./WinningsStyles";
+import { Centered } from "../../Styles";
 
 export const Winnings = (({ game, chainId }) => {
   const [{ data: account }, disconnect] = useAccount({ fetchEns: false, });
@@ -61,7 +62,8 @@ export const Winnings = (({ game, chainId }) => {
 
   return (
     <WinningsListContainer>
-      CLAIM WINNINGS:
+      <Centered>WINNINGS</Centered>
+      <SmallText>CLICK TO CLAIM</SmallText>
       <WinningsList>
         <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bscF)}>
           BSCF: {unclaimedBSCF}

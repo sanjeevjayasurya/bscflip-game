@@ -1,4 +1,4 @@
-import { Token } from "../types/schema";
+import { Token } from "@bscflip-game/subgraph/src/types/schema";
 
 export function addToken(address: string): void {
   let token = Token.load(address);

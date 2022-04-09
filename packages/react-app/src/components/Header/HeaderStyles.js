@@ -23,7 +23,7 @@ export const HeaderButton = styled.button`
     border-radius: ${props => !props.wide ? "20% / 50%" : "13% / 50%"};
     color: white;
     cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
-    font-size: 1vw;
+    font-size: 14px;
     text-align: center;
     text-decoration: none;
     margin: 0px 5px;

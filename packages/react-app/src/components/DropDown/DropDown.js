@@ -1,10 +1,15 @@
-import { DropDownContainer, DropDownHeader, DropDownListContainer, DropDownList, ListItem } from "./DropDownStyles";
+import { DropDownContainer, DropDownHeader, DropDownListContainer, DropDownList, ListItem, Caret, OverCaret } from "./DropDownStyles";
+import { Centered } from "../Styles";
 
 export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, toggling }) => {
   return (
       <DropDownContainer>
+        <Centered>GAME TOKEN</Centered>
         <DropDownHeader onClick={toggling}>
           {selectedOption}
+          <Caret isOpen={isOpen}>
+            <OverCaret isOpen={isOpen} />
+          </Caret>
         </DropDownHeader>
         {isOpen && (
           <DropDownListContainer>
@@ -13,7 +18,8 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
                 <ListItem onClick={onOptionClicked(option)} key={option}>
                   {option}
                 </ListItem>
-              ))}
+              ))
+        }
             </DropDownList>
           </DropDownListContainer>
         )}

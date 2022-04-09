@@ -29,6 +29,8 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
     const showAllowances = async () => {
       if (game && bscF && account && bscF.signer) {
         setConnected(true);
+      } else {
+        setConnected(false);
       }
     };
     showAllowances();
@@ -45,13 +47,15 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
   return (
     <GlobalContainer>
       <SideContainer>
-        <Winnings game={game} chainId={chainId} />
+        { connected && !wrongChain &&
+          <Winnings game={game} chainId={chainId} />
+        }
       </SideContainer>
       <GameContainer>
         {!connected &&
           <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered>
         }
-        {connected &&
+        {connected && !wrongChain &&
           <div>
             <DropDown 
               options={tokens}

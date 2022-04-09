@@ -14,7 +14,7 @@ export const GameButton = styled.button`
     border-radius: ${props => !props.wide ? "20% / 50%" : "10% / 50%"};
     color: white;
     cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
-    font-size: 1vw;
+    font-size: 12px;
     text-align: center;
     text-decoration: none;
     margin: 0px 5px;

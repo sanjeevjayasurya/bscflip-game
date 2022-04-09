@@ -152,7 +152,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
       { !approved &&
         <ApprovalButton bscF={bscF} game={game} />
       }
-      { approved && !gameStarted && gameFlipAmounts &&
+      { approved && account && !gameStarted && gameFlipAmounts &&
         <div>
           <Centered>I LIKE</Centered>
           <FlipContainer>

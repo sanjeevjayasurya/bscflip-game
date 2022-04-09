@@ -38,5 +38,6 @@ export const Link = styled.a.attrs({
 `;
 
 export const Centered = styled.p`
+  margin: 5px;
   text-align: center;
 `

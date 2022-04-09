@@ -1,6 +1,6 @@
-import { Transfer as TransferEvent } from "../types/CeaErc20/erc20";
-import { Transfer } from "../types/schema";
-import { addToken } from "./tokens";
+import { Transfer as TransferEvent } from "@bscflip-game/subgraph/src/types/CeaErc20/erc20";
+import { Transfer } from "@bscflip-game/subgraph/src/types/schema";
+import { addToken } from "@bscflip-game/subgraph/src/mappings/tokens";
 
 export function handleTransfer(event: TransferEvent): void {
   let transactionHash = event.transaction.hash.toHex();
