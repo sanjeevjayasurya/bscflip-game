@@ -68,8 +68,7 @@ export const Logo = styled.div`
     position: absolute;
     color: white;
     z-index: 1;
- 
-
+    cursor:pointer;
     ${props => !props.isDisabled && ":hover" } {
       background-color: ${props => props.isActive ? "#F0B912" : "#2A2D32"};
       border: .5px solid #F0B912;
@@ -96,7 +95,6 @@ export const Logo = styled.div`
     top: 55%;
     left: 50%;
   `;
-
 
   export const For = styled.h1`
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -128,9 +126,9 @@ export const Logo = styled.div`
     justify-content: space-between;
     margin:5px;
     position: realtive;
+    cursor:pointer;
     ${props => !props.isDisabled && ":hover" } {
-      background-color: ${props => props.isActive ? "#F1B213" : "#2F3236"};
-      opacity: 0.8;
+      box-shadow: 0px 0px 5px 1px rgba(240, 185, 18, .5);
     }
   `;
 
@@ -172,6 +170,7 @@ export const Logo = styled.div`
     top: 81.5%;
     left: 50%;
     transform: translate(-50%, -50%);
+    cursor:pointer;
     ${props => !props.isDisabled && ":hover" } {
       color: rgba(255, 255, 255, 1);
       background: #F0B912;
