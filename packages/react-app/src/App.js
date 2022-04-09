@@ -3,13 +3,13 @@ import { Provider, chain, defaultChains } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Body, Link, Image } from "./components/Styles";
 import { TopHeader } from "./components/Header/TopHeader";
 import { FlipGame } from "./components/Game/FlipGame";
 import logo from "./bscfLogo.png";
 import {Logo, Choice, Like, Heads, Tails, Button, ButtonHoverEffect, Amount, For, AmountBTNDiv, BNB_Button,
-        DoubleOrNothingDiv, Span1, Span2, DoubleOrNothingBtn, LightEffect} from "./AppsStyle.js";
+        Span1, Span2, DoubleOrNothingBtn, LightEffect} from "./AppsStyle.js";
 
 function App() {
 // API key for Ethereum node
@@ -47,9 +47,15 @@ const connectors = ({ chainId }) => {
   function sayHello() {
     alert('You clicked me!');
   }
+  const [buttonHovered, setButtonHovered] = useState(false)
 
-
-
+  const handleMouseIn = () => {
+   setButtonHovered(true);
+  }
+  
+  const handleMouseOut = () => {
+   setButtonHovered(false);
+  }
  
   return (
     <Provider autoConnect connectors={connectors}>
@@ -57,7 +63,7 @@ const connectors = ({ chainId }) => {
       {/* <Link rel="stylesheet" href="App.css"></Link> */}
       <TopHeader />
       <Body>
-          <Image src={logo} 
+          {/* <Image src={logo} 
           style={{width: "600px", 
           height: "600px", 
           position: "absolute", 
@@ -67,15 +73,20 @@ const connectors = ({ chainId }) => {
           opacity: 0.5,
           overflow: "hidden"
           }}
-          alt="bscflip-logo"/>
+          alt="bscflip-logo"/> */}
           <Logo>  
             <Image src={logo} alt="bscflip-logo" />
           </Logo>
-          <Choice>
+            <Choice>
             <Like>I LIKE</Like>
-          </Choice>
+            </Choice>
+            <buttonHoveredEffect></buttonHoveredEffect>
             <Heads>
-                <Button onClick={sayHello}>Heads</Button>
+                { buttonHovered &&
+                  <buttonHoveredEffect></buttonHoveredEffect>
+                }
+                <Button onClick={sayHello} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut} >Heads</Button>
+                <buttonHoveredEffect></buttonHoveredEffect>
             </Heads>
             <Tails>
               <Button onClick={sayHello}>Tails</Button>

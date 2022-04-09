@@ -37,8 +37,8 @@ export const Logo = styled.div`
   export const Like = styled.h1`
     color: #ffffff;
     font-size: 30px;
+    left: 50%;
   `;
-
 
   export const Heads = styled.div`
     margin: 0;
@@ -71,18 +71,14 @@ export const Logo = styled.div`
     }
   `;
 
-  export const ButtonHoverEffect = styled.span`
-    background: #2A2D32;
+  export const ButtonHoverEffect = styled.div`
+    // background: linear-gradient(to top,rgba(240,185,18,.5),rgba(255,255,255,0))
+    background: #ff0000;
     height: 70px;
     width: 145px;
     position: absolute;
-    overflow: hidden;
-    z-index: 2;
     top: -50%;
-    left: 1%;
-    ${props => !props.isDisabled && ":hover" } {
-      background: linear-gradient(to top,rgba(240,185,18,.5),rgba(255,255,255,0))
-    }
+    left: -50%;
   `;
 
   export const Amount = styled.div`
@@ -121,7 +117,6 @@ export const Logo = styled.div`
     color: white;
     border: 1px solid #545659;
     justify-content: space-between;
-
     margin:5px;
     position: realtive;
     ${props => !props.isDisabled && ":hover" } {
@@ -147,7 +142,7 @@ export const Logo = styled.div`
     position: absolute;
     background-image: linear-gradient(#484848,#666666);
     left: 50%;
-    width: 625px;  
+    width: 620px;  
     top: 88%;
     transform: translate(-50%, -50%);
     // border: 1px solid #fff;
