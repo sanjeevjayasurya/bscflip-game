@@ -54,7 +54,6 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
       if (owner === bscF.signer) {
         const allowance = await bscF.allowance(account.address, game.address);
         setApproved(allowance._hex > requiredAllowance._hex);
-        console.log("YO");
       }
     } catch (err) {
       console.log(err);
