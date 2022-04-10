@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/bscflip-game/static/css/main.e86c77ec.chunk.css",
-    "main.js": "/bscflip-game/static/js/main.d6e50131.chunk.js",
-    "main.js.map": "/bscflip-game/static/js/main.d6e50131.chunk.js.map",
+    "main.css": "/bscflip-game/static/css/main.7d543afb.chunk.css",
+    "main.js": "/bscflip-game/static/js/main.2337b00a.chunk.js",
+    "main.js.map": "/bscflip-game/static/js/main.2337b00a.chunk.js.map",
     "runtime-main.js": "/bscflip-game/static/js/runtime-main.4e93da5f.js",
     "runtime-main.js.map": "/bscflip-game/static/js/runtime-main.4e93da5f.js.map",
     "static/js/2.849605cd.chunk.js": "/bscflip-game/static/js/2.849605cd.chunk.js",
     "static/js/2.849605cd.chunk.js.map": "/bscflip-game/static/js/2.849605cd.chunk.js.map",
     "index.html": "/bscflip-game/index.html",
-    "static/css/main.e86c77ec.chunk.css.map": "/bscflip-game/static/css/main.e86c77ec.chunk.css.map",
+    "static/css/main.7d543afb.chunk.css.map": "/bscflip-game/static/css/main.7d543afb.chunk.css.map",
     "static/js/2.849605cd.chunk.js.LICENSE.txt": "/bscflip-game/static/js/2.849605cd.chunk.js.LICENSE.txt",
     "static/media/bnblogo.1b5f418c.png": "/bscflip-game/static/media/bnblogo.1b5f418c.png",
     "static/media/bscflogo.b892e805.png": "/bscflip-game/static/media/bscflogo.b892e805.png"
@@ -16,7 +16,7 @@
   "entrypoints": [
     "static/js/runtime-main.4e93da5f.js",
     "static/js/2.849605cd.chunk.js",
-    "static/css/main.e86c77ec.chunk.css",
-    "static/js/main.d6e50131.chunk.js"
+    "static/css/main.7d543afb.chunk.css",
+    "static/js/main.2337b00a.chunk.js"
   ]
 }
