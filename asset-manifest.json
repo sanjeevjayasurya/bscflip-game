@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bscflip-game/static/css/main.e86c77ec.chunk.css",
-    "main.js": "/bscflip-game/static/js/main.64b6278a.chunk.js",
-    "main.js.map": "/bscflip-game/static/js/main.64b6278a.chunk.js.map",
+    "main.js": "/bscflip-game/static/js/main.474100d4.chunk.js",
+    "main.js.map": "/bscflip-game/static/js/main.474100d4.chunk.js.map",
     "runtime-main.js": "/bscflip-game/static/js/runtime-main.4e93da5f.js",
     "runtime-main.js.map": "/bscflip-game/static/js/runtime-main.4e93da5f.js.map",
     "static/js/2.849605cd.chunk.js": "/bscflip-game/static/js/2.849605cd.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.4e93da5f.js",
     "static/js/2.849605cd.chunk.js",
     "static/css/main.e86c77ec.chunk.css",
-    "static/js/main.64b6278a.chunk.js"
+    "static/js/main.474100d4.chunk.js"
   ]
 }
