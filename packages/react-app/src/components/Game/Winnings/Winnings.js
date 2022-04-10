@@ -57,8 +57,6 @@ export const Winnings = (({ game, chainId }) => {
   // failures on transactions
   async function getGasPrice(address) {
     const estimate = await game.estimateGas.claimWinnings(address);
-    console.log(parseInt(estimate, 16));
-    console.log(parseInt(estimate.mul(13).div(10), 16));
     return estimate.mul(13).div(10);
   }
 

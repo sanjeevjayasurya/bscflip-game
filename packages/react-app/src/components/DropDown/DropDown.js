@@ -10,7 +10,6 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
   const [logo, setLogo] = useState(bscfLogo);
 
   useEffect(() => {
-    console.log(selectedOption);
     if (selectedOption === "BSCF") {
       setLogo(bscfLogo);
     }
