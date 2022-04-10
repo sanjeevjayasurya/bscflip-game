@@ -3,25 +3,59 @@ import { useAccount } from 'wagmi';
 import { formatUnits } from "@ethersproject/units";
 
 import { addresses } from "@bscflip-game/contracts";
-import { WinningsListContainer, WinningsList, WinningsListItem, SmallText } from "./WinningsStyles";
+import { WinningsListContainer, WinningsList, WinningsListItem, SmallText, MediumText } from "./WinningsStyles";
 import { Centered } from "../../Styles";
 
-export const Winnings = (({ game, chainId }) => {
+export const Winnings = (({ game, bscF, chainId }) => {
   const [{ data: account }, disconnect] = useAccount({ fetchEns: false, });
   const [unclaimedBSCF, setUnclaimedBSCF] = useState(0);
   const [unclaimedBNB, setUnclaimedBNB] = useState(0);
+  const [tokenBalance, setTokenBalance] = useState(0);
 
   const gameFinishedListener = useCallback((better, token, winner, wager, id) => {
     if (account.address === better) {
       refreshWinnings();
+      refreshTokenBalance();
     }
   }, [game, account, chainId]);
 
   const payoutCompleteListener = useCallback((better, token, winnings) => {
     if (account.address === better) {
       refreshWinnings();
+      refreshTokenBalance();
     }
   }, [game, account, chainId]);
+
+  useEffect(() => {
+    refreshTokenBalance();
+  }, [game, account, chainId]);
+
+  const refreshTokenBalance = async () => {
+    if (bscF && account && bscF.signer) {
+      try {
+        const tokenBalance = await bscF.balanceOf(account.address);
+        setTokenBalance(formatUnits(tokenBalance.toString()));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (game && game.signer) {
+      game.on("GameFinished", gameFinishedListener);
+      game.on("PayoutComplete", payoutCompleteListener);
+    }
+
+    return () => {
+      game.off("GameFinished", gameFinishedListener);
+      game.off("PayoutComplete", payoutCompleteListener);
+    }
+  }, [gameFinishedListener, payoutCompleteListener]);
+
+  useEffect(() => {
+    refreshTokenBalance();
+  }, [bscF, account]);
 
   const refreshWinnings = async() => {
     if (game.signer && account) {
@@ -73,6 +107,8 @@ export const Winnings = (({ game, chainId }) => {
 
   return (
     <WinningsListContainer>
+      <Centered>$BSCF BALANCE</Centered>
+      <MediumText>{tokenBalance}</MediumText>
       <Centered>WINNINGS</Centered>
       <SmallText>CLICK TO CLAIM</SmallText>
       <WinningsList>

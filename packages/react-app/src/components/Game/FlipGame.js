@@ -48,7 +48,7 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
     <GlobalContainer>
       <SideContainer>
         { connected && !wrongChain &&
-          <Winnings game={game} chainId={chainId} />
+          <Winnings game={game} bscF={bscF} chainId={chainId} />
         }
       </SideContainer>
       <div>

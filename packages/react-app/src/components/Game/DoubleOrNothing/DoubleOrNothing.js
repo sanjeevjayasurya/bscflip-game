@@ -104,7 +104,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   }, [activeAmountButton, activeChoiceButton])
 
   // Ethers has been doing a poor job of estimating gas,
-  // so increase the limit by 20% to ensure there are fewer
+  // so increase the limit by 30% to ensure there are fewer
   // failures on transactions
   async function getGasPrice(flipAmount, side, address, value) {
     var options = {
