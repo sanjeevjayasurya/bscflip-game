@@ -52,9 +52,22 @@ export const Winnings = (({ game, chainId }) => {
     }
   }, [gameFinishedListener, payoutCompleteListener]);
 
+  // Ethers has been doing a poor job of estimating gas,
+  // so increase the limit by 30% to ensure there are fewer
+  // failures on transactions
+  async function getGasPrice(address) {
+    const estimate = await game.estimateGas.claimWinnings(address);
+    console.log(parseInt(estimate, 16));
+    console.log(parseInt(estimate.mul(13).div(10), 16));
+    return estimate.mul(13).div(10);
+  }
+
   const claimWinnings = async (address) => {
     try {
-      await game.claimWinnings(address);
+      var options = { 
+        gasLimit: await getGasPrice(address)
+      };
+      await game.claimWinnings(address, options);
     } catch (err) {
       console.log(err);
     }

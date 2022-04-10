@@ -28,6 +28,7 @@ export const GameButton = styled.button`
 
   ${props => !props.isDisabled && ":hover" } {
     background-color: ${props => props.isActive ? "#F1B213" : "#2F3236"};
+    box-shadow: 0px 0px 5px 1px rgba(240, 185, 18, .5);
     opacity: 0.8;
   }
 `;
