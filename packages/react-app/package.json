@@ -1,7 +1,7 @@
 {
   "name": "@bscflip-game/react-app",
   "version": "1.0.0",
-  "homepage": "https://kevingaleman.github.io/bscflip-game/",
+  "homepage": ".",
   "browserslist": {
     "production": [
       ">0.2%",
