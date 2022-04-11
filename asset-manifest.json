@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/bscflip-game/static/css/main.6ae845e5.chunk.css",
-    "main.js": "/bscflip-game/static/js/main.85c8d5de.chunk.js",
-    "main.js.map": "/bscflip-game/static/js/main.85c8d5de.chunk.js.map",
-    "runtime-main.js": "/bscflip-game/static/js/runtime-main.4e93da5f.js",
-    "runtime-main.js.map": "/bscflip-game/static/js/runtime-main.4e93da5f.js.map",
-    "static/js/2.a1935044.chunk.js": "/bscflip-game/static/js/2.a1935044.chunk.js",
-    "static/js/2.a1935044.chunk.js.map": "/bscflip-game/static/js/2.a1935044.chunk.js.map",
-    "index.html": "/bscflip-game/index.html",
-    "static/css/main.6ae845e5.chunk.css.map": "/bscflip-game/static/css/main.6ae845e5.chunk.css.map",
-    "static/js/2.a1935044.chunk.js.LICENSE.txt": "/bscflip-game/static/js/2.a1935044.chunk.js.LICENSE.txt",
-    "static/media/bnblogo.1b5f418c.png": "/bscflip-game/static/media/bnblogo.1b5f418c.png",
-    "static/media/bscflogo.b892e805.png": "/bscflip-game/static/media/bscflogo.b892e805.png",
-    "static/media/index.css": "/bscflip-game/static/media/ultralight.64858524.woff"
+    "main.css": "./static/css/main.ce61cf51.chunk.css",
+    "main.js": "./static/js/main.4187039b.chunk.js",
+    "main.js.map": "./static/js/main.4187039b.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.5428c414.js",
+    "runtime-main.js.map": "./static/js/runtime-main.5428c414.js.map",
+    "static/js/2.a9d66484.chunk.js": "./static/js/2.a9d66484.chunk.js",
+    "static/js/2.a9d66484.chunk.js.map": "./static/js/2.a9d66484.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.ce61cf51.chunk.css.map": "./static/css/main.ce61cf51.chunk.css.map",
+    "static/js/2.a9d66484.chunk.js.LICENSE.txt": "./static/js/2.a9d66484.chunk.js.LICENSE.txt",
+    "static/media/bnblogo.1b5f418c.png": "./static/media/bnblogo.1b5f418c.png",
+    "static/media/bscflogo.b892e805.png": "./static/media/bscflogo.b892e805.png",
+    "static/media/index.css": "./static/media/ultralight.64858524.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.4e93da5f.js",
-    "static/js/2.a1935044.chunk.js",
-    "static/css/main.6ae845e5.chunk.css",
-    "static/js/main.85c8d5de.chunk.js"
+    "static/js/runtime-main.5428c414.js",
+    "static/js/2.a9d66484.chunk.js",
+    "static/css/main.ce61cf51.chunk.css",
+    "static/js/main.4187039b.chunk.js"
   ]
 }
