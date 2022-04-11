@@ -12,9 +12,45 @@ export const Header = styled.header`
 `;
 
 export const LeftHeader = styled.div`
-  margin-left: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
   margin-right: auto;
 `;
+
+export const SoundButton = styled.button`
+  background: #1a1b1f;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  border: 1px solid #545659;
+  cursor:pointer;
+
+  &:hover {
+    background-color: #2F3236;
+    opacity: 0.8;
+  }
+`
+
+export const SoundImage = styled.img`
+  padding-top: 2px;
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+`
+
+export const WhaleModeDiv = styled.div`
+  background: #323232;
+  opacity: 0.7;
+  border-radius: 30px;
+  border: 1px solid #414341;
+  background-image: linear-gradient(to right, #5B543F,#36383C);
+  font-size: 12px;
+  padding: 15px 15px;
+  margin-left: 10px;
+  color: white;
+`
 
 export const HeaderButton = styled.button`
     height: 50px;
@@ -29,8 +65,8 @@ export const HeaderButton = styled.button`
     text-decoration: none;
     margin: 0px 5px;
     padding: 12px 24px;
-    opacity: ${props => !props.isDisabled ? 1 : 0.5};
     font-weight: 200;
+    opacity: ${props => !props.isDisabled ? 1 : 0.5};
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;

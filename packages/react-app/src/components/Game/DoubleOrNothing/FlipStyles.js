@@ -4,6 +4,7 @@ export const FlipContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 `;
 
@@ -18,7 +19,7 @@ export const GameButton = styled.button`
     font-size: 12px;
     text-align: center;
     text-decoration: none;
-    margin: ${props => !props.spaced ? "0px 5px" : "0px 20px"};
+    margin: ${props => !props.spaced ? "5px 5px" : "5px 20px"};
     padding: 12px 24px;
     opacity: ${props => !props.isDisabled ? 1 : 0.5};
     font-weight: 200;
