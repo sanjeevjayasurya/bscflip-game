@@ -38,5 +38,6 @@ export const SmallText = styled.p`
 export const MediumText = styled.p`
   text-align: center;
   font-size: 12px;
-  margin: 0;
+  margin-top: 0px;
+  margin-bottom: 20px;
 `
