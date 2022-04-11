@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useAccount } from "wagmi";
 import { parseUnits } from "@ethersproject/units";
+import ConfettiGenerator from "confetti-js";
 
 import { ApprovalButton } from "./ApprovalButton";
 import { flipAmounts, headsOrTails } from "./FlipAmounts";
@@ -30,6 +31,21 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   const handleChoiceButtonClick = event => {
     setActiveChoiceButton(Number(event.target.value));
   };
+
+  React.useEffect(() => {
+    const confettiSettings = 
+    { 
+      target: 'canvas',
+      colors: [[241, 186, 19], [232, 183, 32], [194, 149, 12]]
+    };
+
+    const confetti = new ConfettiGenerator(confettiSettings);
+    if (winner) {
+      console.log("HELL YEA");
+      confetti.render();
+    }
+    return () => confetti.clear();
+  }, [winner]) // add the var dependencies or not
 
   useEffect(() => {
     const showAllowances = async () => {
@@ -154,11 +170,12 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
       }
       { approved && account && !gameStarted && gameFlipAmounts &&
         <div>
-          <Centered>I LIKE</Centered>
+          <Centered spaced={true}>I LIKE</Centered>
           <FlipContainer>
             { headsOrTails.map(btn => 
               <GameButton
                 key={btn.name}
+                spaced={true}
                 isActive={btn.id === activeChoiceButton}
                 value={btn.id}
                 onClick={handleChoiceButtonClick}>
@@ -166,7 +183,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
               </GameButton>
             )}
           </FlipContainer>
-          <Centered>FOR</Centered>
+          <Centered spaced={true}>FOR</Centered>
           <FlipContainer>
             { gameFlipAmounts.map(btn => 
                 <GameButton
@@ -218,8 +235,8 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
           { gameFinished &&
             <div>
               { winner ?
-                <Centered>HELL YEAH YOU WON</Centered> :
-                <Centered>GET RUGGED LOL</Centered>
+                <Centered spaced={true}>WINNER</Centered> :
+                <Centered spaced={true}>RUGGED</Centered>
               }
               <FlipContainer>
                 <GameButton onClick={startOver}>

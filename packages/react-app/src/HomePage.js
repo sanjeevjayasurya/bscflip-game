@@ -3,7 +3,7 @@ import { useContract, useNetwork, useSigner } from 'wagmi'
 
 import { addresses, abis } from "@bscflip-game/contracts"
 
-import { BackgroundImg, Page, Body, Image } from "./components/Styles";
+import { BackgroundImg, Page, Body, Image, PageCanvas } from "./components/Styles";
 import { TopHeader } from "./components/Header/TopHeader";
 import { FlipGame } from "./components/Game/FlipGame";
 
@@ -42,6 +42,7 @@ export const HomePage = (() => {
 
   return (
     <Page>
+      <PageCanvas id="canvas"/>
       <TopHeader 
         game={game}
         bscF={bscF}

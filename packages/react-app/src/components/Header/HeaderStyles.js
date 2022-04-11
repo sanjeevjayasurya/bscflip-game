@@ -19,7 +19,7 @@ export const LeftHeader = styled.div`
 export const HeaderButton = styled.button`
     height: 50px;
     width: ${props => !props.wide ? "125px" : "200px"};
-    background-color: ${props => props.isActive ? "#F1B913" : "#27292D"};
+    background-color: #1a1b1f;
     border: 1px solid #545659;
     border-radius: ${props => !props.wide ? "20% / 50%" : "13% / 50%"};
     color: white;
@@ -30,6 +30,7 @@ export const HeaderButton = styled.button`
     margin: 0px 5px;
     padding: 12px 24px;
     opacity: ${props => !props.isDisabled ? 1 : 0.5};
+    font-weight: 200;
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;

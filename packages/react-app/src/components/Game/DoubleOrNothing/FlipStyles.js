@@ -4,12 +4,13 @@ export const FlipContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 20px;
 `;
 
 export const GameButton = styled.button`
     height: 50px;
     width: ${props => !props.wide ? "125px" : "250px"};
-    background-color: ${props => props.isActive ? "#F1B913" : "#27292D"};
+    background-color: ${props => props.isActive ? "#F1B913" : "#1a1b1f"};
     border: 1px solid #545659;
     border-radius: ${props => !props.wide ? "20% / 50%" : "10% / 50%"};
     color: white;
@@ -17,9 +18,10 @@ export const GameButton = styled.button`
     font-size: 12px;
     text-align: center;
     text-decoration: none;
-    margin: 0px 5px;
+    margin: ${props => !props.spaced ? "0px 5px" : "0px 20px"};
     padding: 12px 24px;
     opacity: ${props => !props.isDisabled ? 1 : 0.5};
+    font-weight: 200;
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;
@@ -37,11 +39,12 @@ export const DoubleOrNothingBtn = styled.button`
   height: 50px;
   width: 200px;
   color: white;
-  background: #1E2124;
-  border-radius: 10% / 50%;
+  background-color: #16171a;
+  border-radius: 11% / 50%;
   border: .5px solid #545659;
   cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
   opacity: ${props => !props.isDisabled ? 1 : 0.5};
+  font-weight: 200;
 
   ${props => !props.isDisabled && ":hover" } {
     background-color: #F0B912;

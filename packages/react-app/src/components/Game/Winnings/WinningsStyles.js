@@ -6,7 +6,7 @@ export const WinningsList = styled("ul")`
   min-width: 150px;
   margin-top: 10px;
   padding: 10px;
-  background: #27292D;
+  background: #1a1b1f;
   border: 1px solid #545659;
   border-radius: 5px;
   box-sizing: border-box;
