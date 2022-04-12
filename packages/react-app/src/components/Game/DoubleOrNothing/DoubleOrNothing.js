@@ -23,6 +23,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   const [gameFinished, setGameFinished] = useState(false);
   const [winner, setWinner] = useState(false);
   const [gameId, setGameId] = useState(-1);
+  const [result, setResult] = useState(0);
 
   var intervalId;
   
@@ -85,6 +86,11 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
           if (userGame.finished) {
             setWinner(userGame.winner);
             setGameFinished(true);
+            if (userGame.winner) {
+              setResult(userGame.predictedOutcome);
+            } else {
+              setResult((userGame.predictedOutcome + 1) % 2);
+            }
             clearInterval(intervalId);
           }
         } catch (err) {
@@ -239,7 +245,8 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
               }
               { (gameId >= 0) &&
                 <div>
-                  <Centered>GAME {gameId} STARTED</Centered>
+                  <Centered spaced={true}>GAME {gameId} STARTED</Centered>
+                  <Centered spaced={true}>YOU CHOSE: {headsOrTails[activeChoiceButton].name}</Centered>
                   <Centered>WAITING FOR YOUR FLIP</Centered>
                 </div>
               }
@@ -258,6 +265,8 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
           }
           { gameFinished &&
             <div>
+              <Centered spaced={true}>YOU CHOSE: {headsOrTails[activeChoiceButton].name}</Centered>
+              <Centered spaced={true}>YOUR FLIP: {headsOrTails[result].name}</Centered>
               { winner ?
                 <Centered spaced={true}>WINNER</Centered> :
                 <Centered spaced={true}>RUGGED</Centered>
