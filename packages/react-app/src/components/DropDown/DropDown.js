@@ -34,8 +34,7 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
                 <ListItem onClick={onOptionClicked(option)} key={option}>
                   {option}
                 </ListItem>
-              ))
-        }
+              ))}
             </DropDownList>
           </DropDownListContainer>
         )}

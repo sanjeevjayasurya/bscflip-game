@@ -23,6 +23,8 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   const [gameFinished, setGameFinished] = useState(false);
   const [winner, setWinner] = useState(false);
   const [gameId, setGameId] = useState(-1);
+
+  var intervalId;
   
   const handleAmountButtonClick = event => {
     setActiveAmountButton(Number(event.target.value));
@@ -41,7 +43,6 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
 
     const confetti = new ConfettiGenerator(confettiSettings);
     if (winner) {
-      console.log("HELL YEA");
       confetti.render();
     }
     return () => confetti.clear();
@@ -76,6 +77,23 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
     }
   };
 
+  const checkGameFinished = (gameId) => {
+    intervalId = setInterval(async () => {
+      if (game.signer) {
+        try {
+          const userGame = await game._games(gameId);
+          if (userGame.finished) {
+            setWinner(userGame.winner);
+            setGameFinished(true);
+            clearInterval(intervalId);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    }, 3000);
+  };
+
   useEffect(() => {
     if (bscF && bscF.signer) {
       bscF.on("Approval", approvedListener);
@@ -88,20 +106,24 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
     }
   }, [bscF]);
 
-  const gameFinishedListener = useCallback((better, token, winner, wager, id) => {
+  /*const gameFinishedListener = useCallback((better, token, winner, wager, id) => {
     console.log("Game finished: ", better, token, winner, wager, id);
     if (game.signer._address === better && id === gameId) {
-      setGameFinished(true);
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
       setWinner(winner);
+      setGameFinished(true);
     }
-  }, [gameId]);
+  }, [gameId, intervalId]);*/
 
   useEffect(() => {
     const amounts = flipAmounts.find(game => (game.token === gameToken));
     setGameFlipAmounts(amounts.values);
   }, [gameToken]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (game && game.signer) {
       game.on("GameFinished", gameFinishedListener);
     }
@@ -109,7 +131,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
     return () => {
       game.off("GameFinished", gameFinishedListener);
     }
-  }, [gameFinishedListener]);
+  }, [gameFinishedListener]);*/
 
   useEffect(() => {
     if (activeAmountButton >= 0 && activeChoiceButton >= 0) {
@@ -117,7 +139,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
     } else {
       setGameReady(false);
     }
-  }, [activeAmountButton, activeChoiceButton])
+  }, [activeAmountButton, activeChoiceButton]);
 
   // Ethers has been doing a poor job of estimating gas,
   // so increase the limit by 30% to ensure there are fewer
@@ -145,7 +167,9 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
       const gameStartedEvent = receipt?.events.find(event => 
         (event.event === "GameStarted")
       );
-      setGameId(gameStartedEvent.args[4]);
+      const id = gameStartedEvent.args[4];
+      checkGameFinished(id);
+      setGameId(id);
       setGameFinished(false);
     } catch (err) {
       setGameError(err);
