@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
+<<<<<<< HEAD
   background-color: #323232;
+=======
+  position: relative;
+  z-index: 2;
+>>>>>>> 01fc7db37273a1065f24a61e956eda8ad5d200f0
   min-height: 70px;
   display: flex;
   flex-direction: row;
@@ -10,17 +15,62 @@ export const Header = styled.header`
   color: white;
 `;
 
-export const HeaderButton = styled.button`
-  background-color: #282B2E;
-  border: none;
-  border-radius: 8px;
+export const LeftHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: auto;
+`;
+
+export const SoundButton = styled.button`
+  background: #1a1b1f;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  border: 1px solid #545659;
+  cursor:pointer;
+
+  &:hover {
+    background-color: #2F3236;
+    opacity: 0.8;
+  }
+`
+
+export const SoundImage = styled.img`
+  padding-top: 2px;
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+`
+
+export const WhaleModeDiv = styled.div`
+  background: #323232;
+  opacity: 0.7;
+  border-radius: 30px;
+  border: 1px solid #414341;
+  background-image: linear-gradient(to right, #5B543F,#36383C);
+  font-size: 12px;
+  padding: 15px 15px;
+  margin-left: 10px;
   color: white;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  margin: 0px 5px;
-  padding: 12px 24px;
+`
+
+export const HeaderButton = styled.button`
+    height: 50px;
+    width: ${props => !props.wide ? "125px" : "200px"};
+    background-color: #1a1b1f;
+    border: 1px solid #545659;
+    border-radius: ${props => !props.wide ? "20% / 50%" : "13% / 50%"};
+    color: white;
+    cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 5px;
+    padding: 12px 24px;
+    font-weight: 200;
+    opacity: ${props => !props.isDisabled ? 1 : 0.5};
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;

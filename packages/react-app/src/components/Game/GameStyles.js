@@ -1,38 +1,30 @@
 import styled from "styled-components";
 
+export const GlobalContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-size: calc(1px + 2vmin);
+  align-items: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 800px) {
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 export const GameContainer = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: calc(1px + 2vmin);
   justify-content: center;
+  align-items: center;
 `;
 
-export const FlipContainer = styled.div`
+export const SideContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-`;
-
-export const GameButton = styled.button`
-  background-color: ${props => props.isActive ? "#F1B913" : "#282B2E"};
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  margin: 0px 5px;
-  padding: 12px 24px;
-  opacity: ${props => !props.isDisabled ? 1 : 0.5};
-
-  ${props => props.hidden && "hidden"} :focus {
-    border: none;
-    outline: none;
-  }
-
-  ${props => !props.isDisabled && ":hover" } {
-    background-color: ${props => props.isActive ? "#F1B213" : "#2F3236"};
-    opacity: 0.8;
-  }
+  margin: 0px 24px;
+  min-width: 200px;
 `;
