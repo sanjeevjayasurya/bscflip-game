@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-<<<<<<< HEAD
   background-color: #323232;
-=======
   position: relative;
   z-index: 2;
->>>>>>> 01fc7db37273a1065f24a61e956eda8ad5d200f0
   min-height: 70px;
   display: flex;
   flex-direction: row;
@@ -42,7 +39,7 @@ export const SoundImage = styled.img`
   width: 20px;
   height: 20px;
   filter: invert(1);
-`
+`;
 
 export const WhaleModeDiv = styled.div`
   background: #323232;
@@ -124,14 +121,6 @@ export const UtilButtonsEmail = styled.button`
   cursor:pointer;
 `
 
-export const WhaleModeDiv = styled.div`
-  position: absolute;
-  width: 20%;
-  height: 70px;
-  top: 0%;
-  left: 9%;
-  background: #323232;
-`
 export const WhaleModeBorder = styled.div`
   position: absolute;
   width: 100%;

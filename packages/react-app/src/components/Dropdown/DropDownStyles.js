@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const DropDownContainer = styled("div")`
-  width: 200px;
-  margin: 0 auto;
+  width: 225px;
+  margin: 0 auto 20px auto;
 `;
 
 export const DropDownHeader = styled("div")`

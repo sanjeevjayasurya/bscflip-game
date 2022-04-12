@@ -1,10 +1,26 @@
+import { useState, useEffect } from "react";
+
 import { DropDownContainer, DropDownHeader, DropDownListContainer, DropDownList, ListItem, Caret, OverCaret } from "./DropDownStyles";
-import { Centered } from "../Styles";
+import { Image } from "../Styles";
+
+import bscfLogo from "../../img/bscflogo.png";
+import bnbLogo from "../../img/bnblogo.png";
 
 export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, toggling }) => {
+  const [logo, setLogo] = useState(bscfLogo);
+
+  useEffect(() => {
+    if (selectedOption === "BSCF") {
+      setLogo(bscfLogo);
+    }
+    if (selectedOption === "BNB") {
+      setLogo(bnbLogo);
+    }
+  }, [selectedOption]);
+
   return (
       <DropDownContainer>
-        <Centered>GAME TOKEN</Centered>
+        <Image src={logo} alt="bscflip-logo" />
         <DropDownHeader onClick={toggling}>
           {selectedOption}
           <Caret isOpen={isOpen}>

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, {useState} from "react";
 import { Provider, chain, defaultChains } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
@@ -11,14 +11,13 @@ import { FlipGame } from "./components/Game/FlipGame";
 import logo from "./bscfLogo.png";
 import {Logo, Choice, Like, Heads, Tails, Button, ButtonHoverEffect, Amount, For, AmountBTNDiv, BNB_Button,
         Span1, Span2, DoubleOrNothingBtn, LightEffect} from "./AppsStyle.js";
-=======
+
 import { Provider, chain, defaultChains } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink'
 
 import { HomePage } from './HomePage';
->>>>>>> 01fc7db37273a1065f24a61e956eda8ad5d200f0
 
 function App() {
 // API key for Ethereum node
@@ -73,7 +72,6 @@ const connectors = ({ chainId }) => {
   }
   return (
     <Provider autoConnect connectors={connectors}>
-<<<<<<< HEAD
       <Link rel="stylesheet" href=""></Link>
       {/* <Link rel="stylesheet" href="App.css"></Link> */}
       <TopHeader />
@@ -125,9 +123,7 @@ const connectors = ({ chainId }) => {
           <FlipGame />
         <LightEffect/>
       </Body>
-=======
       <HomePage />
->>>>>>> 01fc7db37273a1065f24a61e956eda8ad5d200f0
     </Provider>
   );
 }
