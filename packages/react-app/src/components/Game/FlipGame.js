@@ -9,7 +9,7 @@ import { DropDown } from "../DropDown/DropDown";
 import { Winnings } from "./Winnings/Winnings";
 
 export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
-  const tokens = ["BSCF", "BNB"];
+  const tokens = ["BNB"];
 
   const toggling = () => setIsOpen(!isOpen);
 

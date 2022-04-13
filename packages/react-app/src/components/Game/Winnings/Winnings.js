@@ -107,14 +107,9 @@ export const Winnings = (({ game, bscF, chainId }) => {
 
   return (
     <WinningsListContainer>
-      <Centered>$BSCF BALANCE</Centered>
-      <MediumText>{tokenBalance}</MediumText>
       <Centered>WINNINGS</Centered>
       <SmallText>CLICK TO CLAIM</SmallText>
       <WinningsList>
-        <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bscF)}>
-          BSCF: {unclaimedBSCF}
-        </WinningsListItem>
         <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bnb)}>
           BNB: {unclaimedBNB}
         </WinningsListItem>
