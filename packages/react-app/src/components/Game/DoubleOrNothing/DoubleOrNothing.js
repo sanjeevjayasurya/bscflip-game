@@ -150,25 +150,31 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   // Ethers has been doing a poor job of estimating gas,
   // so increase the limit by 30% to ensure there are fewer
   // failures on transactions
-  async function getGasPrice(flipAmount, side, address, value) {
+  async function getGasPrice(flipAmount, side, address, referrer, value) {
     var options = {
       value: value
     }
-    const estimate = await game.estimateGas.enterGame(flipAmount, side, address, options);
+    const estimate = await game.estimateGas.enterGame(flipAmount, side, address, referrer, options);
     return estimate.mul(13).div(10);
   }
 
   const startGame = async () => {
     setGameStarted(true);
     try {
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+      let referrer = params.ref ?? '0x0000000000000000000000000000000000000000';
+      console.log("Referrer: ", referrer);
+
       var flipAmount = gameFlipAmounts[activeAmountButton].value;
       var side = headsOrTails[activeChoiceButton].value;
       var value = (gameToken === bnb) ? flipAmount : 0;
       var options = { 
-        gasLimit: await getGasPrice(flipAmount, side, gameToken, value),
+        gasLimit: await getGasPrice(flipAmount, side, gameToken, referrer, value),
         value: value
       };
-      const transaction = await game.enterGame(flipAmount, side, gameToken, options);
+      const transaction = await game.enterGame(flipAmount, side, gameToken, referrer, options);
       const receipt = await transaction.wait();
       const gameStartedEvent = receipt?.events.find(event => 
         (event.event === "GameStarted")

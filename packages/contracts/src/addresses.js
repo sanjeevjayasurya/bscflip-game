@@ -1,11 +1,9 @@
-// This address points to a dummy ERC20 contract deployed on Ethereum Mainnet,
-// Goerli, Kovan, Rinkeby and Ropsten. Replace it with your smart contracts.
 const addresses = 
 { 
   97: {
     bnb: "0x0000000000000000000000000000000000000000",
-    bscCoinFlip: "0x17C0A46388077777491810E2ac63d11Ca041e015",
-    bscF: "0x800CABe215158854d874f6A63e48cAB98c5Cd1Fb",
+    bscCoinFlip: "0x5dE68463ce82BaB84065Acdac1A24e0DB494C67B",
+    bscF: "0x7b5D6742f7BC3289FA904Aaf7d91042651BcD702",
   }, 
   56: {
     bnb: "0x0000000000000000000000000000000000000000",
