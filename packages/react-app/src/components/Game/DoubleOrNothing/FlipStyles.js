@@ -4,12 +4,46 @@ export const FlipContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items:center;
   flex-wrap: wrap;
   margin-bottom: 20px;
 `;
 
+export const BetButton = styled.button`
+  color:white;
+  font-size:large;
+  letter-spacing:.1rem;
+  background:none;
+  border:none;
+  cursor:pointer;
+`
+export const Green = styled.text`
+  color:green;
+  font-weight:bold;
+
+`
+
+export const CoinFlip = styled.div`
+display:flex;
+justify-content:center;
+  width:100%;
+  height:100%;
+`
+export const SelectBet = styled.select`
+  cursor:pointer;
+  color:white;
+  background:black;
+  border:none;
+  padding:10px;
+`
+
+export const BetOption = styled.option`
+  margin:10px;
+  background:none;
+
+`
 export const GameButton = styled.button`
-    height: 50px;
+    height: 35px;
     width: ${props => !props.wide ? "125px" : "250px"};
     background-color: ${props => props.isActive ? "#F1B913" : "#1a1b1f"};
     border: 1px solid #545659;

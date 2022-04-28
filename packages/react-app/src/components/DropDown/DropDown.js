@@ -5,6 +5,7 @@ import { Image } from "../Styles";
 
 import bscfLogo from "../../img/bscflogo.png";
 import bnbLogo from "../../img/bnblogo.png";
+import flipCoin from "../../img/flipCoin.png";
 
 export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, toggling }) => {
   const [logo, setLogo] = useState(bscfLogo);
@@ -16,17 +17,19 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
     if (selectedOption === "BNB") {
       setLogo(bnbLogo);
     }
+    setLogo(flipCoin)
   }, [selectedOption]);
 
   return (
       <DropDownContainer>
-        <Image src={logo} alt="bscflip-logo" />
+        
         <DropDownHeader onClick={toggling}>
           {selectedOption}
           <Caret isOpen={isOpen}>
             <OverCaret isOpen={isOpen} />
           </Caret>
         </DropDownHeader>
+        
         {isOpen && (
           <DropDownListContainer>
             <DropDownList>
@@ -38,6 +41,7 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
             </DropDownList>
           </DropDownListContainer>
         )}
+
       </DropDownContainer>
   );
 });

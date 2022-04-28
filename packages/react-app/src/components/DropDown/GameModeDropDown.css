@@ -1,0 +1,37 @@
+.gameModeDropDiv{
+    width:100px;
+    height:auto;
+    outline:white solid 1px;
+    padding:5px;
+    margin-right:10px;
+    border-radius: 15px;
+    cursor:pointer;
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    z-index: 1;
+    background-color: black;
+}
+.gameModeDropDiv p{
+    margin:0px;
+    margin: 5px 5px;
+}
+.dropDownContainer{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.gameSelectModal{
+    position: absolute;
+    width:80px;
+    left:35px;
+    top:50px;
+    outline:solid white 1px;
+}
+.selectBox{
+    cursor:pointer;
+    background-color: rgb(39, 39, 39);
+    outline: grey 0.5px solid;
+    padding:15px 5px;
+
+}

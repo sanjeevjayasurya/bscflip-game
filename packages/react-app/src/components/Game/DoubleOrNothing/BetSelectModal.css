@@ -1,0 +1,99 @@
+.SelectBetModal{
+    position: absolute;
+    width:60%;
+    height:auto;
+    padding:20px;
+    border:solid white 0.5px;
+    border-radius: 25px;
+}
+.activeSliderContainer{
+    width: 100%;
+}
+
+.sliderDiv{
+    align-self: flex-start;
+    position: absolute;
+    align-items: center;
+    display: flex;
+    flex-basis: left;
+    width: var(--width);
+    height: 15px;
+    border-radius: 20px;
+    z-index: 4;
+    background-color: yellow;
+
+}
+#betSizeSlider{
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height:  6.52px; /* Specified height */
+    background-color: #222222;
+    outline: rgba(255, 255, 255, 0.47) 1px solid; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    border-radius: 15px;
+    z-index: 2;
+}
+
+#betSizeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    display: flex;
+    appearance: none;
+    width: 45px;
+    height: 45px;
+    opacity: 1;
+    background: url('../../../img/flippur.png');
+    cursor: pointer;
+    background-size: 50px;
+    z-index: 5;
+  }
+.percentButtons{
+    margin-top: 25px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between
+}
+
+.percentButtons button{
+    color:white;
+    border-radius: 25px;
+    outline: white 1px solid;
+    border:none;
+    background-color: black;
+    padding:15px 25px;
+    cursor: pointer;
+}
+.sliderContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#confirmBetButton{
+    background-color: rgb(250, 221, 0);
+    border-radius: 35px;
+    padding:20px 50px;
+
+    color:black;
+    cursor: pointer;
+    border:none;
+    font-size: larger;
+}
+
+.centerDiv{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+}
+.centerDiv input {
+    width:150px;
+    padding:20px;
+    margin-top:25px;
+    background-color: black;
+    border: white solid 1px;
+    color:white;
+    border-radius: 25px;
+}

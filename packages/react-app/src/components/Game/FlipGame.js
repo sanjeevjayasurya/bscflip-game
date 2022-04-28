@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useAccount } from 'wagmi';
-
 import { addresses } from "@bscflip-game/contracts";
 import { Centered, Image } from "../Styles";
-import { GameContainer, GlobalContainer, SideContainer } from "./GameStyles";
+import { GameContainer, GlobalContainer, SideContainer, SideSocials} from "./GameStyles";
 import { DoubleOrNothing } from "./DoubleOrNothing/DoubleOrNothing";
 import { DropDown } from "../DropDown/DropDown";
 import { Winnings } from "./Winnings/Winnings";
+
 
 export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
   const tokens = ["BNB"];
@@ -19,6 +19,8 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
   const [selectedToken, setSelectedToken] = useState(tokens[0]);
   const [selectedTokenAddress, setSelectedTokenAddress] = useState(addresses[chainId].bscF);
   const [isOpen, setIsOpen] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [betModal, openBetModal] = useState(false);
 
   const onOptionClicked = value => () => {
     setSelectedToken(value);
@@ -46,24 +48,25 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
 
   return (
     <GlobalContainer>
-      <SideContainer>
+
+      {!betModal && !gameStarted && <SideContainer>
         { connected && !wrongChain &&
           <Winnings game={game} bscF={bscF} chainId={chainId} />
         }
-      </SideContainer>
+      </SideContainer>}
       <div>
         {!connected &&
           <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered>
         }
         {connected && !wrongChain &&
         <GameContainer>
-          <DropDown 
+          {!gameStarted && false && <DropDown 
             options={tokens}
             onOptionClicked={onOptionClicked}
             selectedOption={selectedToken} 
             isOpen={isOpen}
-            toggling={toggling} />
-          <DoubleOrNothing gameToken={selectedTokenAddress} bscF={bscF} game={game} />
+            toggling={toggling} />}
+          <DoubleOrNothing betModal={betModal} openBetModal={openBetModal} gameStarted={gameStarted} setGameStarted={setGameStarted} gameToken={selectedTokenAddress} bscF={bscF} game={game} />
         </GameContainer>
         }
         {wrongChain && connected &&

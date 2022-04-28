@@ -3,7 +3,12 @@ import styled from "styled-components";
 export const DropDownContainer = styled("div")`
   width: 225px;
   margin: 0 auto 20px auto;
+  position:relative;
+  bottom:100px;
 `;
+
+
+
 
 export const DropDownHeader = styled("div")`
   position: relative;

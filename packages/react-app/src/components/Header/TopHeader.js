@@ -5,8 +5,8 @@ import SoundOnIcon from "./SoundOn.png";
 import SoundOffIcon from "./SoundOff.png";
 import { Header, LeftHeader, SoundButton, SoundImage, WhaleModeDiv } from "./HeaderStyles";
 import { WalletButton } from "./WalletButton";
-
-export const TopHeader = ({ game, bscF, chainId, wrongChain }) => {
+import GameModeDropDown from '../DropDown/GameModeDropDown'
+export const TopHeader = ({ gameMode,setGameMode,game, bscF, chainId, wrongChain }) => {
   const [{ data: account }, disconnect] = useAccount({ fetchEns: false, });
   const [volumeImg, setVolumeImg] = useState(SoundOnIcon);
   const [volumeOn, setVolumeOn] = useState(true);
@@ -23,12 +23,11 @@ export const TopHeader = ({ game, bscF, chainId, wrongChain }) => {
   return (
     <Header>
       <LeftHeader>
+        <GameModeDropDown setGameMode={setGameMode} gameMode={gameMode}></GameModeDropDown>
         <SoundButton onClick={toggleVolume}>
           <SoundImage src={volumeImg} alt="sound" />
         </SoundButton>
-        <WhaleModeDiv>
-          WHALE MODE - COMING SOON
-        </WhaleModeDiv>
+
       </LeftHeader>
       <WalletButton wrongChain={wrongChain} />
     </Header>    
