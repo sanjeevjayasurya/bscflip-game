@@ -1,10 +1,27 @@
 .SelectBetModal{
     position: absolute;
-    width:60%;
-    height:auto;
+    width: 517.55px;
+    height: auto;
     padding:20px;
     border:solid white 0.5px;
     border-radius: 25px;
+}
+.SelectBetModal h1{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 39px;
+}
+.SelectBetModal p{
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.05rem;
+    color: #FFFFFF;
+    
+    opacity: 0.64;
 }
 .activeSliderContainer{
     width: 100%;
@@ -57,13 +74,24 @@
 }
 
 .percentButtons button{
-    color:white;
-    border-radius: 25px;
-    outline: white 1px solid;
-    border:none;
-    background-color: black;
-    padding:15px 25px;
     cursor: pointer;
+    width: 47.9px;
+    height: 25.98px;
+    left: 582.72px;
+    top: 457.37px;
+    color:white;
+    background: #070707;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-sizing: border-box;
+    border-radius: 15px;
+    font-family: 'Helvetica';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 11px;
+
+color: #FFFFFF;
+
 }
 .sliderContainer{
     display: flex;
@@ -73,14 +101,17 @@
 }
 
 #confirmBetButton{
-    background-color: rgb(250, 221, 0);
-    border-radius: 35px;
-    padding:20px 50px;
-
-    color:black;
+    width: 106px;
+    height: 39px;
+    left: 667px;
+    top: 624px;
+    
+    background: #EFB910;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    box-sizing: border-box;
+    border-radius: 30px;
+    margin: 20px 20px;
     cursor: pointer;
-    border:none;
-    font-size: larger;
 }
 
 .centerDiv{
@@ -89,11 +120,11 @@
     align-items: center;
 }
 .centerDiv input {
-    width:150px;
+    width:auto;
     padding:20px;
     margin-top:25px;
     background-color: black;
-    border: white solid 1px;
+    border: rgba(255, 255, 255, 0.658) solid 1px;
     color:white;
     border-radius: 25px;
 }

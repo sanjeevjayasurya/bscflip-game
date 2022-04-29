@@ -24,7 +24,7 @@ export default function BetSelectModal({activeBetAmount,setActiveBetAmount, open
             <button onClick={()=>{document.getElementById("betSizeSlider").value = 100;setActiveBetAmount(100)}}>MAX</button>
        
           </div>
-          <input onChange={(_)=>{_.target.value > 1 ? setActiveBetAmount(1* 100)  : setActiveBetAmount(_.target.value * 100);_.target.value > 1 ? document.getElementById("betSizeSlider").value = 100  : document.getElementById("betSizeSlider").value = _.target.value * 100}} placeholder='Enter Bet Amount...' type="number" ></input>
+          <input onChange={(_)=>{_.target.value > 1 ? setActiveBetAmount(1* 100)  : setActiveBetAmount(_.target.value * 100);_.target.value > 1 ? document.getElementById("betSizeSlider").value = 100  : document.getElementById("betSizeSlider").value = _.target.value * 100}} placeholder='Type your bet amount...' type="number" ></input>
           <p>Current Bet: {activeBetAmount ? activeBetAmount / 100: 0.50} BNB</p>
           <button id='confirmBetButton' onClick={()=>{openBetModal(false)}}>Confirm</button>
         </div>

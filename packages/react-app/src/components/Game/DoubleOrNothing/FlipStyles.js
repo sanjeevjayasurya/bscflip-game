@@ -20,7 +20,6 @@ export const BetButton = styled.button`
 export const Green = styled.text`
   color:green;
   font-weight:bold;
-
 `
 
 export const CoinFlip = styled.div`
@@ -48,7 +47,7 @@ export const GameButton = styled.button`
     background-color: ${props => props.isActive ? "#F1B913" : "#1a1b1f"};
     border: 1px solid #545659;
     border-radius: ${props => !props.wide ? "20% / 50%" : "10% / 50%"};
-    color: white;
+    color: ${props => props.isActive ? "black" : "white"};
     cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
     font-size: 12px;
     text-align: center;
@@ -67,6 +66,7 @@ export const GameButton = styled.button`
     background-color: ${props => props.isActive ? "#F1B213" : "#2F3236"};
     box-shadow: 0px 0px 5px 1px rgba(240, 185, 18, .5);
     opacity: 0.8;
+
   }
 `;
 

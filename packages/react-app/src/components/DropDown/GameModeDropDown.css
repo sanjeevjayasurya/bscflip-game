@@ -1,16 +1,14 @@
 .gameModeDropDiv{
-    width:100px;
+    width:auto;
     height:auto;
-    outline:white solid 1px;
     padding:5px;
     margin-right:10px;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor:pointer;
     display: flex;
     position: relative;
     justify-content: space-around;
     z-index: 1;
-    background-color: black;
 }
 .gameModeDropDiv p{
     margin:0px;
@@ -20,13 +18,17 @@
     height: auto;
     display: flex;
     flex-direction: column;
+
 }
 .gameSelectModal{
     position: absolute;
-    width:80px;
-    left:35px;
-    top:50px;
-    outline:solid white 1px;
+    width: 179px;
+    height: 140px;
+    top:15px;
+    background: rgba(15, 15, 15, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    border-radius: 8px;
 }
 .selectBox{
     cursor:pointer;
@@ -34,4 +36,37 @@
     outline: grey 0.5px solid;
     padding:15px 5px;
 
+}
+.divider{
+    width:180px;
+}
+.gameModes {
+    margin-top: 10px;
+letter-spacing: .07rem;
+font-family: 'helvetica';
+font-style: normal;
+font-weight: 400px;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+
+color: #FFFFFF;
+}
+.singlePlayerSelect{
+    justify-content: center;
+    margin-top: 18px;
+    display: flex;
+    cursor: pointer;
+}
+.onlineSelect{
+    justify-content: center;
+    margin-top: 12px;
+    display: flex;
+    cursor: pointer;
+}
+
+.closeBracket{
+    justify-content: center;
+    margin-top: 12px;
+    display: flex;
 }

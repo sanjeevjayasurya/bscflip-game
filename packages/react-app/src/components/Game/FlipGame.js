@@ -8,7 +8,7 @@ import { DropDown } from "../DropDown/DropDown";
 import { Winnings } from "./Winnings/Winnings";
 
 
-export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
+export const FlipGame = (({ flipCoinGif,chainId, wrongChain, bscF, game }) => {
   const tokens = ["BNB"];
 
   const toggling = () => setIsOpen(!isOpen);
@@ -49,11 +49,7 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
   return (
     <GlobalContainer>
 
-      {!betModal && !gameStarted && <SideContainer>
-        { connected && !wrongChain &&
-          <Winnings game={game} bscF={bscF} chainId={chainId} />
-        }
-      </SideContainer>}
+
       <div>
         {!connected &&
           <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered>
@@ -66,7 +62,7 @@ export const FlipGame = (({ chainId, wrongChain, bscF, game }) => {
             selectedOption={selectedToken} 
             isOpen={isOpen}
             toggling={toggling} />}
-          <DoubleOrNothing betModal={betModal} openBetModal={openBetModal} gameStarted={gameStarted} setGameStarted={setGameStarted} gameToken={selectedTokenAddress} bscF={bscF} game={game} />
+          <DoubleOrNothing flipCoinGif={flipCoinGif} betModal={betModal} openBetModal={openBetModal} gameStarted={gameStarted} setGameStarted={setGameStarted} gameToken={selectedTokenAddress} bscF={bscF} game={game} />
         </GameContainer>
         }
         {wrongChain && connected &&

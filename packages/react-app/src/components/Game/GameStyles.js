@@ -39,8 +39,10 @@ export const GameContainer = styled.div`
 
 export const SideContainer = styled.div`
   display: flex;
+  position:relative;
   flex-direction: column;
   justify-content: center;
   margin: 0px 24px;
+  top:-100px;
   min-width: 200px;
 `;

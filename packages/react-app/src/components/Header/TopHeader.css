@@ -1,0 +1,21 @@
+.headerOptionDiv{
+    display: flex;
+}
+.headerOptionDiv a{
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15px;
+    margin:0px 5px;
+    cursor:pointer;
+    letter-spacing: .06rem;
+
+    padding:5px;
+
+    border-radius: 20px;
+}
+.activeHeader{
+    color:black;
+    background-color: white;
+}
