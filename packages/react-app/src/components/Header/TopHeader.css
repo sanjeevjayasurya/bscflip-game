@@ -4,16 +4,17 @@
 .headerOptionDiv a{
     font-family: 'Helvetica';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 13px;
     line-height: 15px;
     margin:0px 5px;
     cursor:pointer;
     letter-spacing: .06rem;
 
-    padding:5px;
+    padding:5px 15px;
 
     border-radius: 20px;
+    
 }
 .activeHeader{
     color:black;

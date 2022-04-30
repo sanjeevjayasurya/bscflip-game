@@ -1,5 +1,5 @@
 import './BetSelectModal.css'
-
+import flippur from "../../../img/flippur.png"
 export default function BetSelectModal({activeBetAmount,setActiveBetAmount, openBetModal}) {
     if(!activeBetAmount){
         setActiveBetAmount(50)
@@ -10,7 +10,11 @@ export default function BetSelectModal({activeBetAmount,setActiveBetAmount, open
         <p>Slider (0.05 - 1 BNB)</p>
         <div className='sliderContainer'>
           <div className='activeSliderContainer'>
-            <div className='sliderDiv' style={{"--width":`${activeBetAmount - 3.5}%`}}>
+            <div className='sliderDiv' style={{right: `${108-parseInt(activeBetAmount)}%`}}  >
+
+              <div className='yellowSlide'></div>
+              <img src={flippur}></img>
+              <div className='noSlide'></div>
             </div>
           </div>
           <input onChange={(_)=>{setActiveBetAmount(_.target.value)}} defaultValue={activeBetAmount ? activeBetAmount : 50} type="range" min="5" max="100" id="betSizeSlider"></input>

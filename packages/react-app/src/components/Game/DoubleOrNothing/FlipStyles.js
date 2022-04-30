@@ -16,6 +16,9 @@ export const BetButton = styled.button`
   background:none;
   border:none;
   cursor:pointer;
+  font-family:"Helvetica";
+  font-weight: 400;
+
 `
 export const Green = styled.text`
   color:green;
@@ -80,6 +83,7 @@ export const DoubleOrNothingBtn = styled.button`
   cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
   opacity: ${props => !props.isDisabled ? 1 : 0.5};
   font-weight: 200;
+  font-family:"Helvetica";
 
   ${props => !props.isDisabled && ":hover" } {
     background-color: #F0B912;
