@@ -10,13 +10,14 @@ export default function BetSelectModal({activeBetAmount,setActiveBetAmount, open
         <p>Slider (0.05 - 1 BNB)</p>
         <div className='sliderContainer'>
           <div className='activeSliderContainer'>
+            {/* sliderDiv is the creation of the slider with html and css. The actual slider is invisible and behind this makeshift slider */}
             <div className='sliderDiv' style={{right: `${108-parseInt(activeBetAmount)}%`}}  >
-
               <div className='yellowSlide'></div>
               <img src={flippur}></img>
               <div className='noSlide'></div>
             </div>
           </div>
+          {/* the slider input component */}
           <input onChange={(_)=>{setActiveBetAmount(_.target.value)}} defaultValue={activeBetAmount ? activeBetAmount : 50} type="range" min="5" max="100" id="betSizeSlider"></input>
         </div>
         <div className='centerDiv'>
@@ -26,7 +27,6 @@ export default function BetSelectModal({activeBetAmount,setActiveBetAmount, open
             <button onClick={()=>{document.getElementById("betSizeSlider").value = 50;setActiveBetAmount(50)}}>50%</button>
             <button onClick={()=>{document.getElementById("betSizeSlider").value = 75;setActiveBetAmount(75)}}>75%</button>
             <button onClick={()=>{document.getElementById("betSizeSlider").value = 100;setActiveBetAmount(100)}}>MAX</button>
-       
           </div>
           <input onChange={(_)=>{_.target.value > 1 ? setActiveBetAmount(1* 100)  : setActiveBetAmount(_.target.value * 100);_.target.value > 1 ? document.getElementById("betSizeSlider").value = 100  : document.getElementById("betSizeSlider").value = _.target.value * 100}} placeholder='Type your bet amount...' type="number" ></input>
           <p>Current Bet: {activeBetAmount ? activeBetAmount / 100: 0.50} BNB</p>

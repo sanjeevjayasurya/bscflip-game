@@ -1,11 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAccount } from 'wagmi';
-import "./TopHeader.css"
+
 import SoundOnIcon from "./SoundOn.png";
 import SoundOffIcon from "./SoundOff.png";
-import { Header, LeftHeader, SoundButton, SoundImage, WhaleModeDiv, StatusSVG } from "./HeaderStyles";
+import { Header, LeftHeader, SoundButton, SoundImage, StatusSVG } from "./HeaderStyles";
 import { WalletButton } from "./WalletButton";
 import GameModeDropDown from '../DropDown/GameModeDropDown'
+
+import { headerButtonSVG } from "../../svgs/svgs";
+import "./TopHeader.css"
+
 export const TopHeader = ({ gameMode,setGameMode,game, bscF, chainId, wrongChain }) => {
   const [{ data: account }, disconnect] = useAccount({ fetchEns: false, });
   const [volumeImg, setVolumeImg] = useState(SoundOnIcon);
@@ -26,9 +30,9 @@ export const TopHeader = ({ gameMode,setGameMode,game, bscF, chainId, wrongChain
       <LeftHeader>
         <GameModeDropDown setGameMode={setGameMode} gameMode={gameMode}></GameModeDropDown>
         <div className="headerOptionDiv">
-          <a onClick={()=>{headerOption != "learn" ? setHeaderOption("learn") : setHeaderOption(false)}} className={headerOption === "learn" ? "activeHeader" : ""}>LEARN</a>
-          <a onClick={()=>{headerOption != "activity" ? setHeaderOption("activity") : setHeaderOption(false)}}  className={headerOption === "activity" ? "activeHeader" : ""}>ACTIVITY</a>
-          <a onClick={()=>{headerOption != "stats" ? setHeaderOption("stats") : setHeaderOption(false)}}  className={headerOption === "stats" ? "activeHeader" : ""}>STATS</a>
+          <div  className="headerOptionButton" onClick={()=>{headerOption !== "learn" ? setHeaderOption("learn") : setHeaderOption(false)}}>{headerButtonSVG("learn",headerOption === "learn")}</div>
+          <div className="headerOptionButton" onClick={()=>{headerOption !== "activity" ? setHeaderOption("activity") : setHeaderOption(false)}}>{headerButtonSVG("activity",headerOption === "activity")}</div>
+          <div className="headerOptionButton" onClick={()=>{headerOption !== "stats" ? setHeaderOption("stats") : setHeaderOption(false)}}>{headerButtonSVG("stats",headerOption === "stats")}</div>
         </div>
         <SoundButton onClick={toggleVolume}>
           <SoundImage src={volumeImg} alt="sound" />

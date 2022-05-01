@@ -13,9 +13,6 @@ export const GlobalContainer = styled.div`
   }
 `;
 
-export const CoinOptionsContainer = styled.div`
-
-`
 
 export const SideSocials = styled.div`
   padding:5px;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAccount } from 'wagmi';
 import { addresses } from "@bscflip-game/contracts";
 import { Centered, Image } from "../Styles";
-import { GameContainer, GlobalContainer, SideContainer, SideSocials} from "./GameStyles";
+import { GameContainer, GlobalContainer, SideContainer} from "./GameStyles";
 import { DoubleOrNothing } from "./DoubleOrNothing/DoubleOrNothing";
 import { DropDown } from "../DropDown/DropDown";
 import { Winnings } from "./Winnings/Winnings";
@@ -48,8 +48,6 @@ export const FlipGame = (({ flipCoinGif,chainId, wrongChain, bscF, game }) => {
 
   return (
     <GlobalContainer>
-
-
       <div>
         {!connected &&
           <Centered>CONNECT YOUR ACCOUNT TO START FLIPPING</Centered>

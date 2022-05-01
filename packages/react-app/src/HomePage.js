@@ -66,27 +66,16 @@ export const HomePage = (() => {
         <div className="socialIcon"><a href="https://twitter.com/BSCFlip" target="_blank"><img src={twitterImage}></img></a></div>
         <div className="socialIcon"><a href="https://www.t.me/bscflip" target="_blank"><img src={telegramImage}></img></a></div>
       </SideSocials>
-      {gameMode === "coinflip" ? <>      <FlipImage/> 
-        <FlipGame 
-          flipCoinGif={flipCoinGif}
+      <FlipImage/> 
+      {gameMode === "coinflip" ? <FlipGame flipCoinGif={flipCoinGif} chainId={chainId} wrongChain={wrongChain} bscF={bscF} game={game}/> : <></>}
+      {gameMode === "kingflip" ? <KingGame/>: <></>}
+      <Footer           
           chainId={chainId} 
-          wrongChain={wrongChain}
-          bscF={bscF}
-          game={game}
-        />
-      </> : <></>}
-      {gameMode === "kingflip" ? <>      <FlipImage/> 
-        <KingGame 
-        />
-      </> : <></>}
-      <Footer           chainId={chainId} 
           wrongChain={wrongChain}
           bscF={bscF}
           game={game}/>
       </Body>
-
       <BackgroundImg />
-      
     </Page>
   );
 });
