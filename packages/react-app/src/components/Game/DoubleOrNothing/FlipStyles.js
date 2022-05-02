@@ -11,14 +11,20 @@ export const FlipContainer = styled.div`
 
 export const BetButton = styled.button`
   color:white;
+  width:150px;
   font-size:medium;
   letter-spacing:.1rem;
   background:none;
-  border:none;
+  border:1px solid white;
   cursor:pointer;
   font-family:"Helvetica";
   font-weight: 400;
+  padding:15px;
+  border-radius:25px;
+  &:hover {
+    background: grey;
 
+  }
 `
 export const Green = styled.text`
   color:green;
