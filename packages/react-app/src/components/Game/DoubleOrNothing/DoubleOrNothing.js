@@ -15,7 +15,7 @@ import "./DoubleOrNothing.css"
 import { wait } from "@testing-library/user-event/dist/utils";
 
 import { choiceButtonSVG } from "../../../svgs/svgs";
-export const DoubleOrNothing = (({flipCoinGif, betModal,openBetModal, setGameStarted, gameStarted, gameToken, bscF, game }) => {
+export const DoubleOrNothing = (({selectedToken,flipCoinGif, betModal,openBetModal, setGameStarted, gameStarted, gameToken, bscF, game }) => {
   const bnb = "0x0000000000000000000000000000000000000000";
   const requiredAllowance = parseUnits("5", 23);
 
@@ -254,7 +254,6 @@ export const DoubleOrNothing = (({flipCoinGif, betModal,openBetModal, setGameSta
               <div className="choiceButton" key={headsOrTails[0].name} onClick={()=>{setActiveChoiceButton(0)}}>
                 {choiceButtonSVG(headsOrTails,activeChoiceButton, "heads")}
               </div>
-
               <Image src={flipCoinGif} alt="bscflip-logo" />
               <div className="choiceButton" key={headsOrTails[1].name} onClick={()=>{setActiveChoiceButton(1)}}>
                 {choiceButtonSVG(headsOrTails,activeChoiceButton, "tails")}
@@ -262,8 +261,8 @@ export const DoubleOrNothing = (({flipCoinGif, betModal,openBetModal, setGameSta
             </>}
           </FlipContainer>
           <FlipContainer>
-            {betModal && <BetSelectModal activeBetAmount={activeBetAmount} setActiveBetAmount={setActiveBetAmount} openBetModal={openBetModal}/>}
-            {!betModal&& <BetButton onClick={()=>{openBetModal(true)}}>{!activeBetAmount ? <>Select a Bet Size</> : <>{activeBetAmount / 100} BNB</>}</BetButton>}
+            {betModal && <BetSelectModal selectedToken={selectedToken} activeBetAmount={activeBetAmount} setActiveBetAmount={setActiveBetAmount} openBetModal={openBetModal}/>}
+            {!betModal&& <BetButton onClick={()=>{openBetModal(true)}}>{!activeBetAmount ? <>Select a Bet Size</> : <>{activeBetAmount / 100} {selectedToken}</>}</BetButton>}
           </FlipContainer>
           <br />
           {!betModal&& 
@@ -314,7 +313,7 @@ export const DoubleOrNothing = (({flipCoinGif, betModal,openBetModal, setGameSta
               {/* Only shows the counter when the coinflip is not active. */}
               {!coinFlipActive && <Centered spaced={true}>Spinning in:  {flipCounter}</Centered>} 
               {/* Only shows this when the user is the winner */}
-              {flipFinished && winner && <Centered spaced={true}>YOU WON <Green>+{gameWager / 10**18} BNB</Green></Centered>}
+              {flipFinished && winner && <Centered spaced={true}>YOU WON <Green>+{gameWager / 10**18} {selectedToken}</Green></Centered>}
               {/* Renders the coin flip gif only when coinflipactive is set to true */}
               {coinFlipActive && <CoinFlip><Image src={result === 0 ? flipCoinGifH : flipCoinGifT}></Image></CoinFlip> }
               <Centered spaced={true}>YOU CHOSE: {headsOrTails[activeChoiceButton].name}</Centered>

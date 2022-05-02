@@ -9,7 +9,7 @@ import { Winnings } from "./Winnings/Winnings";
 
 
 export const FlipGame = (({ flipCoinGif,chainId, wrongChain, bscF, game }) => {
-  const tokens = ["BNB"];
+  const tokens = ["BNB", "BSCF"];
 
   const toggling = () => setIsOpen(!isOpen);
 
@@ -54,13 +54,13 @@ export const FlipGame = (({ flipCoinGif,chainId, wrongChain, bscF, game }) => {
         }
         {connected && !wrongChain &&
         <GameContainer>
-          {!gameStarted && false && <DropDown 
+          {!gameStarted  && !betModal && <DropDown 
             options={tokens}
             onOptionClicked={onOptionClicked}
             selectedOption={selectedToken} 
             isOpen={isOpen}
             toggling={toggling} />}
-          <DoubleOrNothing flipCoinGif={flipCoinGif} betModal={betModal} openBetModal={openBetModal} gameStarted={gameStarted} setGameStarted={setGameStarted} gameToken={selectedTokenAddress} bscF={bscF} game={game} />
+          <DoubleOrNothing selectedToken={selectedToken} flipCoinGif={flipCoinGif} betModal={betModal} openBetModal={openBetModal} gameStarted={gameStarted} setGameStarted={setGameStarted} gameToken={selectedTokenAddress} bscF={bscF} game={game} />
         </GameContainer>
         }
         {wrongChain && connected &&

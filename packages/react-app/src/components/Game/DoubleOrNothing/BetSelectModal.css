@@ -5,22 +5,24 @@
     padding:20px;
     border:solid white 0.5px;
     border-radius: 25px;
+    font-family: "Helvetica";
 }
 .SelectBetModal h1{
-    font-family: 'Poppins';
+    font-family: 'Helvetica';
     font-style: normal;
     font-weight: 400;
     font-size: 26px;
     line-height: 39px;
+    letter-spacing: 0.05rem;
 }
 .SelectBetModal p{
-    font-family: 'Poppins';
-    font-weight: 300;
-    font-size: 1rem;
+    font-family: 'Helvetica';
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.75rem;
     line-height: 18px;
     letter-spacing: 0.05rem;
-    color: #FFFFFF;
-    
+    color: #ffffffb6;
     opacity: 0.85;
 }
 .activeSliderContainer{
@@ -33,10 +35,10 @@
 
 .sliderDiv{
     position: relative;
-            display: flex;  
-            border-radius: 15px;
-            width: 1100px;
-            align-items: center;
+    display: flex;  
+    border-radius: 15px;
+    width: 1100px;
+    align-items: center;
 
 }
 .yellowSlide{
@@ -58,6 +60,7 @@
     height: 40px;
 }
 #betSizeSlider{
+    margin:0px;
     cursor: pointer;
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
@@ -81,7 +84,7 @@
     z-index: 5;
   }
 .percentButtons{
-    margin-top: 25px;
+    margin-top: 15px;
     width: 80%;
     display: flex;
     justify-content: space-between
@@ -89,22 +92,22 @@
 
 .percentButtons button{
     cursor: pointer;
-    width: 47.9px;
-    height: 25.98px;
+    width:75px;
+    height: auto;
     left: 582.72px;
     top: 457.37px;
     color:white;
     background: #070707;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
-    border-radius: 15px;
+    border-radius: 25px;
     font-family: 'Helvetica';
-font-style: normal;
-font-weight: 400;
-font-size: 10px;
-line-height: 11px;
-
-color: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 11px;
+    padding: 12px;
+    color: #FFFFFF;
 
 }
 .sliderContainer{

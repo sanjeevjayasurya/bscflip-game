@@ -5,31 +5,33 @@ export const DropDownContainer = styled("div")`
   margin: 0 auto 20px auto;
   position:relative;
   bottom:100px;
+  font-size:1.25rem; 
 `;
-
-
-
 
 export const DropDownHeader = styled("div")`
   position: relative;
   margin-top: 5px;
-  height: 30px;
+  height: auto;
   padding-top: 15px;
+  padding-bottom:15px;
   padding-left: 15px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   border-radius: 10% / 50%;
-  font-size: 12px;
-  color: #000000;
-  background: #F1B913;
+  font-size:1.25rem; 
+  color: white;
+  background: black;
   cursor: pointer;
-
+  border:solid white 1px;
+  z-index:1;
   &:hover {
-    background: #F1B213;
+    background: grey;
   }
 `;
 
 export const DropDownListContainer = styled("div")`
   position: relative;
+  top:-17px;
+  z-index:0;
 `;
 
 export const DropDownList = styled("ul")`
@@ -38,12 +40,12 @@ export const DropDownList = styled("ul")`
   width: 80%;
   margin-top: 1px;
   padding: 0;
-  background: #F1B913;
-  border: 2px solid #545659;
+  background: black;
+  border: 1px solid white;
   border-radius: 0 0 10px 10px;
   box-sizing: border-box;
-  color: #000000;
-  font-size: 12px;
+  color: white;
+  overflow:hidden;
   &:first-child {
     padding-top: 0.8em;
   }
@@ -51,12 +53,12 @@ export const DropDownList = styled("ul")`
 
 export const ListItem = styled("li")`
   list-style: none;
-  padding: 1px 5px 10px 5px;
+  padding: 1px 5px 12px 10px;
   cursor: pointer;
 
   &:hover {
-    background: #F1B213;
-    border-radius: 0 0 10px 10px;
+    background: grey;
+
   }
 `;
 
@@ -66,10 +68,10 @@ export const Caret = styled.div`
   top: 45%;
   right: 10%;
   width: 0; 
-  height: 0; 
+  height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid black;
+  border-top: 5px solid white;
 `
 
 export const OverCaret = styled.div`

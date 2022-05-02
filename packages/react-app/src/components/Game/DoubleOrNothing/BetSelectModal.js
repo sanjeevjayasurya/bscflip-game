@@ -1,13 +1,13 @@
 import './BetSelectModal.css'
 import flippur from "../../../img/flippur.png"
-export default function BetSelectModal({activeBetAmount,setActiveBetAmount, openBetModal}) {
+export default function BetSelectModal({selectedToken,activeBetAmount,setActiveBetAmount, openBetModal}) {
     if(!activeBetAmount){
         setActiveBetAmount(50)
     }
   return (
     <div className='SelectBetModal'>
-        <h1>Select Bet Amount</h1>
-        <p>Slider (0.05 - 1 BNB)</p>
+        <h1>SELECT BET AMOUNT</h1>
+        <p>SLIDER (0.05 - 1 {selectedToken})</p>
         <div className='sliderContainer'>
           <div className='activeSliderContainer'>
             {/* sliderDiv is the creation of the slider with html and css. The actual slider is invisible and behind this makeshift slider */}
@@ -29,7 +29,7 @@ export default function BetSelectModal({activeBetAmount,setActiveBetAmount, open
             <button onClick={()=>{document.getElementById("betSizeSlider").value = 100;setActiveBetAmount(100)}}>MAX</button>
           </div>
           <input onChange={(_)=>{_.target.value > 1 ? setActiveBetAmount(1* 100)  : setActiveBetAmount(_.target.value * 100);_.target.value > 1 ? document.getElementById("betSizeSlider").value = 100  : document.getElementById("betSizeSlider").value = _.target.value * 100}} placeholder='Type your bet amount...' type="number" ></input>
-          <p>Current Bet: {activeBetAmount ? activeBetAmount / 100: 0.50} BNB</p>
+          <p>Current Bet: {activeBetAmount ? activeBetAmount / 100: 0.50} {selectedToken}</p>
           <button id='confirmBetButton' onClick={()=>{openBetModal(false)}}>Confirm</button>
         </div>
 
