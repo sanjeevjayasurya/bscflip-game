@@ -4,11 +4,15 @@ export const Header = styled.header`
   position: relative;
   z-index: 2;
   min-height: 70px;
+  max-height:150px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   color: white;
+`;
+export const StatusSVG = styled.div`
+  margin: 0px 15px 0px 5px;
 `;
 
 export const LeftHeader = styled.div`
@@ -54,10 +58,10 @@ export const WhaleModeDiv = styled.div`
 
 export const HeaderButton = styled.button`
     height: 50px;
-    width: ${props => !props.wide ? "125px" : "200px"};
-    background-color: #1a1b1f;
-    border: 1px solid #545659;
-    border-radius: ${props => !props.wide ? "20% / 50%" : "13% / 50%"};
+    width: ${props => !props.wide ? "125px" : "auto"};
+    background-color: rgba(16, 16, 16, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 8px;
     color: white;
     cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
     font-size: 14px;

@@ -5,7 +5,7 @@ export const WinningsListContainer = styled("div")``;
 export const WinningsList = styled("ul")`
   min-width: 150px;
   margin-top: 10px;
-  padding: 10px;
+  padding: 2px;
   background: #1a1b1f;
   border: 1px solid #545659;
   border-radius: 5px;
@@ -20,9 +20,8 @@ export const WinningsList = styled("ul")`
 export const WinningsListItem = styled("li")`
   list-style: none;
   padding: 10px 10px;
-  border-radius: 30px;
+  // border-radius: 30px;
   cursor: pointer;
-
   &:hover {
     background: #2F3236;
     box-shadow: 0px 0px 5px 1px rgba(240, 185, 18, .5);

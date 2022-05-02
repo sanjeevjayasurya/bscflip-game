@@ -1,0 +1,29 @@
+.footerDiv{
+    width: 100%;
+    color:white;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    bottom:10px;
+}
+.centerFooter{
+    display: flex;
+    align-items: center;
+}
+.centerFooter p{
+    margin:0px 30px;
+    font-size: small;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+}
+.footerLogo{
+    position: fixed;
+    bottom: 0px;
+    right:10px;
+    cursor: pointer;
+}
+.winningsDiv{
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+}

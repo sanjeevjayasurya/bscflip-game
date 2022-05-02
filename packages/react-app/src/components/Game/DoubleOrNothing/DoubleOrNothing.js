@@ -5,10 +5,17 @@ import ConfettiGenerator from "confetti-js";
 
 import { ApprovalButton } from "./ApprovalButton";
 import { flipAmounts, headsOrTails } from "./FlipAmounts";
-import { Centered } from "../../Styles";
-import { DoubleOrNothingBtn, FlipContainer, GameButton } from "./FlipStyles";
+import { Centered, Image } from "../../Styles";
+import { DoubleOrNothingBtn, FlipContainer, GameButton, SelectBet, BetOption, CoinFlip,BetButton,Green } from "./FlipStyles";
 
-export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
+import flipCoinGifT from "../../../img/tail-gif-once.gif";
+import flipCoinGifH from "../../../img/head-gif-once.gif";
+import BetSelectModal from "./BetSelectModal";
+import "./DoubleOrNothing.css"
+import { wait } from "@testing-library/user-event/dist/utils";
+
+import { choiceButtonSVG } from "../../../svgs/svgs";
+export const DoubleOrNothing = (({selectedToken,flipCoinGif, betModal,openBetModal, setGameStarted, gameStarted, gameToken, bscF, game }) => {
   const bnb = "0x0000000000000000000000000000000000000000";
   const requiredAllowance = parseUnits("5", 23);
 
@@ -19,11 +26,19 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   const [gameFlipAmounts, setGameFlipAmounts] = useState(null);
   const [gameReady, setGameReady] = useState(false);
   const [gameError, setGameError] = useState(null);
-  const [gameStarted, setGameStarted] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
   const [winner, setWinner] = useState(false);
   const [gameId, setGameId] = useState(-1);
   const [result, setResult] = useState(0);
+  const [gameWager, setGameWager] = useState(0);
+
+  const [flipFinished, setFlipFinished] = useState(false);
+  const [flipCounter, setFlipCounter] = useState(false);
+  const [coinFlipActive, setCoinFlipActive] = useState(false);
+  const [betLimits, setBetLimits] = useState({"BNB":[0.05,1],"BSCF":[0,1]})
+
+  const [activeBetAmount, setActiveBetAmount] = useState(0); 
+
 
   var intervalId;
   
@@ -32,10 +47,31 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   };
 
   const handleChoiceButtonClick = event => {
+    console.log(Number(event.target.value))
     setActiveChoiceButton(Number(event.target.value));
   };
 
+  useEffect(()=>{
+    if(flipCounter === false) return
+    if(flipCounter !== 0){
+      let tempCount = flipCounter;
+      setTimeout(()=>{
+            setFlipCounter(tempCount - 1)
+    },1000); return}
+      setCoinFlipActive(true)
+      return
+  },[flipCounter])
+
+  useEffect(()=>{
+    //When coinflipactive is true then this will wait 10 seconds to set flipfinished to true to show the rest of the outcome 
+    if(!coinFlipActive) return
+      setTimeout(()=>{
+        setFlipFinished(true)
+      },10000)
+  },[coinFlipActive])
+
   React.useEffect(() => {
+    if(!flipFinished) return
     const confettiSettings = 
     { 
       target: 'canvas',
@@ -44,10 +80,13 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
 
     const confetti = new ConfettiGenerator(confettiSettings);
     if (winner) {
-      confetti.render();
+        confetti.render();
     }
+    setTimeout(()=>{
+      confetti.clear()
+    },5000)
     return () => confetti.clear();
-  }, [winner]) // add the var dependencies or not
+  }, [flipFinished]) // add the var dependencies or not
 
   useEffect(() => {
     const showAllowances = async () => {
@@ -66,6 +105,22 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
     };
     showAllowances();
   }, [account, game, bscF]);
+
+  useEffect( ()=>{
+    setLimits();
+  },[])
+
+  const setLimits = async () =>{
+    let minBNB = await game._minBetForToken(bnb);
+    let minBSCF = await game._minBetForToken(bscF.address);
+    minBNB = parseInt(minBNB._hex)
+    minBSCF = parseInt(minBSCF._hex)
+    let maxBNB = await game._maxBetForToken(bnb);
+    let maxBSCF = await game._maxBetForToken(bscF.address);
+    maxBNB = parseInt(maxBNB._hex)
+    maxBSCF = parseInt(maxBSCF._hex)
+    setBetLimits({"BNB":[minBNB,maxBNB],"BSCF":[minBSCF,maxBSCF]})
+  }
 
   const approvedListener = async (owner, spender, value) => {
     try {
@@ -86,12 +141,14 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
           if (userGame.finished) {
             setWinner(userGame.winner);
             setGameFinished(true);
+            setGameWager(parseInt(userGame.wager._hex))
             if (userGame.winner) {
               setResult(userGame.predictedOutcome);
             } else {
               setResult((userGame.predictedOutcome + 1) % 2);
             }
             clearInterval(intervalId);
+            setFlipCounter(3)
           }
         } catch (err) {
           console.log(err);
@@ -140,12 +197,12 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
   }, [gameFinishedListener]);*/
 
   useEffect(() => {
-    if (activeAmountButton >= 0 && activeChoiceButton >= 0) {
+    if (activeBetAmount && activeChoiceButton >= 0) {
       setGameReady(true);
     } else {
       setGameReady(false);
     }
-  }, [activeAmountButton, activeChoiceButton]);
+  }, [activeBetAmount, activeChoiceButton]);
 
   // Ethers has been doing a poor job of estimating gas,
   // so increase the limit by 30% to ensure there are fewer
@@ -167,8 +224,10 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
       let referrer = params.ref ?? '0x0000000000000000000000000000000000000000';
       console.log("Referrer: ", referrer);
 
-      var flipAmount = gameFlipAmounts[activeAmountButton].value;
+      // var flipAmount = gameFlipAmounts[activeAmountButton].value;
+      var flipAmount = parseUnits(`${activeBetAmount}`,0);
       var side = headsOrTails[activeChoiceButton].value;
+      console.log(flipAmount)
       var value = (gameToken === bnb) ? flipAmount : 0;
       var options = { 
         gasLimit: await getGasPrice(flipAmount, side, gameToken, referrer, value),
@@ -204,48 +263,44 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
       { !approved &&
         <ApprovalButton bscF={bscF} game={game} />
       }
+      {/* Game not start */}
       { approved && account && !gameStarted && gameFlipAmounts &&
         <div>
-          <Centered spaced={true}>I LIKE</Centered>
           <FlipContainer>
-            { headsOrTails.map(btn => 
-              <GameButton
-                key={btn.name}
-                spaced={true}
-                isActive={btn.id === activeChoiceButton}
-                value={btn.id}
-                onClick={handleChoiceButtonClick}>
-                {btn.name}
-              </GameButton>
-            )}
+            {!betModal && <>
+              <div className="choiceButton" key={headsOrTails[0].name} onClick={()=>{setActiveChoiceButton(0)}}>
+                {choiceButtonSVG(headsOrTails,activeChoiceButton, "heads")}
+              </div>
+              <Image src={flipCoinGif} alt="bscflip-logo" />
+              <div className="choiceButton" key={headsOrTails[1].name} onClick={()=>{setActiveChoiceButton(1)}}>
+                {choiceButtonSVG(headsOrTails,activeChoiceButton, "tails")}
+              </div>
+            </>}
           </FlipContainer>
-          <Centered spaced={true}>FOR</Centered>
           <FlipContainer>
-            { gameFlipAmounts.map(btn => 
-                <GameButton
-                  key={btn.name}
-                  isActive={btn.id === activeAmountButton}
-                  value={btn.id}
-                  onClick={handleAmountButtonClick}>
-                  {btn.name}
-                </GameButton>
-            )}
+            {betModal && <BetSelectModal betLimits={betLimits} selectedToken={selectedToken} activeBetAmount={activeBetAmount} setActiveBetAmount={setActiveBetAmount} openBetModal={openBetModal}/>}
+            {!betModal&& <BetButton  onClick={()=>{openBetModal(true)}}>{!activeBetAmount ? <>Select a Bet Size</> : <>{parseFloat(activeBetAmount / 10**18).toFixed(2)} {selectedToken}</>}</BetButton>}
           </FlipContainer>
           <br />
+          {!betModal&& 
           <FlipContainer>
             <DoubleOrNothingBtn 
               isDisabled={!gameReady}
               onClick={gameReady ? startGame : null}>
               {!gameReady && "CHOOSE YOUR OPTIONS"}
-              {gameReady && "DOUBLE OR NOTHING"}
+              {gameReady && "FLIP"}
             </DoubleOrNothingBtn>
-          </FlipContainer> 
+          </FlipContainer> }
         </div>
       }
+      {/* Game is started */}
       { gameStarted && 
         <div>
           { !gameFinished && !gameError &&
             <div>
+              <CoinFlip>
+                  {<Image src={flipCoinGif}></Image>}
+              </CoinFlip>
               { (gameId === -1) &&
                 <Centered>WAITING FOR CONFIRMATION</Centered>
               }
@@ -269,9 +324,18 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
               </FlipContainer>
             </div>
           }
+          {/* Game finishing means the bet was resolved. A gif animation of the side that was flipped will play out */}
           { gameFinished &&
             <div>
+              {/* Only shows the counter when the coinflip is not active. */}
+              {!coinFlipActive && <Centered spaced={true}>Spinning in:  {flipCounter}</Centered>} 
+              {/* Only shows this when the user is the winner */}
+              {flipFinished && winner && <Centered spaced={true}>YOU WON <Green>+{gameWager / 10**18} {selectedToken}</Green></Centered>}
+              {/* Renders the coin flip gif only when coinflipactive is set to true */}
+              {coinFlipActive && <CoinFlip><Image src={result === 0 ? flipCoinGifH : flipCoinGifT}></Image></CoinFlip> }
               <Centered spaced={true}>YOU CHOSE: {headsOrTails[activeChoiceButton].name}</Centered>
+              {/* flipfinished is set to true 10 seconds after flipactive is set to true. This is the wait mechanic to let the animation finish */}
+              {flipFinished && <>
               <Centered spaced={true}>YOUR FLIP: {headsOrTails[result].name}</Centered>
               { winner ?
                 <Centered spaced={true}>WINNER</Centered> :
@@ -281,7 +345,7 @@ export const DoubleOrNothing = (({ gameToken, bscF, game }) => {
                 <GameButton onClick={startOver}>
                   FLIP AGAIN
                 </GameButton>
-              </FlipContainer>
+              </FlipContainer></>}
             </div>
           }
         </div>
