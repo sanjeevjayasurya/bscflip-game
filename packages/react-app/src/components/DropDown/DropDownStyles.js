@@ -30,7 +30,7 @@ export const DropDownHeader = styled("div")`
 
 export const DropDownListContainer = styled("div")`
   position: relative;
-  top:-13px;
+  top:-14.5px;
   z-index:0;
 `;
 
@@ -53,9 +53,10 @@ export const DropDownList = styled("ul")`
 
 export const ListItem = styled("li")`
   list-style: none;
-  padding: 1px 5px 12px 10px;
   cursor: pointer;
-
+  padding:10px 10px;
+  display:flex;
+  justify-items:center;
   &:hover {
     background: grey;
 

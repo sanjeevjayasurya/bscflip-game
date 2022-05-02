@@ -15,14 +15,15 @@ export const BetButton = styled.button`
   font-size:medium;
   letter-spacing:.1rem;
   background:none;
-  border:1px solid white;
+  border:none;
   cursor:pointer;
   font-family:"Helvetica";
   font-weight: 400;
   padding:15px;
   border-radius:25px;
   &:hover {
-    background: grey;
+    background:   #F0B912;
+    color:black;
 
   }
 `

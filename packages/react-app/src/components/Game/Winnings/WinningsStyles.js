@@ -20,9 +20,8 @@ export const WinningsList = styled("ul")`
 export const WinningsListItem = styled("li")`
   list-style: none;
   padding: 10px 10px;
-  border-radius: 30px;
+  // border-radius: 30px;
   cursor: pointer;
-
   &:hover {
     background: #2F3236;
     box-shadow: 0px 0px 5px 1px rgba(240, 185, 18, .5);

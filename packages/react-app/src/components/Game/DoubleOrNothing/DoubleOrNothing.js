@@ -35,8 +35,9 @@ export const DoubleOrNothing = (({selectedToken,flipCoinGif, betModal,openBetMod
   const [flipFinished, setFlipFinished] = useState(false);
   const [flipCounter, setFlipCounter] = useState(false);
   const [coinFlipActive, setCoinFlipActive] = useState(false);
+  const [betLimits, setBetLimits] = useState({"BNB":[0.05,1],"BSCF":[0,1]})
 
-  const [activeBetAmount, setActiveBetAmount] = useState(5); 
+  const [activeBetAmount, setActiveBetAmount] = useState(0); 
 
 
   var intervalId;
@@ -104,6 +105,22 @@ export const DoubleOrNothing = (({selectedToken,flipCoinGif, betModal,openBetMod
     };
     showAllowances();
   }, [account, game, bscF]);
+
+  useEffect( ()=>{
+    setLimits();
+  },[])
+
+  const setLimits = async () =>{
+    let minBNB = await game._minBetForToken(bnb);
+    let minBSCF = await game._minBetForToken(bscF.address);
+    minBNB = parseInt(minBNB._hex)
+    minBSCF = parseInt(minBSCF._hex)
+    let maxBNB = await game._maxBetForToken(bnb);
+    let maxBSCF = await game._maxBetForToken(bscF.address);
+    maxBNB = parseInt(maxBNB._hex)
+    maxBSCF = parseInt(maxBSCF._hex)
+    setBetLimits({"BNB":[minBNB,maxBNB],"BSCF":[minBSCF,maxBSCF]})
+  }
 
   const approvedListener = async (owner, spender, value) => {
     try {
@@ -261,8 +278,8 @@ export const DoubleOrNothing = (({selectedToken,flipCoinGif, betModal,openBetMod
             </>}
           </FlipContainer>
           <FlipContainer>
-            {betModal && <BetSelectModal selectedToken={selectedToken} activeBetAmount={activeBetAmount} setActiveBetAmount={setActiveBetAmount} openBetModal={openBetModal}/>}
-            {!betModal&& <BetButton onClick={()=>{openBetModal(true)}}>{!activeBetAmount ? <>Select a Bet Size</> : <>{activeBetAmount / 100} {selectedToken}</>}</BetButton>}
+            {betModal && <BetSelectModal betLimits={betLimits} selectedToken={selectedToken} activeBetAmount={activeBetAmount} setActiveBetAmount={setActiveBetAmount} openBetModal={openBetModal}/>}
+            {!betModal&& <BetButton  onClick={()=>{openBetModal(true)}}>{!activeBetAmount ? <>Select a Bet Size</> : <>{Math.round(activeBetAmount / 100,2)} {selectedToken}</>}</BetButton>}
           </FlipContainer>
           <br />
           {!betModal&& 
