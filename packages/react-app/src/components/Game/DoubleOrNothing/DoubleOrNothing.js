@@ -279,7 +279,7 @@ export const DoubleOrNothing = (({selectedToken,flipCoinGif, betModal,openBetMod
           </FlipContainer>
           <FlipContainer>
             {betModal && <BetSelectModal betLimits={betLimits} selectedToken={selectedToken} activeBetAmount={activeBetAmount} setActiveBetAmount={setActiveBetAmount} openBetModal={openBetModal}/>}
-            {!betModal&& <BetButton  onClick={()=>{openBetModal(true)}}>{!activeBetAmount ? <>Select a Bet Size</> : <>{Math.round(activeBetAmount / 100,2)} {selectedToken}</>}</BetButton>}
+            {!betModal&& <BetButton  onClick={()=>{openBetModal(true)}}>{!activeBetAmount ? <>Select a Bet Size</> : <>{parseFloat(activeBetAmount / 10**18).toFixed(2)} {selectedToken}</>}</BetButton>}
           </FlipContainer>
           <br />
           {!betModal&& 
