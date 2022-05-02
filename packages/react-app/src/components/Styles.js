@@ -1,11 +1,21 @@
 import styled from "styled-components";
-import img from "../img/bscflogo.png";
-
+import img from "../img/nightTexture.png";
+import flipImage from "../img/bscflogo.png"
 export const Page = styled.div`
   position: relative;
-  background-image: linear-gradient(to top,rgba(19, 20, 22, 1), rgba(50,50,50,1)); 
+  background-color: #000000;
+  overflow:hidden;
 `
-
+export const FlipImage = styled.div`
+position: absolute;
+background-image: url(${flipImage});
+background-repeat:no-repeat;
+background-size: cover;
+opacity: 0.05;
+z-index: -1;
+height: 100%;
+width: 100%;
+`
 export const PageCanvas = styled.canvas`
   position:fixed;
   top:0;
@@ -24,25 +34,23 @@ export const Body = styled.div`
   justify-content: center;
   min-height: calc(100vh - 70px);
   z-index: 1;
+
 `;
 
 export const BackgroundImg = styled.div`
   position: absolute;
-  top: 0;
+  top: 100px;
   background-image: url(${img});
-  background-position: bottom -100px left -130px;
-  background-repeat: no-repeat;
-  background-size: 600px;
-  opacity: 0.1;
+  background-size: fill;
+  opacity: 1;
   z-index: 0;
-
   height: 100%;
   width: 100%;
 `
 
 export const Image = styled.img`
-  height: 225px;
-  width: 225px;
+  height: 350px;
+  width: 350px;
   margin-bottom: 16px;
   pointer-events: none;
 `;

@@ -113,6 +113,9 @@ export const Winnings = (({ game, bscF, chainId }) => {
         <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bnb)}>
           BNB: {unclaimedBNB}
         </WinningsListItem>
+        <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bscf)}>
+          BSCF: {unclaimedBSCF}
+        </WinningsListItem>
       </WinningsList>
     </WinningsListContainer>
   );

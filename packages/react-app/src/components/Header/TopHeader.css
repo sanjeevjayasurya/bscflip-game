@@ -1,0 +1,11 @@
+.headerOptionDiv{
+    display: flex;
+}
+.headerOptionButton {
+    cursor: pointer;
+    margin: 0px 5px;
+}
+.activeHeader{
+    color:black;
+    background-color: white;
+}
