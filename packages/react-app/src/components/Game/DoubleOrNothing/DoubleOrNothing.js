@@ -225,7 +225,7 @@ export const DoubleOrNothing = (({selectedToken,flipCoinGif, betModal,openBetMod
       console.log("Referrer: ", referrer);
 
       // var flipAmount = gameFlipAmounts[activeAmountButton].value;
-      var flipAmount = parseUnits(`${activeBetAmount}`,16);
+      var flipAmount = parseUnits(`${activeBetAmount}`,0);
       var side = headsOrTails[activeChoiceButton].value;
       console.log(flipAmount)
       var value = (gameToken === bnb) ? flipAmount : 0;
