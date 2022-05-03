@@ -29,8 +29,8 @@ export const SoundButton = styled.button`
   width: 45px;
   border-radius: 50%;
   border: 1px solid #545659;
-  cursor:pointer;
-
+  cursor: pointer;
+  margin: 0 auto;
   &:hover {
     background-color: #2F3236;
     opacity: 0.8;
@@ -42,6 +42,7 @@ export const SoundImage = styled.img`
   width: 20px;
   height: 20px;
   filter: invert(1);
+  margin: 0 auto;
 `
 
 export const WhaleModeDiv = styled.div`

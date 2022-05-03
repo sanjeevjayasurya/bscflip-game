@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const DropDownContainer = styled("div")`
-  width: 100px;
-  margin: 0 auto 20px auto;
-  position:relative;
-  bottom:100px;
-  font-size:1rem; 
+  width: 150px;
+  margin: 0;
+  position: relative;
+  font-size: 1rem; 
 `;
 
 export const DropDownHeader = styled("div")`
@@ -16,7 +15,7 @@ export const DropDownHeader = styled("div")`
   padding-bottom:15px;
   padding-left: 15px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-  border-radius: 10% / 50%;
+  border-radius: 0.375rem;
   font-size:1rem; 
   color: white;
   background: black;
@@ -32,12 +31,13 @@ export const DropDownListContainer = styled("div")`
   position: relative;
   top:-14.5px;
   z-index:0;
+  width: 100%;
 `;
 
 export const DropDownList = styled("ul")`
   position: absolute;
-  left: 10%; top: 100%; 
-  width: 80%;
+  top: 100%; 
+  width: 100%;
   margin-top: 1px;
   padding: 0;
   background: black;
