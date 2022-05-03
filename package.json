@@ -25,6 +25,8 @@
     ]
   },
   "dependencies": {
-    "bulma": "^0.9.3"
+    "@headlessui/react": "^1.6.0",
+    "bulma": "^0.9.3",
+    "react-icons": "^4.3.1"
   }
 }
