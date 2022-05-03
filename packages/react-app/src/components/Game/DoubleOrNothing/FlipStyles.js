@@ -11,14 +11,13 @@ export const FlipContainer = styled.div`
 
 export const BetButton = styled.button`
   color: white;
-  width: 250px;
-  font-size: medium;
+  width: 200px;
+  font-size: 14px;
   background: none;
-  border: 1px solid white;
   cursor: pointer;
   font-family: "Helvetica";
   font-weight: 400;
-  padding: 15px;
+  padding: 15px 0px;
   border-radius: 25px;
   outline: none;
   &:hover {

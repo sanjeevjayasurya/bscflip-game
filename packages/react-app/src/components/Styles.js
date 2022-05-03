@@ -11,10 +11,10 @@ position: absolute;
 background-image: url(${flipImage});
 background-repeat:no-repeat;
 background-size: cover;
-opacity: 0.05;
+opacity: 0.075;
 z-index: -1;
 height: 100%;
-width: 100%;
+width: 50%;
 `
 export const PageCanvas = styled.canvas`
   position:fixed;
