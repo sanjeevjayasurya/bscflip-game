@@ -430,14 +430,7 @@ export const DoubleOrNothing = ({
                 <Centered spaced={true}>Spinning in: {flipCounter}</Centered>
               )}
               {/* Only shows this when the user is the winner */}
-              {flipFinished && winner && (
-                <Centered spaced={true}>
-                  YOU WON{" "}
-                  <Green>
-                    +{gameWager / 10 ** 18} {selectedToken}
-                  </Green>
-                </Centered>
-              )}
+              {flipFinished && winner && <Centered spaced={true}>YOU WON <Green>+{parseFloat(gameWager / 10**18).toFixed(2)} {selectedToken}</Green></Centered>}
               {/* Renders the coin flip gif only when coinflipactive is set to true */}
               {coinFlipActive && (
                 <CoinFlip>
