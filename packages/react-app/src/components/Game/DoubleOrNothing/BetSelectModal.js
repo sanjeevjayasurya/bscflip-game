@@ -5,7 +5,7 @@ export default function BetSelectModal({betLimits,selectedToken,activeBetAmount,
     const lowerLimit = betLimits[selectedToken][0]
     const upperLimit = betLimits[selectedToken][1] === 0 ? 1 * 10**18 : betLimits[selectedToken][1]
 
-    const sliderPercent = 102-(94 * (activeBetAmount / upperLimit ))
+    const sliderPercent =111-(94 * (activeBetAmount / upperLimit ))
   return (
     <div className='SelectBetModal'>
         <h1>SELECT BET AMOUNT</h1>
