@@ -22,7 +22,6 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
 
   return (
       <DropDownContainer>
-        
         <DropDownHeader onClick={toggling}>
           {selectedOption}
           <Caret isOpen={isOpen}>

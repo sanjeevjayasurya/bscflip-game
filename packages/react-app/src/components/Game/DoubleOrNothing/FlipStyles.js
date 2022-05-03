@@ -10,21 +10,22 @@ export const FlipContainer = styled.div`
 `;
 
 export const BetButton = styled.button`
-  color:white;
-  width:150px;
-  font-size:medium;
-  letter-spacing:.1rem;
-  background:none;
-  border:none;
-  cursor:pointer;
-  font-family:"Helvetica";
+  color: white;
+  width: 250px;
+  font-size: medium;
+  letter-spacing: .1rem;
+  background: none;
+  border: 1px solid white;
+  cursor: pointer;
+  font-family: "Helvetica";
   font-weight: 400;
-  padding:15px;
-  border-radius:25px;
+  padding: 15px;
+  border-radius: 25px;
   &:hover {
-    background:   #F0B912;
-    color:black;
-
+    background: #F0B912;
+    color: black;
+    outline: none;
+    border: none;
   }
 `
 export const Green = styled.text`
@@ -84,7 +85,7 @@ export const GameButton = styled.button`
 
 export const DoubleOrNothingBtn = styled.button`
   height: 50px;
-  width: 200px;
+  width: 250px;
   color: white;
   background-color: #16171a;
   border-radius: 11% / 50%;
@@ -92,8 +93,8 @@ export const DoubleOrNothingBtn = styled.button`
   cursor: ${props => !props.isDisabled ? "pointer" : "not-allowed"};
   opacity: ${props => !props.isDisabled ? 1 : 0.5};
   font-weight: 200;
-  font-family:"Helvetica";
-
+  font-family: "Helvetica";
+  font-size: 16px;
   ${props => !props.isDisabled && ":hover" } {
     background-color: #F0B912;
     color: black;
