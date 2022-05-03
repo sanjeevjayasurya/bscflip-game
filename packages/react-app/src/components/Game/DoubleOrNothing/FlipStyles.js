@@ -13,7 +13,6 @@ export const BetButton = styled.button`
   color: white;
   width: 250px;
   font-size: medium;
-  letter-spacing: .1rem;
   background: none;
   border: 1px solid white;
   cursor: pointer;

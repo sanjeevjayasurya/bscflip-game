@@ -66,7 +66,7 @@ export const DoubleOrNothing = ({
           isActive
             ? " bg-[#F1B913] text-black hover:bg-[#F1B213] border-none"
             : "bg-[#1a1b1f] text-white hover:bg-gray-600 border-white border-[1px]"
-        } border-white tracking-[2px] font-bold px-4 py-2 w-40 text-sm text-center rounded-[24px] `}
+        } border-white tracking-[2px] px-4 py-2 w-40 text-sm text-center rounded-[24px] `}
       >
         {name}
       </button>
@@ -372,7 +372,7 @@ export const DoubleOrNothing = ({
                 }}
               >
                 {!activeBetAmount ? (
-                  <>Select a Bet Size</>
+                  <>SELECT A BET SIZE</>
                 ) : (
                   <>
                     {parseFloat(activeBetAmount / 10 ** 18).toFixed(2)}{" "}
