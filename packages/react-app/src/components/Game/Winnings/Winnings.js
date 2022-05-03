@@ -111,10 +111,10 @@ export const Winnings = (({ game, bscF, chainId }) => {
       <SmallText>CLICK TO CLAIM</SmallText>
       <WinningsList>
         <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bnb)}>
-          BNB: {unclaimedBNB}
+          BNB: {parseFloat(unclaimedBNB).toFixed(2)}
         </WinningsListItem>
         <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bscf)}>
-          BSCF: {unclaimedBSCF}
+          BSCF: {parseFloat(unclaimedBSCF).toFixed(2)}
         </WinningsListItem>
       </WinningsList>
     </WinningsListContainer>
