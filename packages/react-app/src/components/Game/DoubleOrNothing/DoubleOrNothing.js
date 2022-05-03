@@ -418,7 +418,7 @@ export const DoubleOrNothing = ({
               <Centered>ERROR WHEN STARTING GAME</Centered>
               <Centered>{gameError.message.substring(0, 40) + "..."}</Centered>
               <FlipContainer>
-                <GameButton onClick={startOver}>TRY AGAIN</GameButton>
+                <GameButton name="TRY AGAIN" onClick={startOver}></GameButton>
               </FlipContainer>
             </div>
           )}
@@ -454,7 +454,7 @@ export const DoubleOrNothing = ({
                     <Centered spaced={true}>RUGGED</Centered>
                   )}
                   <FlipContainer>
-                    <GameButton onClick={startOver}>FLIP AGAIN</GameButton>
+                    <GameButton name="FLIP AGAIN" onClick={startOver}></GameButton>
                   </FlipContainer>
                 </>
               )}

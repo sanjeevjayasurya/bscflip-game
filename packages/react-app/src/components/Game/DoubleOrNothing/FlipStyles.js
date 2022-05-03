@@ -23,7 +23,6 @@ export const BetButton = styled.button`
   &:hover {
     background: #F0B912;
     color: black;
-    border: #F0B912 1px solid;
   }
 `
 export const Green = styled.text`
