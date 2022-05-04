@@ -44,7 +44,7 @@
 .yellowSlide{
     background-color: #EFB910;
     width: 600px;
-    height: 30px;
+    height: 20px;
 }
 .noSlide{
     width: 600px;
@@ -55,9 +55,9 @@
 .sliderDiv img{
     position: absolute;
     left: 525px;
-    top:-1px;
-    width: 40px;
-    height: 40px;
+    top:-4px;
+    width: 35px;
+    height: 35px;
 }
 #betSizeSlider{
     margin:0px;
@@ -125,13 +125,14 @@
     height: 39px;
     left: 667px;
     top: 624px;
-    
+    color:black;
     background: #EFB910;
     border: 1px solid rgba(255, 255, 255, 0.11);
     box-sizing: border-box;
     border-radius: 30px;
     margin: 20px 20px;
     cursor: pointer;
+    font-size: small;
 }
 
 .centerDiv{
@@ -141,10 +142,12 @@
 }
 .centerDiv input {
     width:auto;
-    padding:20px;
+    padding:15px;
     margin-top:25px;
+    margin-bottom:8px;
     background-color: black;
     border: rgba(255, 255, 255, 0.658) solid 1px;
     color:white;
     border-radius: 25px;
+    font-size: small;
 }

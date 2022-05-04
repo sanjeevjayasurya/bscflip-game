@@ -21,7 +21,7 @@ export const WalletButton = ({ wrongChain }) => {
     walletLink: coinbasesvg,
   };
   return (
-    <div className="flex justify-between mx-5 font-bold">
+    <div className="flex justify-between mx-5">
       {/* {connectData.connectors.map((connector) => (
         <HeaderButton
           wide={true}
@@ -35,7 +35,7 @@ export const WalletButton = ({ wrongChain }) => {
       ))} */}
       <Menu as="div" className="relative inline-block text-left mr-5">
         <div>
-          <Menu.Button disabled={account} className="text-sm flex items-center w-50 font-bold tracking-wide justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-black hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+          <Menu.Button disabled={account} className="text-sm flex items-center w-50 tracking-wide justify-center rounded-md border border-[#3A3A3A] shadow-sm px-4 py-2 bg-black hover:bg-[#2F3236] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
             <img
               src={svgMapper[connector.id]}
               alt="metamask_logo"
@@ -57,7 +57,7 @@ export const WalletButton = ({ wrongChain }) => {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-black text-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
-            <div className="border-white border-[1px] rounded-[0.375rem]">
+            <div className="border-[#3A3A3A] border-[1px] rounded-[0.375rem]">
               {connectData.connectors.map((connector) => (
                 <Menu.Item key={connector.id}>
                   <div
@@ -83,14 +83,14 @@ export const WalletButton = ({ wrongChain }) => {
         {!account ? (
           <button
             onClick={() => connect(connector)}
-            className="text-white text-sm font-bold border-white border-[1px] inline-flex items-center px-4 py-2 rounded-md bg-black hover:bg-gray-600"
+            className="text-white text-sm border-[#3A3A3A] border-[1px] inline-flex items-center px-4 py-2 rounded-md bg-black hover:bg-[#2F3236]"
           >
             Connect Wallet
           </button>
         ) : !wrongChain ? (
           <button
             onClick={disconnect}
-            className="text-white text-sm font-bold border-white border-[1px] inline-flex items-center px-4 py-2 rounded-md bg-black hover:bg-gray-600"
+            className="text-white text-sm border-[#3A3A3A] border-[1px] inline-flex items-center px-4 py-2 rounded-md bg-black hover:bg-[#2F3236]"
           >
             <svg
               className="-ml-0.5 mr-1.5 h-2 w-2 text-[#24FF00]"
@@ -102,7 +102,7 @@ export const WalletButton = ({ wrongChain }) => {
             {account.address.substring(0, 6)}...{account.address.substring(38)}
           </button>
         ) : (
-          <button className="text-white text-sm font-bold border-white border-[1px] inline-flex items-center px-4 py-2 rounded-md bg-black hover:bg-gray-600">
+          <button className="text-white text-sm border-[#3A3A3A] border-[1px] inline-flex items-center px-4 py-2 rounded-md bg-black hover:bg-[#2F3236]">
             WRONG CHAIN
           </button>
         )}
