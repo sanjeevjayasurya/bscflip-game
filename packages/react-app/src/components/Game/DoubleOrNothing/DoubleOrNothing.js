@@ -16,8 +16,8 @@ import {
   Green,
 } from "./FlipStyles";
 
-import flipCoinGifT from "../../../img/tail-gif-once.gif";
-import flipCoinGifH from "../../../img/head-gif-once.gif";
+import flipCoinGifT from "../../../img/512tail-single.gif";
+import flipCoinGifH from "../../../img/512head-single.gif";
 import BetSelectModal from "./BetSelectModal";
 import "./DoubleOrNothing.css";
 import { wait } from "@testing-library/user-event/dist/utils";

@@ -12,7 +12,7 @@ import  Footer  from "./components/Footer/Footer";
 import discordImage from "./img/discord.svg"
 import twitterImage from "./img/twitter.svg"
 import telegramImage from "./img/telegram.svg"
-import flipCoinGif from "./img/spin-gif.gif";
+import flipCoinGif from "./img/512spin.gif";
 export const HomePage = (() => {
   const [{ data: network, error: networkError, loading: loadingNetwork }, switchNetwork] = useNetwork();
   const [{ data: signer, error: signerError, loading: loadingSigner }, getSigner] = useSigner();
