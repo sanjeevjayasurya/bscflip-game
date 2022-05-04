@@ -2,7 +2,7 @@
     position: absolute;
     width: 517.55px;
     height: auto;
-    padding:20px;
+    padding:30px;
     border:solid white 0.5px;
     border-radius: 25px;
     font-family: "Helvetica";
@@ -14,11 +14,14 @@
     font-size: 26px;
     line-height: 39px;
     letter-spacing: 0.05rem;
+    margin-bottom:15px;
 }
 .SelectBetModal p{
     font-family: 'Helvetica';
     font-weight: 400;
     font-style: italic;
+    position: relative;
+    top:22px;
     font-size: 0.75rem;
     line-height: 18px;
     letter-spacing: 0.05rem;
@@ -28,7 +31,7 @@
 .activeSliderContainer{
     top:10px;
     position: relative;
-    width: 100%;
+    width: 450px;
     border-radius: 25px;
     overflow: hidden;
 }
@@ -36,7 +39,6 @@
 .sliderDiv{
     position: relative;
     display: flex;  
-    border-radius: 15px;
     width: 1100px;
     align-items: center;
 
@@ -85,28 +87,32 @@
   }
 .percentButtons{
     margin-top: 15px;
-    width: 80%;
+    width: 60%;
     display: flex;
     justify-content: space-between
 }
 
 .percentButtons button{
     cursor: pointer;
-    width:75px;
-    height: auto;
+    width:45px;
+    height: 25px;
     left: 582.72px;
     top: 457.37px;
     color:white;
     background: #070707;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
-    border-radius: 25px;
+    border-radius: 15px;
     font-family: 'Helvetica';
     font-style: normal;
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 9px;
     line-height: 11px;
-    padding: 12px;
+    display: flex;
+    padding:6px 6px 6px 6px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: #FFFFFF;
 
 }
@@ -130,7 +136,7 @@
     border: 1px solid rgba(255, 255, 255, 0.11);
     box-sizing: border-box;
     border-radius: 30px;
-    margin: 20px 20px;
+    margin: 40px 20px 10px 10px;
     cursor: pointer;
     font-size: small;
 }
@@ -141,12 +147,12 @@
     align-items: center;
 }
 .centerDiv input {
-    width:auto;
+    width:300px;
     padding:15px;
     margin-top:25px;
     margin-bottom:8px;
     background-color: black;
-    border: rgba(255, 255, 255, 0.658) solid 1px;
+    border: rgba(255, 255, 255, 0.337) solid 1px;
     color:white;
     border-radius: 25px;
     font-size: small;
