@@ -87,15 +87,15 @@
   }
 .percentButtons{
     margin-top: 15px;
-    width: 60%;
+    width: 70%;
     display: flex;
     justify-content: space-between
 }
 
 .percentButtons button{
     cursor: pointer;
-    width:45px;
-    height: 25px;
+    width:50px;
+    height: 28px;
     left: 582.72px;
     top: 457.37px;
     color:white;
@@ -106,7 +106,7 @@
     font-family: 'Helvetica';
     font-style: normal;
     font-weight: 400;
-    font-size: 9px;
+    font-size: 11px;
     line-height: 11px;
     display: flex;
     padding:6px 6px 6px 6px;
