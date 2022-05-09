@@ -64,8 +64,8 @@ export const Link = styled.a.attrs({
 `;
 
 export const Centered = styled.p`
-  margin: 5px;
+  margin: 0px;
   text-align: center;
   letter-spacing: ${props => !props.spaced ? "0px" : "10px"};
-  margin-bottom: ${props => !props.spaced ? "0px" : "20px"};
+  margin-bottom: ${props => !props.spaced ? "0px" : "10px"};
   `
