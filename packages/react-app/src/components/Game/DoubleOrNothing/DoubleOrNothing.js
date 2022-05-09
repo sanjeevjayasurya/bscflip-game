@@ -404,7 +404,7 @@ export const DoubleOrNothing = ({
               {gameId === -1 && <Centered>WAITING FOR CONFIRMATION</Centered>}
               {gameId >= 0 && (
                 <div>
-                  <Centered spaced={true}>GAME {gameId} STARTED</Centered>
+                  {/* <Centered spaced={true}>GAME {gameId} STARTED</Centered> */}
                   <Centered spaced={true}>
                     YOU CHOSE: {headsOrTails[activeChoiceButton].name}
                   </Centered>
