@@ -100,6 +100,7 @@ export const Winnings = (({ game, bscF, chainId }) => {
         gasLimit: await getGasPrice(address)
       };
       await game.claimWinnings(address, options);
+      refreshWinnings();
     } catch (err) {
       console.log(err);
     }
