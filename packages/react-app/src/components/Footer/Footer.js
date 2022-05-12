@@ -16,7 +16,7 @@ export default function Footer({ chainId, wrongChain, bscF, game }) {
             <a href="https://www.ncpgambling.org/chat/" target="_blank">DISCLAIMER</a>
             <div className="affBtn" >
             <p onClick={()=>{setAffiliate(!affiliateOpen)}}>AFFILIATE</p>
-            {affiliateOpen && <div className="affModal">https://bscflip.com?ref={account.address}</div>}
+            {affiliateOpen && <div className="affModal">https://bscflip.com?ref={account!== undefined ? account.address:"0x"}</div>}
           </div>
         </div>
         <div className='footerLogo'>
