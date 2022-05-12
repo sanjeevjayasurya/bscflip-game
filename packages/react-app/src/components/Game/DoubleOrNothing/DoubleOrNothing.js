@@ -16,8 +16,8 @@ import {
   Green,
 } from "./FlipStyles";
 
-import flipCoinGifT from "../../../img/tail-gif-once.gif";
-import flipCoinGifH from "../../../img/head-gif-once.gif";
+import flipCoinGifT from "../../../img/512tail-single.gif";
+import flipCoinGifH from "../../../img/512head-single.gif";
 import BetSelectModal from "./BetSelectModal";
 import "./DoubleOrNothing.css";
 import { wait } from "@testing-library/user-event/dist/utils";
@@ -65,8 +65,8 @@ export const DoubleOrNothing = ({
         className={`${
           isActive
             ? " bg-[#F1B913] text-black hover:bg-[#F1B213] border-none"
-            : "bg-[#1a1b1f] text-white hover:bg-[#2F3236] border-white border-[1px]"
-        } border-[#3a3a3a] tracking-[2px] px-4 py-2 w-40 text-sm text-center rounded-[24px] `}
+            : "bg-[#000000] text-white hover:bg-[#2F3236] border-white border-[1px]"
+        } border-[#3a3a3a] tracking-[2px] px-4 py-2 w-30 text-sm text-center rounded-[24px] `}
       >
         {name}
       </button>
@@ -404,7 +404,7 @@ export const DoubleOrNothing = ({
               {gameId === -1 && <Centered>WAITING FOR CONFIRMATION</Centered>}
               {gameId >= 0 && (
                 <div>
-                  <Centered spaced={true}>GAME {gameId} STARTED</Centered>
+                  {/* <Centered spaced={true}>GAME {gameId} STARTED</Centered> */}
                   <Centered spaced={true}>
                     YOU CHOSE: {headsOrTails[activeChoiceButton].name}
                   </Centered>
@@ -418,7 +418,7 @@ export const DoubleOrNothing = ({
               <Centered>ERROR WHEN STARTING GAME</Centered>
               <Centered>{gameError.message.substring(0, 40) + "..."}</Centered>
               <FlipContainer>
-                <GameButton onClick={startOver}>TRY AGAIN</GameButton>
+                <GameButton name="TRY AGAIN" onClick={startOver}></GameButton>
               </FlipContainer>
             </div>
           )}
@@ -454,7 +454,7 @@ export const DoubleOrNothing = ({
                     <Centered spaced={true}>RUGGED</Centered>
                   )}
                   <FlipContainer>
-                    <GameButton onClick={startOver}>FLIP AGAIN</GameButton>
+                    <GameButton name="FLIP AGAIN" onClick={startOver}></GameButton>
                   </FlipContainer>
                 </>
               )}

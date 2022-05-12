@@ -2,7 +2,7 @@
     position: absolute;
     width: 517.55px;
     height: auto;
-    padding:20px;
+    padding:30px;
     border:solid white 0.5px;
     border-radius: 25px;
     font-family: "Helvetica";
@@ -14,11 +14,14 @@
     font-size: 26px;
     line-height: 39px;
     letter-spacing: 0.05rem;
+    margin-bottom:15px;
 }
 .SelectBetModal p{
     font-family: 'Helvetica';
     font-weight: 400;
     font-style: italic;
+    position: relative;
+    top:22px;
     font-size: 0.75rem;
     line-height: 18px;
     letter-spacing: 0.05rem;
@@ -28,7 +31,7 @@
 .activeSliderContainer{
     top:10px;
     position: relative;
-    width: 100%;
+    width: 450px;
     border-radius: 25px;
     overflow: hidden;
 }
@@ -36,7 +39,6 @@
 .sliderDiv{
     position: relative;
     display: flex;  
-    border-radius: 15px;
     width: 1100px;
     align-items: center;
 
@@ -44,7 +46,7 @@
 .yellowSlide{
     background-color: #EFB910;
     width: 600px;
-    height: 30px;
+    height: 20px;
 }
 .noSlide{
     width: 600px;
@@ -55,9 +57,9 @@
 .sliderDiv img{
     position: absolute;
     left: 525px;
-    top:-1px;
-    width: 40px;
-    height: 40px;
+    top:-4px;
+    width: 35px;
+    height: 35px;
 }
 #betSizeSlider{
     margin:0px;
@@ -85,28 +87,32 @@
   }
 .percentButtons{
     margin-top: 15px;
-    width: 80%;
+    width: 70%;
     display: flex;
     justify-content: space-between
 }
 
 .percentButtons button{
     cursor: pointer;
-    width:75px;
-    height: auto;
+    width:50px;
+    height: 28px;
     left: 582.72px;
     top: 457.37px;
     color:white;
     background: #070707;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
-    border-radius: 25px;
+    border-radius: 15px;
     font-family: 'Helvetica';
     font-style: normal;
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 11px;
     line-height: 11px;
-    padding: 12px;
+    display: flex;
+    padding:6px 6px 6px 6px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: #FFFFFF;
 
 }
@@ -125,13 +131,14 @@
     height: 39px;
     left: 667px;
     top: 624px;
-    
+    color:black;
     background: #EFB910;
     border: 1px solid rgba(255, 255, 255, 0.11);
     box-sizing: border-box;
     border-radius: 30px;
-    margin: 20px 20px;
+    margin: 40px 20px 10px 10px;
     cursor: pointer;
+    font-size: small;
 }
 
 .centerDiv{
@@ -140,11 +147,13 @@
     align-items: center;
 }
 .centerDiv input {
-    width:auto;
-    padding:20px;
+    width:300px;
+    padding:15px;
     margin-top:25px;
+    margin-bottom:8px;
     background-color: black;
-    border: rgba(255, 255, 255, 0.658) solid 1px;
+    border: rgba(255, 255, 255, 0.337) solid 1px;
     color:white;
     border-radius: 25px;
+    font-size: small;
 }

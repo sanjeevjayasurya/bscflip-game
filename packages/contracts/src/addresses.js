@@ -7,7 +7,7 @@ const addresses =
   }, 
   56: {
     bnb: "0x0000000000000000000000000000000000000000",
-    bscCoinFlip: "0xdd0464F59678468eD0C8bA4B069dc8132e6899Fc",
+    bscCoinFlip: "0x7EcA7F6486DC6e86c1bbF949130d3b118DADE8b4",
     bscF: "0x57fc6EB942A5c0ee1536025c13dF9F7D529f929a",
   }};
 

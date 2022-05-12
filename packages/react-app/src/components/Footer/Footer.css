@@ -10,9 +10,10 @@
     display: flex;
     align-items: center;
 }
-.centerFooter p{
+.centerFooter a{
     margin:0px 30px;
     font-size: small;
+    text-decoration: none;
     letter-spacing: 0.1rem;
     cursor: pointer;
 }

@@ -19,11 +19,10 @@ export const BetButton = styled.button`
   font-weight: 400;
   padding: 15px 0px;
   border-radius: 25px;
+  outline: none;
   &:hover {
     background: #F0B912;
     color: black;
-    outline: none;
-    border: none;
   }
 `
 export const Green = styled.text`

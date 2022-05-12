@@ -39,6 +39,7 @@ export const Body = styled.div`
 
 export const BackgroundImg = styled.div`
   position: absolute;
+  border:none;
   top: 100px;
   background-image: url(${img});
   background-size: fill;
@@ -51,7 +52,6 @@ export const BackgroundImg = styled.div`
 export const Image = styled.img`
   height: 350px;
   width: 350px;
-  margin-bottom: 16px;
   pointer-events: none;
 `;
 
@@ -64,8 +64,8 @@ export const Link = styled.a.attrs({
 `;
 
 export const Centered = styled.p`
-  margin: 5px;
+  margin: 0px;
   text-align: center;
-  letter-spacing: ${props => !props.spaced ? "0px" : "10px"};
-  margin-bottom: ${props => !props.spaced ? "0px" : "20px"};
+  letter-spacing: ${props => !props.spaced ? "0px" : "5px"};
+  margin-bottom: ${props => !props.spaced ? "0px" : "0px"};
   `
