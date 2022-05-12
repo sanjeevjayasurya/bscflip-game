@@ -10,7 +10,6 @@ import { Winnings } from "./Winnings/Winnings";
 
 export const FlipGame = (({ flipCoinGif,chainId, wrongChain, bscF, game }) => {
   const tokens = ["BNB"];
-// REMOVED , "BSCF" to temporarily disallow users from trying to place bets with it. It is not currently deployed to main net
   const toggling = () => setIsOpen(!isOpen);
 
   const [{ data: account }] = useAccount({ fetchEns: false, });

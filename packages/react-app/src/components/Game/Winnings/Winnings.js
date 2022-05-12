@@ -100,6 +100,7 @@ export const Winnings = (({ game, bscF, chainId }) => {
         gasLimit: await getGasPrice(address)
       };
       await game.claimWinnings(address, options);
+      refreshWinnings();
     } catch (err) {
       console.log(err);
     }
@@ -113,9 +114,9 @@ export const Winnings = (({ game, bscF, chainId }) => {
         <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bnb)}>
           BNB: {parseFloat(unclaimedBNB).toFixed(2)}
         </WinningsListItem>
-        <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bscf)}>
+        {/* <WinningsListItem onClick={() => claimWinnings(addresses[chainId].bscf)}>
           BSCF: {parseFloat(unclaimedBSCF).toFixed(2)}
-        </WinningsListItem>
+        </WinningsListItem> */}
       </WinningsList>
     </WinningsListContainer>
   );
