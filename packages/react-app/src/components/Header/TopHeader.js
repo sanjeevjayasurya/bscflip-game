@@ -16,6 +16,7 @@ export const TopHeader = ({ gameMode,setGameMode,game, bscF, chainId, wrongChain
   const [volumeOn, setVolumeOn] = useState(true);
   const [headerOption, setHeaderOption] = useState(true);
 
+
   const toggleVolume = () => {
     if (volumeOn) {
       setVolumeImg(SoundOffIcon);
@@ -33,6 +34,7 @@ export const TopHeader = ({ gameMode,setGameMode,game, bscF, chainId, wrongChain
           <div  className="headerOptionButton" onClick={()=>{headerOption !== "learn" ? setHeaderOption("learn") : setHeaderOption(false)}}>{headerButtonSVG("learn",headerOption === "learn")}</div>
           <div className="headerOptionButton" onClick={()=>{headerOption !== "activity" ? setHeaderOption("activity") : setHeaderOption(false)}}>{headerButtonSVG("activity",headerOption === "activity")}</div>
           <div className="headerOptionButton" onClick={()=>{headerOption !== "stats" ? setHeaderOption("stats") : setHeaderOption(false)}}>{headerButtonSVG("stats",headerOption === "stats")}</div>
+
         </div>
         <SoundButton onClick={toggleVolume}>
           <SoundImage src={volumeImg} alt="sound" />
