@@ -9,7 +9,7 @@ import { Winnings } from "./Winnings/Winnings";
 
 
 export const FlipGame = (({ flipCoinGif,chainId, wrongChain, bscF, game }) => {
-  const tokens = ["BNB", "BSCF"];
+  const tokens = ["BNB"];
 
   const toggling = () => setIsOpen(!isOpen);
 
