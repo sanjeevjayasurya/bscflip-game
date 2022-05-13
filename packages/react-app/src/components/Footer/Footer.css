@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
 }
-.centerFooter a{
+.centerFooter a,p{
     margin:0px 30px;
     font-size: small;
     text-decoration: none;
@@ -27,4 +27,21 @@
     position: fixed;
     left: 15px;
     bottom: 10px;
+}
+.affBtn{
+    color:rgb(255, 255, 255);
+    letter-spacing: .1rem;
+    font-size: 0.8rem;
+    margin-left: 15px;
+    position: relative;
+}
+.affBtn p{
+    margin:0px;
+    cursor: pointer;
+}
+.affModal{
+    top:-50px;
+    left:-150px;
+    width: 1000px;
+    position: absolute;
 }
