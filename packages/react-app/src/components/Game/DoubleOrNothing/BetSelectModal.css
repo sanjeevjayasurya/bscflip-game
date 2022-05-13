@@ -1,159 +1,162 @@
-.SelectBetModal{
-    position: absolute;
-    width: 517.55px;
-    height: auto;
-    padding:30px;
-    border:solid white 0.5px;
-    border-radius: 25px;
-    font-family: "Helvetica";
+.SelectBetModal {
+  position: absolute;
+  width: 517.55px;
+  height: auto;
+  padding: 30px;
+  border: solid white 0.5px;
+  border-radius: 25px;
+  font-family: "Helvetica";
 }
-.SelectBetModal h1{
-    font-family: 'Helvetica';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 39px;
-    letter-spacing: 0.05rem;
-    margin-bottom:15px;
+.SelectBetModal h1 {
+  font-family: "Helvetica";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 39px;
+  letter-spacing: 0.05rem;
+  margin-bottom: 15px;
 }
-.SelectBetModal p{
-    font-family: 'Helvetica';
-    font-weight: 400;
-    font-style: italic;
-    position: relative;
-    top:22px;
-    font-size: 0.75rem;
-    line-height: 18px;
-    letter-spacing: 0.05rem;
-    color: #ffffffb6;
-    opacity: 0.85;
+.SelectBetModal p {
+  font-family: "Helvetica";
+  font-weight: 400;
+  font-style: italic;
+  position: relative;
+  top: 22px;
+  font-size: 0.75rem;
+  line-height: 18px;
+  letter-spacing: 0.05rem;
+  color: #ffffffb6;
+  opacity: 0.85;
 }
-.activeSliderContainer{
-    top:10px;
-    position: relative;
-    width: 450px;
-    border-radius: 25px;
-    overflow: hidden;
+.activeSliderContainer {
+  top: 10px;
+  position: relative;
+  width: 450px;
+  border-radius: 25px;
+  overflow: hidden;
 }
 
-.sliderDiv{
-    position: relative;
-    display: flex;  
-    width: 1100px;
-    align-items: center;
-
+.sliderDiv {
+  position: relative;
+  display: flex;
+  width: 1100px;
+  align-items: center;
 }
-.yellowSlide{
-    background-color: #EFB910;
-    width: 600px;
-    height: 20px;
+.yellowSlide {
+  background-color: #efb910;
+  width: 600px;
+  height: 20px;
 }
-.noSlide{
-    width: 600px;
-    height:15px;
-    background-color: #6f6f6f83;
-    outline: solid 1px grey;
+.noSlide {
+  width: 600px;
+  height: 15px;
+  background-color: #6f6f6f83;
+  outline: solid 1px grey;
 }
-.sliderDiv img{
-    position: absolute;
-    left: 525px;
-    top:-4px;
-    width: 35px;
-    height: 35px;
+.sliderDiv img {
+  position: absolute;
+  left: 525px;
+  top: -4px;
+  width: 35px;
+  height: 35px;
 }
-#betSizeSlider{
-    margin:0px;
-    cursor: pointer;
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height:  6.52px; /* Specified height */
-    background-color: rgba(0, 0, 255, 0);
-    border-radius: 15px;
-    z-index: 2;
+#betSizeSlider {
+  margin: 0px;
+  cursor: pointer;
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 6.52px; /* Specified height */
+  background-color: rgba(0, 0, 255, 0);
+  border-radius: 15px;
+  z-index: 2;
 }
 
 #betSizeSlider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    display: flex;
-    appearance: none;
-    width: 45px;
-    height: 45px;
-    opacity: 0;
-    background: url('../../../img/flippur.png');
-    cursor: pointer;
-    background-size: 50px;
-    z-index: 5;
-  }
-.percentButtons{
-    margin-top: 15px;
-    width: 70%;
-    display: flex;
-    justify-content: space-between
+  -webkit-appearance: none;
+  display: flex;
+  appearance: none;
+  width: 45px;
+  height: 45px;
+  opacity: 0;
+  background: url("../../../img/flippur.png");
+  cursor: pointer;
+  background-size: 50px;
+  z-index: 5;
+}
+.percentButtons {
+  margin-top: 15px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.percentButtons button{
-    cursor: pointer;
-    width:50px;
-    height: 28px;
-    left: 582.72px;
-    top: 457.37px;
-    color:white;
-    background: #070707;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-sizing: border-box;
-    border-radius: 15px;
-    font-family: 'Helvetica';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 11px;
-    display: flex;
-    padding:6px 6px 6px 6px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-
-}
-.sliderContainer{
-    display: flex;
-    height: 68px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 15px;
+.percentButtons button {
+  cursor: pointer;
+  width: 50px;
+  height: 28px;
+  left: 582.72px;
+  top: 457.37px;
+  color: white;
+  background: #070707;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-family: "Helvetica";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 11px;
+  display: flex;
+  padding: 6px 6px 6px 6px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
 }
 
-#confirmBetButton{
-    width: 106px;
-    height: 39px;
-    left: 667px;
-    top: 624px;
-    color:black;
-    background: #EFB910;
-    border: 1px solid rgba(255, 255, 255, 0.11);
-    box-sizing: border-box;
-    border-radius: 30px;
-    margin: 40px 20px 10px 10px;
-    cursor: pointer;
-    font-size: small;
+.percentButtons button:hover {
+  background: #2f3236;
 }
 
-.centerDiv{
-    display: flex;
-    flex-direction: column ;
-    align-items: center;
+.sliderContainer {
+  display: flex;
+  height: 68px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+#confirmBetButton {
+  width: 106px;
+  height: 39px;
+  left: 667px;
+  top: 624px;
+  color: black;
+  background: #efb910;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-sizing: border-box;
+  border-radius: 30px;
+  margin: 40px 20px 10px 10px;
+  cursor: pointer;
+  font-size: small;
+}
+
+.centerDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .centerDiv input {
-    width:300px;
-    padding:15px;
-    margin-top:25px;
-    margin-bottom:8px;
-    background-color: black;
-    border: rgba(255, 255, 255, 0.337) solid 1px;
-    color:white;
-    border-radius: 25px;
-    font-size: small;
+  width: 300px;
+  padding: 15px;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  background-color: black;
+  border: rgba(255, 255, 255, 0.337) solid 1px;
+  color: white;
+  border-radius: 25px;
+  font-size: small;
 }

@@ -21,8 +21,8 @@ import flipCoinGifH from "../../../img/512head-single.gif";
 import BetSelectModal from "./BetSelectModal";
 import "./DoubleOrNothing.css";
 import { wait } from "@testing-library/user-event/dist/utils";
-
 import { choiceButtonSVG } from "../../../svgs/svgs";
+
 export const DoubleOrNothing = ({
   selectedToken,
   flipCoinGif,
@@ -61,14 +61,10 @@ export const DoubleOrNothing = ({
       <button
         value={id}
         name={name}
-        onClick={onClick}
-        className={`${
-          isActive
-            ? " bg-[#F1B913] text-black hover:bg-[#F1B213] border-none"
-            : "bg-[#000000] text-white hover:bg-[#2F3236] border-white border-[1px]"
-        } border-[#3a3a3a] tracking-[2px] px-4 py-2 w-30 text-sm text-center rounded-[24px] `}
+        onClick={() => onClick(id)}
+        className={`pushable tracking-[2px] px-4 py-2 w-30 text-sm text-center rounded-[24px] `}
       >
-        {name}
+        <span className={`front${isActive ? ` active` : ""}`}>{name}</span>
       </button>
     );
   };
@@ -79,8 +75,8 @@ export const DoubleOrNothing = ({
     setActiveAmountButton(Number(event.target.value));
   };
 
-  const handleChoiceButtonClick = (event) => {
-    setActiveChoiceButton(Number(event.target.value));
+  const handleChoiceButtonClick = (id) => {
+    setActiveChoiceButton(Number(id));
   };
 
   useEffect(() => {
@@ -325,9 +321,11 @@ export const DoubleOrNothing = ({
       {/* Game not start */}
       {approved && account && !gameStarted && gameFlipAmounts && (
         <div>
-          <FlipContainer style={{
-            marginBottom: 0
-          }}>
+          <FlipContainer
+            style={{
+              marginBottom: 0,
+            }}
+          >
             {!betModal && (
               <>
                 {/* <div className="choiceButton" key={headsOrTails[0].name} onClick={()=>{setActiveChoiceButton(0)}}>
@@ -430,7 +428,15 @@ export const DoubleOrNothing = ({
                 <Centered spaced={true}>Spinning in: {flipCounter}</Centered>
               )}
               {/* Only shows this when the user is the winner */}
-              {flipFinished && winner && <Centered spaced={true}>YOU WON <Green>+{parseFloat(gameWager / 10**18).toFixed(2)} {selectedToken}</Green></Centered>}
+              {flipFinished && winner && (
+                <Centered spaced={true}>
+                  YOU WON{" "}
+                  <Green>
+                    +{parseFloat(gameWager / 10 ** 18).toFixed(2)}{" "}
+                    {selectedToken}
+                  </Green>
+                </Centered>
+              )}
               {/* Renders the coin flip gif only when coinflipactive is set to true */}
               {coinFlipActive && (
                 <CoinFlip>
@@ -454,7 +460,10 @@ export const DoubleOrNothing = ({
                     <Centered spaced={true}>RUGGED</Centered>
                   )}
                   <FlipContainer>
-                    <GameButton name="FLIP AGAIN" onClick={startOver}></GameButton>
+                    <GameButton
+                      name="FLIP AGAIN"
+                      onClick={startOver}
+                    ></GameButton>
                   </FlipContainer>
                 </>
               )}

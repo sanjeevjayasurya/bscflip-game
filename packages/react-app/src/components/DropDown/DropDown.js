@@ -24,12 +24,12 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
       <DropDownContainer>
         <DropDownHeader onClick={toggling}>
           {selectedOption}
-          <Caret isOpen={isOpen}>
+          {/* <Caret isOpen={isOpen}>
             <OverCaret isOpen={isOpen} />
-          </Caret>
+          </Caret> */}
         </DropDownHeader>
         
-        {isOpen && (
+        {/* {isOpen && (
           <DropDownListContainer>
             <DropDownList>
               {options.map(option => (
@@ -39,7 +39,7 @@ export const DropDown = (({ options, onOptionClicked, selectedOption, isOpen, to
               ))}
             </DropDownList>
           </DropDownListContainer>
-        )}
+        )} */}
 
       </DropDownContainer>
   );
