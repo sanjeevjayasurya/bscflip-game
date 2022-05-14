@@ -40,8 +40,31 @@
     cursor: pointer;
 }
 .affModal{
-    top:-50px;
-    left:-150px;
-    width: 1000px;
-    position: absolute;
+    top:12.5%;
+    left:12.5%;
+    width: 75%;
+    height: 75%;
+    background-color: black;
+    border:white solid 2px;
+    position: fixed;
+    border-radius: 30px;
+    padding:25px;
+}
+.affModal input{
+    color: black;
+    width: 75%;
+    padding:10px;
+    border-radius: 15px;
+}
+#copyButton{
+    margin-left: 15px;
+    padding:10px;
+    border-radius: 15px;
+    border: white solid 2px;
+}
+#copyButton:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: black solid 2px;
+
 }
