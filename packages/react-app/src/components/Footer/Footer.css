@@ -68,3 +68,21 @@
     border: black solid 2px;
 
 }
+.toprowAff{
+    display: flex;
+    justify-content: space-between;
+}
+.toprowAff button{
+    padding:10px 15px;
+    background-color: white;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border-radius: 15px;
+    font-size: 1.5rem;
+
+}
+.toprowAff button:hover {
+    background-color: black;
+    color: white;
+}
