@@ -25,6 +25,7 @@ export default function Footer({ chainId, wrongChain, bscF, game }) {
                 <input id='affiliateLink' defaultValue={`https://bscflip.com?ref=${account!== undefined ? account.address:"0x"}`}></input>
                 <button onClick={()=>{
                   const affLink = document.getElementById("affiliateLink")
+                  if (!document.queryCommandSupported('copy')) return;
                     affLink.select();
                     document.execCommand('copy')
                 }} id='copyButton'>COPY</button>
