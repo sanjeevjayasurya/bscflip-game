@@ -53,12 +53,12 @@ export const FlipGame = (({ flipCoinGif,chainId, wrongChain, bscF, game }) => {
         }
         {connected && !wrongChain &&
         <GameContainer>
-          {!gameStarted  && !betModal && <DropDown 
+          {/* {!gameStarted  && !betModal && <DropDown 
             options={tokens}
             onOptionClicked={onOptionClicked}
             selectedOption={selectedToken} 
             isOpen={isOpen}
-            toggling={toggling} />}
+            toggling={toggling} />} */}
           <DoubleOrNothing selectedToken={selectedToken} flipCoinGif={flipCoinGif} betModal={betModal} openBetModal={openBetModal} gameStarted={gameStarted} setGameStarted={setGameStarted} gameToken={selectedTokenAddress} bscF={bscF} game={game} />
         </GameContainer>
         }
